@@ -1,0 +1,24 @@
+ideas about which features to combine:
+	- combine features from p27b to p27h to compute how a teacher's work is hampered in general
+	- combine features from p34a to p34g to compute how much the school management is invested in allowing teachers to flourish
+	- same for features from p311a to p311h to get an idea of how good the relations between different people in the school are 
+	- same for features from p7an to p7gn (exluding p7fn) to compute the total number of students with cognitve conditions that might make their teaching more challenging and potentially less effective for everyone
+	- same for features from p21a to p21f to evaluate how invested/motivated the students are in their learning 
+	- same for features from p24a to p24k to evaluate how meticolous the teacher is in their work, specifically when it comes to evaluating the students
+	- same for features from p32a to p32e to evaluate the teacher's overall opinion on the school they work in
+	- same for features from d18a to d18n to evaluate the amount of inconveniences that a school principal has to face
+	- same for features from f14a to f14c to evaluate how often a student is visited during school by people they know
+	- same for features from f16a to f16f to evaluate the "school" support a student receives by their family when at home
+	- same for features from f17a to f17d to estimate how frequently the parent is involved in school activities
+		- they are important features so it might not be right to aggregate them
+	- same for features from f18a to f18h to estimate a parent's degree of satisfaction towards the school in general (same as f18i? scales would be different)   
+	- same for features from f19a to f19e to estimate a parent's overall degree of satisfaction towards the teacher
+	- same for features from f33a to f33f to estimate the overall sources of income for the family
+		- binary
+	- same for features from a09a to a09e to estimate the overall behaviour of the class
+	- same for features from a13a to a13e to estimate how positively the class view their relationship with the teacher
+	- same for features from a14c to a14f to estimate how negative the relationship between the student and the rest of the class is
+		- important features
+	- same for features a14b, a14g, a14h to estimate how positive the relationship between the student and the rest of the class is 
+		- important features
+
