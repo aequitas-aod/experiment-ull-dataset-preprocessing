@@ -37,13 +37,24 @@ For family and student context questionnaires, students take the envelopes home.
 5. [Low] finding the most likely explanation for under-performance?
 
 
-# Questions:
+## Questions
 
-Why multiple IDs?
+### Old
 
-How did you select important feature?
+- Why multiple IDs?
+- How did you select important feature?
+
+### Joseph
+
+- studenti  con stesso id_student_16_19  -> stesso studente OK
+- studenti  con stesso id_student_original -> stesso studente NO
+    - forse l'identificativo  è id_student_original + id_school
+- dipendenza id_school + id_year -> preside SNI
+    - dalle analisi manuali SI ma non confermato da quelle automatiche (penso sia un problema di qualità dei dati: alcune tuple hanno – per qualche ragione – alcuni campi con valore diverso)
+
+Perchè stesso studente in anni diversi (stesso id_student_16_19) ha diverso id_school nonostante id_school_16_19 sia uguale? Cos'è id_school se cambia? Anche id_student_original cambia!
 
 
-# Aggregations:
+## Aggregations
 
 average amount of students per teacher
