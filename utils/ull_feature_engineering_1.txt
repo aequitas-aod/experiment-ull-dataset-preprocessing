@@ -1,4 +1,10 @@
 ideas about which features to combine:
+	- combine features from d16an to d16fn to compute school's resources
+	- combine features from d17a to d17h to compute factors that limits the principal's ability to manage the school
+	- combine features from d18a to d18n to compute school's inconveniences
+	- combine features from d19a to d19r to compute school's problems due to students and teachers' behaviour (actually this can be summarised into two features)
+	- combine features from d20a to d20l to compute positive effects of the school management
+	- combine features from d21a to d21f to compute satisfaction level
 	- combine features from p27b to p27h to compute how a teacher's work is hampered in general
 	- combine features from p34a to p34g to compute how much the school management is invested in allowing teachers to flourish
 	- same for features from p311a to p311h to get an idea of how good the relations between different people in the school are 
