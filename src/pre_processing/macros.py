@@ -1,7 +1,4 @@
 import os
-from data import PATH as DATA_PATH_COPY
-from data.split import PATH as DATA_SPLIT_PATH_COPY
-from data.pre_processed import PATH as DATA_PREPROC_PATH_COPY
 
 column_groups = {
     "identifiers": [
@@ -581,7 +578,7 @@ column_groups = {
 }
 
 HOME_PATH = os.path.join("/", "home")
-DATA_PATH = DATA_PATH_COPY
-DATA_SPLIT_PATH = DATA_SPLIT_PATH_COPY
-DATA_PREPROC_PATH = DATA_PREPROC_PATH_COPY
+DATA_PATH = os.path.join(HOME_PATH, "data")
+DATA_SPLIT_PATH = os.path.join(DATA_PATH, "split")
+DATA_PREPROC_PATH = os.path.join(DATA_PATH, "pre_processed")
 ORIGINAL_DATASET_NAME = "original.csv"
