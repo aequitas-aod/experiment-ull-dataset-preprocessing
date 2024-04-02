@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-from pre_processing.macros import (
+from macros import (
     column_groups,
     DATA_PATH,
     DATA_SPLIT_PATH,
@@ -28,6 +28,8 @@ def main():
 
     # Merge identifiers and student questionnaire
     df = pd.merge(ids, df, left_index=True, right_index=True)
+
+    print(df[["a3a", "a3b", "living_with_father_mother"]].value_counts())
 
 
 if __name__ == "__main__":
