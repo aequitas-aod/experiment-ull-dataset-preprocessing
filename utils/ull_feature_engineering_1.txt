@@ -1,4 +1,4 @@
-ideas about which features to combine:
+si ideas about which features to combine:
 	- combine features from d16an to d16fn to compute school's resources
 	- combine features from d17a to d17h to compute factors that limits the principal's ability to manage the school
 	- combine features from d18a to d18n to compute school's inconveniences
