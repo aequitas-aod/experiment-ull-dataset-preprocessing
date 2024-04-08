@@ -4,3 +4,4 @@ matplotlib
 psutil
 scipy
 Jinja2
+sklearn

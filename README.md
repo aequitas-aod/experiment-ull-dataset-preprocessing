@@ -52,8 +52,9 @@ For family and student context questionnaires, students take the envelopes home.
 - dipendenza id_school + id_year -> preside SNI
     - dalle analisi manuali SI ma non confermato da quelle automatiche (penso sia un problema di qualità dei dati: alcune tuple hanno – per qualche ragione – alcuni campi con valore diverso)
 
-Perchè stesso studente in anni diversi (stesso id_student_16_19) ha diverso id_school nonostante id_school_16_19 sia uguale? Cos'è id_school se cambia? Anche id_student_original cambia!
+- Perchè stesso studente in anni diversi (stesso id_student_16_19) ha diverso id_school nonostante id_school_16_19 sia uguale? Cos'è id_school se cambia? Anche id_student_original cambia!
 
+- from a9a to a9g, le attività si devono intendere come svolte con il docente o come trasgressione?
 
 ## Aggregations
 
