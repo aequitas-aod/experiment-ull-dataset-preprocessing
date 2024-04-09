@@ -205,8 +205,8 @@ def main():
         "repeat": "a4",
         "skip": "a5",
         "homeworks": "a7",
-        "country_iso_cnac": "birth_country",
-        "country_iso_nac": "nazionality_country",
+        # "birth_country": "country_iso_cnac",
+        # "nazionality_country": "country_iso_nac",
     }
 
     df = df.rename(columns={v: k for k, v in to_rename.items()})
@@ -300,6 +300,47 @@ def main():
 
     # print(df)
 
+    max_degree_of_agreement = 4
+    aggregation_map = {
+        "good": {
+            "classmate_relationships": [
+                "a14a",
+                "a14b",
+                "a14g",
+                "a14h",
+            ],
+            "school": [
+                "a17a",
+                "a17b",
+                "a17c",
+                "a17e",
+                "a17f",
+                "a17g",
+                "a17h",
+            ],
+            "math": ["a20a", "a20e"],
+        },
+        "bad": {
+            "classmate_relationships": [
+                "a14c",
+                "a14d",
+                "a14e",
+                "a14f",
+            ],
+            "school": ["a17d"],
+            "math": ["a20b", "a20c", "a20d"],
+        },
+    }
+
+    def get_good_bad_agg(row, group):
+        return (
+            row[aggregation_map["good"][group]].sum()
+            + (
+                (len(aggregation_map["bad"][group]) * (max_degree_of_agreement + 1))
+                - row[aggregation_map["bad"][group]].sum()
+            )
+        ) / (len(aggregation_map["good"][group]) + len(aggregation_map["bad"][group]))
+
     to_lambdate = {
         "living_with": lambda x: (
             0  # "BOTH_PARENTS"
@@ -326,47 +367,11 @@ def main():
                 )
             )
         ),
-        "classmate_relationships": lambda x: (
-            x[
-                [
-                    "a14a",
-                    "a14b",
-                    "a14g",
-                    "a14h",
-                ]
-            ].sum()
-            + (
-                4 * 5
-                - x[
-                    [
-                        "a14c",
-                        "a14d",
-                        "a14e",
-                        "a14f",
-                    ]
-                ].sum()
-            )
-        )
-        / 8,
-        "school": lambda x: (
-            x[
-                [
-                    "a17a",
-                    "a17b",
-                    "a17c",
-                    "a17e",
-                    "a17f",
-                    "a17g",
-                    "a17h",
-                ]
-            ].sum()
-            + (5 - x["a17d"])
-        )
-        / 8,
-        "math": lambda x: (
-            x[["a20a", "a20e"]].sum() + (3 * 5 - x[["a20b", "a20c", "a20d"]].sum())
-        )
-        / 5,
+        "classmate_relationships": lambda x: get_good_bad_agg(
+            x, group="classmate_relationships"
+        ),
+        "school": lambda x: get_good_bad_agg(x, group="school"),
+        "math": lambda x: get_good_bad_agg(x, group="math"),
     }
 
     for new_column, lambda_rule in to_lambdate.items():
@@ -551,6 +556,12 @@ def main():
         "a162k",
         "a163k",
         "a166k",
+        # birth_country
+        "country_iso_cnac",
+        # nazionality_country
+        "country_iso_nac",
+        # weight
+        "weight",
     ]
 
     df = df.drop(to_drop, axis=1)
