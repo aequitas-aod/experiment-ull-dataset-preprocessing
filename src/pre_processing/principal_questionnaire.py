@@ -156,6 +156,13 @@ def main():
 
     df.dropna(axis=1, how="all", inplace=True)
 
+    ############################################################################
+    # select columns with just one value other than NaN and fill it with value 2
+    ############################################################################
+
+    one_value_columns = df.columns[df.nunique() == 1]
+    df[one_value_columns] = df[one_value_columns].fillna(2)
+
     # Merge identifiers and student questionnaire
     df = pd.merge(ids, df, left_index=True, right_index=True)
 
