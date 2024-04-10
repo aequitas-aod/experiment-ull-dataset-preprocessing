@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Callable
 import pandas as pd
+from matplotlib import pyplot as plt
 
 PATH = Path(__file__).parents[0]
 
@@ -25,13 +26,23 @@ def mean_merge_strategy(df: pd.DataFrame, axis: int) -> pd.Series:
     return df.mean(axis=axis)
 
 
+def _constant_nan_strategy(merged_column: pd.Series, constant: int) -> pd.Series:
+    """
+    Handle NaN values by replacing them with a constant value.
+    :param merged_column: Series with the merged column
+    :param constant: constant value to replace the NaN values
+    :return: Series with the NaN values replaced by the constant
+    """
+    return merged_column.fillna(constant)
+
+
 def zero_nan_strategy(merged_column: pd.Series) -> pd.Series:
     """
     Handle NaN values by replacing them with 0.
     :param merged_column: Series with the merged column
     :return: Series with the NaN values replaced by 0
     """
-    return merged_column.fillna(0)
+    return _constant_nan_strategy(merged_column, 0)
 
 
 def mean_nan_strategy(merged_column: pd.Series) -> pd.Series:
@@ -41,6 +52,15 @@ def mean_nan_strategy(merged_column: pd.Series) -> pd.Series:
     :return: Series with the NaN values replaced by the mean of the column
     """
     return merged_column.fillna(merged_column.mean())
+
+
+def mode_nan_strategy(merged_column: pd.Series) -> pd.Series:
+    """
+    Handle NaN values by replacing them with the mode of the column.
+    :param merged_column: Series with the merged column
+    :return: Series with the NaN values replaced by the mode of the column
+    """
+    return merged_column.fillna(merged_column.mode()[0])
 
 
 def merge_columns(df: pd.DataFrame,
@@ -66,3 +86,17 @@ def merge_columns(df: pd.DataFrame,
     # Sort the columns
     df = df.reindex(sorted(df.columns), axis=1)
     return df
+
+
+def histogram_plot(df: pd.DataFrame, column_name: str) -> None:
+    """
+    Plot a histogram of the values of a column in a DataFrame.
+    Use the number of unique values to determine the number of bins.
+    :param df: DataFrame with the column
+    :param column_name: name of the column
+    """
+    plt.hist(df[column_name], bins=df[column_name].nunique())
+    plt.xlabel(column_name)
+    plt.ylabel('Frequency')
+    plt.title(f'Histogram of {column_name}')
+    plt.show()
