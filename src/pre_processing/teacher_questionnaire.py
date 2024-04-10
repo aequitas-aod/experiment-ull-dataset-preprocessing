@@ -7,10 +7,9 @@ from macros import (
     DATA_PATH,
     DATA_SPLIT_PATH,
     ORIGINAL_DATASET_NAME,
-    teacher_non_binary_feature_intervals,
-    teacher_binary_feature_intervals
+    teacher_non_binary_feature_list,
+    teacher_binary_feature_list
 )
-
 
 def main():
 
@@ -26,7 +25,7 @@ def main():
 
     # aggregate non binary features
     # missing values are set to zero, features are aggregated row wise through the mean
-    new_features = aggregate_features(df, teacher_non_binary_feature_intervals, 
+    new_features = aggregate_features(df, teacher_non_binary_feature_list, 
                                       aggregation_func="mean", 
                                       na_values_strategy="zeros"
                                       )
@@ -35,12 +34,12 @@ def main():
     df = pd.concat([df, new_features_df], axis=1)
 
     # drop features after aggregating
-    features_to_drop = features_to_drop_after_aggregation(df, teacher_non_binary_feature_intervals)
+    features_to_drop = features_to_drop_after_aggregation(df, teacher_non_binary_feature_list)
     df = df.drop(df.columns[features_to_drop], axis=1, inplace=False)
 
     # repeat with binary features
     # missing values are set to zero, features are aggregated through a sum
-    new_features = aggregate_features(df, teacher_binary_feature_intervals, 
+    new_features = aggregate_features(df, teacher_binary_feature_list, 
                                       aggregation_func="sum", 
                                       na_values_strategy="zeros")
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)
@@ -48,10 +47,11 @@ def main():
     df = pd.concat([df, new_features_df], axis=1)
 
     # drop features after aggregating
-    features_to_drop = features_to_drop_after_aggregation(df, teacher_binary_feature_intervals)
+    features_to_drop = features_to_drop_after_aggregation(df, teacher_binary_feature_list)
     df = df.drop(df.columns[features_to_drop], axis=1, inplace=False)
 
     print(f"Done! Number of columns: {df.shape[1]}")
+    print(df.columns)
 
 if __name__ == "__main__":
     main()
