@@ -52,7 +52,6 @@ def main():
             "a3et",
             "a3f",
         ],
-        "living_in_foster": ["a3f"],
         "repeat": [
             "a4",
             "repeater",
