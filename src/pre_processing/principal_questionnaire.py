@@ -1,14 +1,6 @@
 import os
-import pandas as pd
-
-from src.pre_processing import merge_columns, sum_merge_strategy, zero_nan_strategy, mean_merge_strategy, \
-    mode_nan_strategy, histogram_plot
-from src.pre_processing.macros import (
-    column_groups,
-    DATA_PATH,
-    DATA_SPLIT_PATH,
-    ORIGINAL_DATASET_NAME,
-)
+from src.pre_processing import *
+from src.pre_processing.macros import DATA_SPLIT_PATH
 
 
 def main():
@@ -164,6 +156,22 @@ def main():
     df = merge_columns(df, d21_columns, mean_merge_strategy, mode_nan_strategy, "satisfaction")
 
     ############################################################################
+    # Merge from d22a to d22f (values from 1 to 4).
+    # Merge function: mean.
+    # Treat missing values as mode.
+    # Drop columns after merging.
+    # d22a: Degree of agreement: The staff of the school share a common methodological line
+    # d22b: Degree of agreement: There is a high level of cooperation between the school and the local community
+    # d22c: Degree of agreement: School staff speak openly about difficulties in carrying out their teaching work
+    # d22d: Degree of agreement: There is mutual respect for the ideas of colleagues
+    # d22e: Degree of agreement: There is a culture of sharing successes and failures
+    # d22f: Degree of agreement: Relations between teachers and students are good
+    ############################################################################
+
+    d22_columns = [f"d22{n}" for n in "abcdef"]
+    df = merge_columns(df, d22_columns, mean_merge_strategy, mode_nan_strategy, "degree_of_agreement")
+
+    ############################################################################
     # Drop columns with all missing values
     ############################################################################
 
@@ -183,19 +191,28 @@ def main():
     # - 40.816 2 (female)
     # - 8.767 (NaN)
     # Fill NaN values with 0 (unknown)
+    ############################################################################
+
     df["d1"].fillna(0, inplace=True)
+
     ############################################################################
     # Column d2n (age) has 354 NaN values
     # Fill NaN values with the mode
+    ############################################################################
+
     df["d2n"].fillna(df["d2n"].mode()[0], inplace=True)
+
     ############################################################################
     # Column d3n (year of teaching experience) has 601 NaN values
     # Considering that the minimum is 2 could be reasonable to assume that even 0 years is a valid value.
     # However, the histogram of the column shows a simil double Gaussian distribution, with 30 as the mode.
     # Solution: create bins of 5 years and fill the NaN values with the mode (max is 50 years)
+    ############################################################################
+
     bins = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
     df["d3n"] = pd.cut(df["d3n"], bins, labels=bins[1:])
     df["d3n"].fillna(df["d3n"].mode()[0], inplace=True)
+
     ############################################################################
     # Column d4n (years in the current school) has 407 NaN values
     # Column d5n (years of experience as a principal) has 741 NaN values
@@ -204,27 +221,169 @@ def main():
     # For sure d4n >= d6n!
     # But 476 rows have d4n < d6n -> discard them
     ############################################################################
+
     df = df[df["d4n"] >= df["d6n"]]
+
     ############################################################################
     # Still 364 NaN values in d5n remain
     # d5n should be greater than d6n
     # But 2117 rows have d5n < d6n -> discard them
     ############################################################################
+
     df = df[df["d5n"] >= df["d6n"]]
-    ############################################################################
-
-
-    
-
 
     ############################################################################
-    # The remaining NaN values are filled with 0
+    # Column d7n (Number of weekly class hours) has 2782 NaN values
+    # Fill NaN values with 0
     ############################################################################
 
-    df.fillna(0, inplace=True)
+    df["d7n"].fillna(0, inplace=True)
+
+    ############################################################################
+    # Column d8n (Principals that the center has had in the last 10 years) has 275 NaN values
+    # Assume that the minimum is 1, therefore fill NaN values with 1
+    ############################################################################
+
+    df["d8n"].fillna(1, inplace=True)
+
+    ############################################################################
+    # Columns d9[abcdefgh]1 (Number of students with different criteria)
+    # 19.674 rows have all these columns with NaN values
+    # But obviously, this is an inconsistency, because the row as a student as identifier
+    # For the moment just fill NaN values with 0
+    ############################################################################
+
+    d9x1_columns = [f"d9{n}1" for n in "abcdefgh"]
+    df[d9x1_columns] = df[d9x1_columns].fillna(0)
+
+    ############################################################################
+    # Same strategy for columns d9[abcdefgh]2 (Number of groups with different criteria)
+    ############################################################################
+
+    d9x2_columns = [f"d9{n}2" for n in "abcdefgh"]
+    df[d9x2_columns] = df[d9x2_columns].fillna(0)
+
+    ############################################################################
+    # Columns d10[abc] (grade ratios (w.r.t. what is unclear))
+    # For the moment just fill NaN values with 0
+    ############################################################################
+
+    d10_columns = [f"d10{n}" for n in "abc"]
+    df[d10_columns] = df[d10_columns].fillna(0)
+
+    ############################################################################
+    # Columns d11[ab]n (Number of students born abroad with and without Spanish as their mother tongue)
+    # All NaN values are filled with 0
+    ############################################################################
+
+    d11x_columns = [f"d11{n}n" for n in "ab"]
+    df[d11x_columns] = df[d11x_columns].fillna(0)
+
+    ############################################################################
+    # d12an is the number of teachers of the evaluated grade (whatever that means)
+    # d12bn is the number of teachers of the school
+    # All NaN values (36.921) for d12an are filled with 0
+    # All NaN values (586) for d12bn are filled with 1 (a school should have at least one teacher)
+    ############################################################################
+
+    df["d12an"].fillna(0, inplace=True)
+    df["d12bn"].fillna(1, inplace=True)
+
+    ############################################################################
+    # Columns d13n (Among the teachers, how many have been in the school five or more years?)
+    # Fill NaN values (37.620) with 0
+    ############################################################################
+
+    df["d13n"].fillna(0, inplace=True)
+
+    ############################################################################
+    # Columns d14 (Teachers who change school each year)
+    # Column d15 (Administration attitude to teacher training courses)
+    # Fill NaN values (228) with 1 (almost no change) for d14
+    # Fill NaN values (374) with mode for d15
+    ############################################################################
+
+    df["d14"].fillna(1, inplace=True)
+    df["d15"].fillna(df["d15"].mode()[0], inplace=True)
+
+    ############################################################################
+    # Keeping columns d30[abcdef] separated since they are labeled as important
+    # Student grouping criteria
+    # All NaN values are filled with 2 (No)
+    ############################################################################
+
+    d30x_columns = [f"d30{n}" for n in "abcdef"]
+    df[d30x_columns] = df[d30x_columns].fillna(2)
+
+    ############################################################################
+    # Keeping columns d31[abc] separated since they are labeled as important
+    # All NaN values are filled with 1 (Yes)
+    ############################################################################
+
+    d31x_columns = [f"d31{n}" for n in "abc"]
+    df[d31x_columns] = df[d31x_columns].fillna(1)
+
+    ############################################################################
+    # d32a (Your school has a school teacher training plan)
+    # Fill NaN values with 2 (No)
+    ############################################################################
+
+    df["d32a"].fillna(2, inplace=True)
+
+    ############################################################################
+    # d33a (Main theme of the school teacher training plan)
+    # Fill NaN values with 10 (there is no plan)
+    ############################################################################
+
+    df["d33a"].fillna(10, inplace=True)
+
+    ############################################################################
+    # d121a (Number of teachers in primary education)
+    # d121b (Number of mandatory secondary education teachers)
+    # d131a (Number of teachers in primary education with 5 or more academic years)
+    # d131b (Number of mandatory secondary education teachers with 5 or more academic years)
+    # Fill NaN values with 0
+    ############################################################################
+
+    d121_columns = [f"d121{n}" for n in "ab"]
+    d131_columns = [f"d131{n}" for n in "ab"]
+    df[d121_columns] = df[d121_columns].fillna(0)
+    df[d131_columns] = df[d131_columns].fillna(0)
+
+    ############################################################################
+    # d30[12345678] (other student grouping criteria)
+    # Fill NaN values with 2 (No)
+    ############################################################################
+
+    d30x_columns = [f"d30{n}" for n in "12345678"]
+    df[d30x_columns] = df[d30x_columns].fillna(2)
+
+    ############################################################################
+    # tasa_nac_[eso4, pri3, pri6] (rates of nationalities in the school)
+    # Fill NaN values with 0
+    ############################################################################
+
+    tasa_nac_columns = [f"tasa_nac_{n}" for n in ["eso4", "pri3", "pri6"]]
+    df[tasa_nac_columns] = df[tasa_nac_columns].fillna(0)
+
+    ############################################################################
+    # distnac[,_eso4,_pri3,_pri6] (number of student of different nationalities)
+    # Fill NaN values with 0
+    ############################################################################
+
+    distnac_columns = [f"distnac{n}" for n in ["", "_eso4", "_pri3", "_pri6"]]
+    df[distnac_columns] = df[distnac_columns].fillna(0)
+
+    ############################################################################
+    # groups (number of groups in the school)
+    # Fill NaN values with 0
+    ############################################################################
+
+    df["groups"].fillna(0, inplace=True)
 
     # Merge identifiers and student questionnaire
     df = pd.merge(ids, df, left_index=True, right_index=True)
+    print('a')
 
 
 if __name__ == "__main__":
