@@ -46,6 +46,8 @@ For family and student context questionnaires, students take the envelopes home.
 
 ### Joseph
 
+***RAW***
+
 - studenti  con stesso id_student_16_19  -> stesso studente OK
 - studenti  con stesso id_student_original -> stesso studente NO
     - forse l'identificativo  è id_student_original + id_school
@@ -55,6 +57,19 @@ For family and student context questionnaires, students take the envelopes home.
 - Perchè stesso studente in anni diversi (stesso id_student_16_19) ha diverso id_school nonostante id_school_16_19 sia uguale? Cos'è id_school se cambia? Anche id_student_original cambia!
 
 - from a9a to a9g, le attività si devono intendere come svolte con il docente o come trasgressione?
+
+***ELABORATED***
+
+*IDs*
+
+- We say that id_student_16_19 identifies a student because, when we find the same id_student_16_19 in two different rows, we know that they correspond to the same student in different years (i.e., 16-19 respectivelly). For the same rows, id_school_16_19 is also the same. Yet, for the same identical rows, if we look at id_student_original and id_school, they differ. Why so?
+- Analogously, id_student_original seem to not identify a student uniquely, does id_student_original identify a student only when id_school is taken in consideration as well? (i.e., two rows have been filled by the same student when they have the same id_stiudent_original and id_school)
+- Does the identifier for principals work the same? Can we say that id_school + id_year identify the principal in charge for a certain school in a certain year? (i.e., two rows have been filled by the same principal when they have the same id_school and id_year, assuming that different grades -- in the same school and year -- have the same principal)
+
+*Student Questionnaire*
+
+- What does the weight column refer to?
+
 
 ## Aggregations
 
