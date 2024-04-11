@@ -28,6 +28,18 @@ def main():
     ids[int_identifiers] = ids[int_identifiers].astype("Int64")
 
     ############################################################################
+    # Delete rows with all NaN values (823 rows)
+    ############################################################################
+    nan_rows = df.isnull().all(axis=1)
+    df = df[~nan_rows]
+
+    ############################################################################
+    # Delete rows with all NaN values but island, capital_island and public_private (7227 rows)
+    ############################################################################
+    nan_rows = df.drop(columns=["island", "capital_island", "public_private"]).isnull().all(axis=1)
+    df = df[~nan_rows]
+
+    ############################################################################
     # Merge from d16an to d16fn (values from 0 to 2000).
     # Merge function: sum.
     # Treat missing values as 0.
@@ -169,15 +181,15 @@ def main():
     # Column d1 (sex) has:
     # - 26.224 1 (male)
     # - 40.816 2 (female)
-    # - 16.817 (NaN)
+    # - 8.767 (NaN)
     # Fill NaN values with 0 (unknown)
     df["d1"].fillna(0, inplace=True)
     ############################################################################
-    # Column d2n (age) has 8.404 NaN values
+    # Column d2n (age) has 354 NaN values
     # Fill NaN values with the mode
     df["d2n"].fillna(df["d2n"].mode()[0], inplace=True)
     ############################################################################
-    # Column d3n (year of teaching experience) has 8.651 NaN values
+    # Column d3n (year of teaching experience) has 601 NaN values
     # Considering that the minimum is 2 could be reasonable to assume that even 0 years is a valid value.
     # However, the histogram of the column shows a simil double Gaussian distribution, with 30 as the mode.
     # Solution: create bins of 5 years and fill the NaN values with the mode (max is 50 years)
@@ -185,11 +197,22 @@ def main():
     df["d3n"] = pd.cut(df["d3n"], bins, labels=bins[1:])
     df["d3n"].fillna(df["d3n"].mode()[0], inplace=True)
     ############################################################################
-    # Column d4n (years in the current school) has 8.457 NaN values
-    # Apply the same strategy as d3n
-    df["d4n"] = pd.cut(df["d4n"], bins, labels=bins[1:])
-    df["d4n"].fillna(df["d4n"].mode()[0], inplace=True)
+    # Column d4n (years in the current school) has 407 NaN values
+    # Column d5n (years of experience as a principal) has 741 NaN values
+    # Column d6n (years of experience as a principal in the current school) has 420 NaN values
+    #
+    # For sure d4n >= d6n!
+    # But 476 rows have d4n < d6n -> discard them
     ############################################################################
+    df = df[df["d4n"] >= df["d6n"]]
+    ############################################################################
+    # Still 364 NaN values in d5n remain
+    # d5n should be greater than d6n
+    # But 2117 rows have d5n < d6n -> discard them
+    ############################################################################
+    df = df[df["d5n"] >= df["d6n"]]
+    ############################################################################
+
 
     
 
