@@ -1,5 +1,6 @@
 import os
 
+import numpy as np
 import pandas as pd
 
 from macros import (
@@ -333,13 +334,55 @@ def main():
     }
 
     def get_good_bad_agg(row, group):
-        return (
-            row[aggregation_map["good"][group]].sum()
-            + (
-                (len(aggregation_map["bad"][group]) * (max_degree_of_agreement + 1))
-                - row[aggregation_map["bad"][group]].sum()
-            )
-        ) / (len(aggregation_map["good"][group]) + len(aggregation_map["bad"][group]))
+        # if row[aggregation_map["good"][group]].isna().sum() == len(aggregation_map["good"][group]):
+        #     print("#### RAW GOOD  ####")
+        #     print(row[aggregation_map["good"][group]])
+        #     print("#### RAW BAD  ####")
+        #     print(row[aggregation_map["bad"][group]])
+
+        #     print("#### SUM GOOD  ####")
+        #     print(row[aggregation_map["good"][group]].sum())
+        #     print("#### SUM BAD  ####")
+        #     print(row[aggregation_map["bad"][group]].sum())
+        #     print()
+        #     print(
+        #         (
+        #             row[aggregation_map["good"][group]].sum()
+        #             + (
+        #                 (
+        #                     len(aggregation_map["bad"][group])
+        #                     * (max_degree_of_agreement + 1)
+        #                 )
+        #                 - row[aggregation_map["bad"][group]].sum()
+        #             )
+        #         )
+        #         / (
+        #             len(aggregation_map["good"][group])
+        #             + len(aggregation_map["bad"][group])
+        #         )
+        #     )
+        #     print()
+        #     print()
+
+        no_good = (
+            len(aggregation_map["good"][group])
+            - row[aggregation_map["good"][group]].isna().sum()
+        )
+        no_bad = (
+            len(aggregation_map["bad"][group])
+            - row[aggregation_map["bad"][group]].isna().sum()
+        )
+
+        if no_good == 0 and no_bad == 0:
+            return np.nan
+        else:
+            return (
+                row[aggregation_map["good"][group]].sum()
+                + (
+                    (no_bad * (max_degree_of_agreement + 1))
+                    - row[aggregation_map["bad"][group]].sum()
+                )
+            ) / (no_good + no_bad)
 
     to_lambdate = {
         "living_with": lambda x: (
