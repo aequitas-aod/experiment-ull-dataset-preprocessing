@@ -577,30 +577,55 @@ column_groups = {
     ],
 }
 
-teacher_non_binary_feature_list = {
-    "pfc_incidence": ["p16a", "p16b", "p16c", "p16d", "p16e", "p16f", "p16g"],
-    "teacher_work_hampered": ["p27a", "p27b", "p27c", "p27c", "p27d", "p27e", "p27f", "p27g", "p27h"],
-    "family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p30a", "p30b", "p30c"],
-    "teacher_work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
-    "satisfaction_with_teaching": ["p41a", "p41b", "p41h", "p41j"],
-    "unsatisfaction_with_teaching": ["p41d", "p41f"],
-    "satisfaction_with_work_and_school": ["p41e", "p41g", "p41i"],
-    "work_relationships_quality": ["p311a", "p311b", "p311c", "p311e", "p311f", "p311g", "p311h"],
-    "disadvantaged_students_num": ["p7an",  "p7bn", "p7cn", "p7dn", "p7en", "p7fn", "p7gn"],
-    "class_participation": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
-    "variety_evaluation_methods": ["p24a", "p24b", "p24c", "p24d", "p24e", "p24f", "p24g", "p24h", "p24i", "p24j", "p24k"],
-    "overall_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
-    "class_behaviour_during_lessons": ["p12a", "p12b", "p12c", "p12d"],
-    "variety_teaching_methodologies": ["p22a", "p22b", "p22c", "p22d", "p22e", "p22f", "p22g"],
-    "variety_resources_in_class": ["p23a", "p23b", "p23c", "p23d", "p23e", "p23f", "p23g", "p23h"],
-    "evaluation_work_of_non_teachers": ["p331a", "p331b", "p331c", "p331d", "p331e", "p331f", "p331g", "p331j"]
+agg_mean = {
+        "pfc_incidence": ["p16a", "p16b", "p16c", "p16d", "p16e", "p16f", "p16g"],
+        "teacher_work_hampered": ["p27a", "p27b", "p27c", "p27c", "p27d", "p27e", "p27f", "p27g", "p27h"],
+        "family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p30a", "p30b", "p30c", "p299d"],
+        "teacher_work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
+        "work_relationships_quality": ["p311a", "p311b", "p311c", "p311e", "p311f", "p311g", "p311h"],
+        "disadvantaged_students_num": ["p7an",  "p7bn", "p7cn", "p7dn", "p7en", "p7fn", "p7gn"],
+        "class_participation": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
+        "variety_evaluation_methods": ["p24a", "p24b", "p24c", "p24d", "p24e", "p24f", "p24g", "p24h", "p24i", "p24j", "p24k"],
+        "overall_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
+        "class_behaviour_during_lessons": ["p12a", "p12b", "p12c", "p12d"],
+        "variety_teaching_methodologies": ["p22a", "p22b", "p22c", "p22d", "p22e", "p22f", "p22g"],
+        "variety_resources_in_class": ["p23a", "p23b", "p23c", "p23d", "p23e", "p23f", "p23g", "p23h"],
+        "evaluation_work_of_non_teachers": ["p331a", "p331b", "p331c", "p331d", "p331e", "p331f", "p331g", "p331j"]
+    }
+
+agg_sum = {
+        "pfc_main_topics": ['p15a', 'p15b', 'p15c', 'p15d', 'p15e', 'p15f', 'p15g', 'p15h'],
+        "individual_training_topics": ['p18a', 'p18b', 'p18c', 'p18d', 'p18e', 'p18f', 'p18g', 'p18h','p18i']
+    }
+
+agg_custom_binary = {
+    "subjects_taught": ['p9a', 'p9b', 'p9c', 'p9d', 'p9e', 'p9f']
 }
 
-teacher_binary_feature_list = {
-    "subjects_taught": ['p9a', 'p9b', 'p9c', 'p9d', 'p9e', 'p9f'],
-    "pfc_main_topics": ['p15a', 'p15b', 'p15c', 'p15d', 'p15e', 'p15f', 'p15g', 'p15h'],
-    "individual_training_topics": ['p18a', 'p18b', 'p18c', 'p18d', 'p18e', 'p18f', 'p18g', 'p18h','p18i']
-}
+agg_mix = {
+        "a": {
+            "satisfaction_job_and_school": [
+                "p41e", "p41g", "p41i", "p41a", "p41b", "p41h", "p41j"
+            ],
+            "behaviour_problems_solution": [
+                "p26a", "p26b"
+            ],
+            "results_satisfaction": [
+                "p13", "p13b"
+            ]
+        },
+        "b": {
+            "satisfaction_job_and_school": [
+                "p41c", "p41d", "p41f"
+            ],
+            "behaviour_problems_solution": [
+                "p26c", "p26d"
+            ],
+            "results_satisfaction": [
+                "p13c"
+            ]
+        }
+    }
 
 HOME_PATH = os.path.join("/", "home")
 DATA_PATH = os.path.join(HOME_PATH, "data")

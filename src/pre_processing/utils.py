@@ -34,5 +34,48 @@ def features_with_too_many_nans(df: pd.DataFrame, nan_threshold: float):
     return np.where(np.array(nan_percs) > nan_threshold)
 
 def custom_binary_agg(series):
-    binary = [1 if x == 1 else 0 for x in series]
+    binary = [1 if x == 1 else 0 if x == 2 else x for x in series]
     return sum(val*(2**idx) for idx, val in enumerate(reversed(binary)))
+
+def custom_sum(series):
+    return series.sum(min_count=1)
+
+################### MIXED FEATURES ###################
+
+def get_good_bad_agg(row, group, aggregation_map, max_degree_of_agreement):
+    no_good = (
+        len(aggregation_map["a"][group])
+        - row[aggregation_map["a"][group]].isna().sum()
+    )
+    no_bad = (
+        len(aggregation_map["b"][group])
+        - row[aggregation_map["b"][group]].isna().sum()
+    )
+
+    if no_good == 0 and no_bad == 0:
+        return np.nan
+    else:
+        return (
+            row[aggregation_map["a"][group]].sum()
+            + (
+                (no_bad * (max_degree_of_agreement + 1))
+                - row[aggregation_map["b"][group]].sum()
+            )
+        ) / (no_good + no_bad)
+    
+def aggregate_mixed_features(df, agg_map, lambda_agg):
+    aggregated_features = {}
+    for new_column, lambda_rule in lambda_agg.items():
+        columns = []
+        for k in agg_map.keys():
+            for _, cols_group in agg_map[k].items():
+                columns += cols_group
+        aggregated_features[new_column] = df.loc[:, columns].agg(lambda_rule, axis=1)
+    return aggregated_features
+
+def mixed_features_to_drop(df, mixed_features):
+    features_to_drop = []
+    for k in mixed_features.keys():
+        for _, feats in mixed_features[k].items():
+            features_to_drop += feats
+    return [list(df.columns).index(x) for x in features_to_drop if x in df.columns]
