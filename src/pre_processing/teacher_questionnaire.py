@@ -10,7 +10,8 @@ from macros import (
     agg_sum,
     agg_mean,
     agg_custom_binary,
-    agg_mix
+    agg_mix,
+    to_rename
 )
 
 def main():
@@ -23,6 +24,9 @@ def main():
 
     # drop features with too many nans
     df = df.drop(df.columns[features_with_too_many_nans(df, 0.8)], axis=1, inplace=False)
+
+    # rename features
+    df = df.rename(columns=to_rename)
 
 
     # aggregate features row-wise using mean
@@ -71,8 +75,8 @@ def main():
     # maximum degree of agreement
     max_deg = 4
     to_lambdate = {
-    "satisfaction_job_and_school": lambda x: get_good_bad_agg(x,
-                                                            group="satisfaction_job_and_school",
+    "satisfaction_with_job_and_school": lambda x: get_good_bad_agg(x,
+                                                            group="satisfaction_with_job_and_school",
                                                             aggregation_map=agg_mix_new,
                                                             max_degree_of_agreement=max_deg),
     "behaviour_problems_solution": lambda x: get_good_bad_agg(x,

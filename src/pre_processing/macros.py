@@ -578,19 +578,21 @@ column_groups = {
 }
 
 agg_mean = {
-        "pfc_incidence": ["p16a", "p16b", "p16c", "p16d", "p16e", "p16f", "p16g"],
-        "teacher_work_hampered": ["p27a", "p27b", "p27c", "p27c", "p27d", "p27e", "p27f", "p27g", "p27h"],
-        "family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p30a", "p30b", "p30c", "p299d"],
-        "teacher_work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
+        "pfc_incidence_in_job": ["p16a", "p16b", "p16c", "p16d", "p16e", "p16f", "p16g"],
+        "work_hampered": ["p27a", "p27b", "p27c", "p27c", "p27d", "p27e", "p27f", "p27g", "p27h"],
+        "variety_of_family_interests": ["p29a", "p29b", "p29c", "p29d", "p29e"],
+        "family_attention_towards_school_activity": ["p30a", "p30b", "p30c", "p299d"],
+        "work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
         "work_relationships_quality": ["p311a", "p311b", "p311c", "p311e", "p311f", "p311g", "p311h"],
-        "disadvantaged_students_num": ["p7an",  "p7bn", "p7cn", "p7dn", "p7en", "p7fn", "p7gn"],
-        "class_participation": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
-        "variety_evaluation_methods": ["p24a", "p24b", "p24c", "p24d", "p24e", "p24f", "p24g", "p24h", "p24i", "p24j", "p24k"],
-        "overall_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
+        "special_attention_students": ["p7an",  "p7bn", "p7cn", "p7dn", "p7en", "p7gn"],
+        "class_involvement": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
+        "variety_of_evaluation_methods": ["p24a", "p24b", "p24c", "p24d", "p24e", "p24f", "p24g", "p24h", "p24i", "p24j", "p24k"],
+        "opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
         "class_behaviour_during_lessons": ["p12a", "p12b", "p12c", "p12d"],
-        "variety_teaching_methodologies": ["p22a", "p22b", "p22c", "p22d", "p22e", "p22f", "p22g"],
-        "variety_resources_in_class": ["p23a", "p23b", "p23c", "p23d", "p23e", "p23f", "p23g", "p23h"],
-        "evaluation_work_of_non_teachers": ["p331a", "p331b", "p331c", "p331d", "p331e", "p331f", "p331g", "p331j"]
+        "variety_of_teaching_methodologies": ["p22a", "p22b", "p22c", "p22d", "p22e", "p22f", "p22g"],
+        "variety_of_resources_in_class": ["p23a", "p23b", "p23c", "p23d", "p23e", "p23f", "p23g", "p23h"],
+        "evaluation_of_non_teachers_work": ["p331a", "p331b", "p331c", "p331d", "p331e", "p331f", "p331g", "p331j"],
+        "training_offer_effectiveness": ["p19", "p20"]
     }
 
 agg_sum = {
@@ -602,9 +604,31 @@ agg_custom_binary = {
     "subjects_taught": ['p9a', 'p9b', 'p9c', 'p9d', 'p9e', 'p9f']
 }
 
+to_rename = {
+    "p2": "gender",
+    "p2n": "age",
+    "p3n": "years_as_teacher",
+    "p4n": "years_in_school",
+    "p5": "same_group_last_two_years",
+    "p6n": "number_of_students",
+    "p7fn": "students_in_disadvanteged_economic_situation",
+    "p8an": "foreign_students_with_other_language",
+    "p8bn": "foreign_students_with_spanish",
+    "p10n": "teaching_hours_per_week",
+    "p11": "average_class_duration",
+    "p15i": "cbp_evaluation_main_topic",
+    "p25": "seat_configuration",
+    "p26": "behaviour_problems_solution_1",
+    "p28n": "meetings_with_families_during_year",
+    "p31d": "realtionships_teachers_families",
+    "p141": "pfc_participation",
+    "p171n": "training_hours_in_last_six_years",
+    "p172n": "training_hours_through_ceu_offer",
+}
+
 agg_mix = {
         "a": {
-            "satisfaction_job_and_school": [
+            "satisfaction_with_job_and_school": [
                 "p41e", "p41g", "p41i", "p41a", "p41b", "p41h", "p41j"
             ],
             "behaviour_problems_solution": [
@@ -612,10 +636,10 @@ agg_mix = {
             ],
             "results_satisfaction": [
                 "p13", "p13b"
-            ]
+            ]   
         },
         "b": {
-            "satisfaction_job_and_school": [
+            "satisfaction_with_job_and_school": [
                 "p41c", "p41d", "p41f"
             ],
             "behaviour_problems_solution": [
