@@ -1,0 +1,234 @@
+gender:
+  columns:
+    - p2: rename
+age:
+  columns:
+    - p2n: rename
+years_as_teacher:
+  columns:
+    - p3n: rename
+years_in_school:
+  columns:
+    - p4n: rename
+same_group_last_two_years:
+  columns:
+    - p5: rename
+special_attention_students:
+  columns:
+    - p7an: mean
+    - p7bn: mean
+    - p7cn: mean
+    - p7dn: mean
+    - p7en: mean
+    - p7gn: mean
+students_in_disadvanteged_economic_situation:
+  columns:
+    - p7fn: rename
+foreign_students_with_other_language:
+  columns:
+    - p8an: rename
+foreign_students_with_spanish:
+  columns:
+    - p8bn: rename
+subjects_taught:
+  columns:
+    - p9a: custom binary aggregation
+    - p9b: custom binary aggregation
+    - p9c: custom binary aggregation
+    - p9d: custom binary aggregation
+    - p9e: custom binary aggregation
+    - p9f: custom binary aggregation
+teaching_hours_per_week:
+  columns:
+    - p10n: rename
+average_class_duration:
+  columns:
+    - p11: rename
+class_behaviour_during_lessons:
+  columns:
+    - p12a: mean
+    - p12b: mean
+    - p12c: mean
+    - p12d: mean
+satisfaction_with_results:
+  columns:
+    - p13: lambda (mix)
+    - p13b: lambda (mix)
+    - p13c: lambda (mix)
+pfc_main_topics:
+  columns:
+    - p15a: sum
+    - p15b: sum
+    - p15c: sum
+    - p15d: sum
+    - p15e: sum
+    - p15f: sum
+    - p15g: sum
+    - p15h: sum
+cbp_evaluation_main_topic:
+  columns:
+    - p15i: rename
+pfc_incidence_in_job:
+  columns:
+    - p16a: mean
+    - p16a: mean
+    - p16a: mean
+    - p16a: mean
+    - p16a: mean
+    - p16a: mean
+    - p16a: mean
+    - p16a: mean
+individual_training_topics:
+  columns:
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+    - p18a: sum
+training_offer_effectiveness:
+  columns:
+    - p19: mean
+    - p20: mean
+class_involvement:
+  columns:
+    - p21a: mean
+    - p21b: mean
+    - p21c: mean
+    - p21d: mean
+    - p21e: mean
+    - p21f: mean
+variety_of_teaching_methodologies:
+  columns:
+    - p22a: mean
+    - p22b: mean
+    - p22c: mean
+    - p22d: mean
+    - p22e: mean
+    - p22f: mean
+    - p22g: mean
+variety_of_resources_used_in_class:
+  columns:
+    - p23a: mean
+    - p23b: mean
+    - p23c: mean
+    - p23d: mean
+    - p23e: mean
+    - p23f: mean
+    - p23g: mean
+    - p23h: mean
+    - p23i: mean
+variety_of_evaluation_methods:
+  columns:
+    - p24a: mean
+    - p24b: mean
+    - p24c: mean
+    - p24d: mean
+    - p24e: mean
+    - p24f: mean
+    - p24g: mean
+    - p24h: mean
+    - p24i: mean
+    - p24j: mean
+    - p24k: mean
+seat_configuration:
+  columns:
+    - p25: rename
+behaviour_problems_solution_1:
+  columns:
+    - p26: rename
+behaviour_problems_solution:
+  columns:
+    - p26a: lambda (mix)
+    - p26b: lambda (mix)
+    - p26c: lambda (mix)
+    - p26d: lambda (mix)
+  notes: "could simply be a unique mapping from problem solution to integer (instead of the complicated aggregation used so far)"
+work_hampered:
+  columns:
+    - p27a: mean
+    - p27b: mean
+    - p27c: mean
+    - p27d: mean
+    - p27e: mean
+    - p27f: mean
+    - p27g: mean
+    - p27h: mean
+meetings_with_families_during_year:
+  columns:
+    - p28n:rename
+variety_of_family_interest:
+  columns:
+    - p29a: mean
+    - p29b: mean
+    - p29c: mean
+    - p29d: mean
+    - p29e: mean
+    - p299d: mean
+family_attention_towards_school_activity:
+  columns:
+    - p30a: mean
+    - p30b: mean
+    - p30c: mean
+realtionships_teachers_families:
+  columns:
+    - p31d: rename
+opinion_on_school:
+  columns:
+    - p32a: mean
+    - p32b: mean
+    - p32c: mean
+    - p32d: mean
+    - p32e: mean
+work_facilitated:
+  columns:
+    - p34a: mean
+    - p34b: mean
+    - p34c: mean
+    - p34d: mean
+    - p34e: mean
+    - p34f: mean
+    - p34g: mean
+satisfaction_with_job_and_school:
+  columns:
+    - p41a: lambda (mix)
+    - p41b: lambda (mix)
+    - p41c: lambda (mix)
+    - p41d: lambda (mix)
+    - p41e: lambda (mix)
+    - p41f: lambda (mix)
+    - p41g: lambda (mix)
+    - p41h: lambda (mix)
+    - p41i: lambda (mix)
+    - p41j: lambda (mix)
+pfc_participation:
+  columns:
+    - p141: rename
+training_hours_in_last_six_years:
+  columns:
+    - p171n: rename
+training_hours_through_ceu_offer:
+  columns:
+    - p172n: rename
+work_relationships_quality:
+  columns:
+    - p311a: mean
+    - p311b: mean
+    - p311c: mean
+    - p311e: mean
+    - p311f: mean
+    - p311g: mean
+    - p311h: mean
+evaluation_of_non_teachers_work:
+  columns:
+    - p331a: mean
+    - p331b: mean
+    - p331c: mean
+    - p331d: mean
+    - p331e: mean
+    - p331f: mean
+    - p331g: mean
+    - p331j: mean
