@@ -40,6 +40,9 @@ def custom_binary_agg(series):
 def custom_sum(series):
     return series.sum(min_count=1)
 
+def custom_mean(series):
+    return series.mean(skipna=True)
+
 ################### MIXED FEATURES ###################
 
 def get_good_bad_agg(row, group, aggregation_map, max_degree_of_agreement):
