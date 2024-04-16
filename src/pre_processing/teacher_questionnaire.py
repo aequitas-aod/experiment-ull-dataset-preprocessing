@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from utils import features_with_too_many_nans, aggregate_features, features_to_drop_after_aggregation, custom_binary_agg, custom_sum, get_good_bad_agg, aggregate_mixed_features, mixed_features_to_drop
+from utils import aggregate_features, features_to_drop_after_aggregation, custom_mean, custom_binary_agg, custom_sum, get_good_bad_agg, aggregate_mixed_features, mixed_features_to_drop
 
 from macros import (
     column_groups,
@@ -23,15 +23,11 @@ def main():
     df = df.set_index("id_student")
 
     # drop features with too many nans
-    df = df.drop(df.columns[features_with_too_many_nans(df, 0.8)], axis=1, inplace=False)
-
-    # rename features
-    df = df.rename(columns=to_rename)
-
+    # df = df.drop(df.columns[features_with_too_many_nans(df, 0.8)], axis=1, inplace=False)
 
     # aggregate features row-wise using mean
     new_features = aggregate_features(df, agg_mean, 
-                                      aggregation_func="mean"
+                                      aggregation_func=custom_mean
                                       )
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)
     new_features_df.columns = new_features.keys()
@@ -95,6 +91,9 @@ def main():
 
     # drop features after aggregating
     df = df.drop(df.columns[mixed_features_to_drop(df, agg_mix_new)], axis=1, inplace=False)
+
+    # rename features
+    df = df.rename(columns=to_rename)
 
     print(f"Done! Number of columns: {df.shape[1]}")
     print(df.columns)
