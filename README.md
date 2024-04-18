@@ -68,8 +68,27 @@ For family and student context questionnaires, students take the envelopes home.
 
 *Student Questionnaire*
 
-- What does the weight column refer to?
+- weight: what does the column refer to?
 
+*Principal Questionnaire*
+
+- Why so many empty rows? 823 completely empty and 7.227 empty but island, capital_island and public_private.
+- Logical inconsistencies with d4n, d5n and d6n. One should expect for sure that d4n >= d6n but this does not always happens. Moreover also d5n >= d6n should always hold but it does not.
+- from d9a1 to d9h2: there are inconsistencies (e.g., total number of students is NaN but we have the number of students about certain characteristics)
+- d12an: meaning
+- from d303 to d305: are duplicated? (see from d30b to d30e)
+- from d301 to d308: they have only one value other than NaN
+- from d10a to d10c: ratios about what?
+
+*Family Questionnaire*
+
+- f33c: what does "non" mean?
+
+*Teacher Questionnaire*
+
+- from p15a to p15h and from p18a to p18i: the former refer to the "main topic of the pfc" while the latter refer to the "individual training topic". Since the possible values are the same, what's the difference? Apart from the fact that features from "p18a" to "p18i" are not mutually exclusive while the others are.
+- from "p15a" to "p15i" (main topic of the pfc): they refer to the same thing feature "pfc" refers to. So, why have both? It would be sensible to just use "pfc"
+- What is the CBP as opposed to the PFC?
 
 ## Aggregations
 
