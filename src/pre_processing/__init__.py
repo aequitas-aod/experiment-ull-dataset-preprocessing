@@ -26,6 +26,16 @@ def mean_merge_strategy(df: pd.DataFrame, axis: int) -> pd.Series:
     return df.mean(axis=axis)
 
 
+def mean_merge_ignore_nan_strategy(df: pd.DataFrame, axis: int) -> pd.Series:
+    """
+    Merge the columns of a DataFrame by calculating the mean of the values, ignoring NaN values.
+    :param df: DataFrame to merge the columns
+    :param axis: axis to calculate the mean
+    :return: Series with the mean of the values
+    """
+    return df.mean(axis=axis, skipna=True)
+
+
 def _constant_nan_strategy(merged_column: pd.Series, constant: int) -> pd.Series:
     """
     Handle NaN values by replacing them with a constant value.
@@ -43,6 +53,15 @@ def zero_nan_strategy(merged_column: pd.Series) -> pd.Series:
     :return: Series with the NaN values replaced by 0
     """
     return _constant_nan_strategy(merged_column, 0)
+
+
+def leave_nan_strategy(merged_column: pd.Series) -> pd.Series:
+    """
+    Handle NaN values by leaving them as NaN.
+    :param merged_column: Series with the merged column
+    :return: Series with the NaN values left as NaN
+    """
+    return merged_column
 
 
 def mean_nan_strategy(merged_column: pd.Series) -> pd.Series:
