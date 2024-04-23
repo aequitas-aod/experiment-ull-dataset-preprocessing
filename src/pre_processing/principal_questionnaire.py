@@ -3,7 +3,7 @@ from src.pre_processing import *
 from src.pre_processing.macros import DATA_SPLIT_PATH
 
 
-def main():
+def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     # Loading student questionnaire
     df = pd.read_csv(
@@ -22,14 +22,16 @@ def main():
     ############################################################################
     # Delete rows with all NaN values (823 rows)
     ############################################################################
-    nan_rows = df.isnull().all(axis=1)
-    df = df[~nan_rows]
+    if drop_row:
+        nan_rows = df.isnull().all(axis=1)
+        df = df[~nan_rows]
 
     ############################################################################
     # Delete rows with all NaN values but island, capital_island and public_private (7227 rows)
     ############################################################################
-    nan_rows = df.drop(columns=["island", "capital_island", "public_private"]).isnull().all(axis=1)
-    df = df[~nan_rows]
+    if drop_row:
+        nan_rows = df.drop(columns=["island", "capital_island", "public_private"]).isnull().all(axis=1)
+        df = df[~nan_rows]
 
     ############################################################################
     # Merge from d16an to d16fn (values from 0 to 2000).
@@ -381,8 +383,4 @@ def main():
     df["groups"].fillna(0, inplace=True)
 
     # Merge identifiers and student questionnaire
-    df = pd.merge(ids, df, left_index=True, right_index=True)
-
-
-if __name__ == "__main__":
-    main()
+    return pd.merge(ids, df, left_index=True, right_index=True)
