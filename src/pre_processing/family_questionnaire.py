@@ -36,8 +36,6 @@ def main():
     family_df = family_df.dropna(subset=['f0'], how='all')
     family_df = family_df.drop('mother_education', axis=1)
     family_df = family_df.drop('father_education', axis=1)
-    family_df = family_df.drop('f4a', axis=1)
-    family_df = family_df.drop('f4b', axis=1)
     family_df = family_df.drop('inmigrant', axis=1)
     family_df = family_df.drop('inmigrant2', axis=1)
     family_df = family_df.drop('inmigrant_second_gen', axis=1)
@@ -69,6 +67,8 @@ def main():
     family_df = family_df.rename(columns={'f2bn': 'father_age'})
     family_df = family_df.rename(columns={'f3a': 'mother_education_level'})
     family_df = family_df.rename(columns={'f3b': 'father_education_level'})
+    family_df = family_df.rename(columns={'f4a': 'mother_employment_status'})
+    family_df = family_df.rename(columns={'f4b': 'father_employment_status'})
     family_df = family_df.rename(columns={'f5a': 'mother_place_of_birth'})
     family_df = family_df.rename(columns={'f5b': 'father_place_of_birth'})
     family_df = family_df.rename(columns={'f5n': 'student_place_of_birth'})
@@ -118,7 +118,7 @@ def main():
     family_df = family_df.drop(['f18a', 'f18b', 'f18c', 'f18d', 'f18e', 'f18f', 'f18g', 'f18h', 'f18i'], axis=1)
 
     # Aggregation by averaging satisfaction from parents with teachers
-    family_df['parent_involved_in_school_activities'] = family_df[['f19a', 'f19b', 'f19c', 'f19d', 'f19e']].agg('mean', axis=1)
+    family_df['teacher_satisfaction'] = family_df[['f19a', 'f19b', 'f19c', 'f19d', 'f19e']].agg('mean', axis=1)
     family_df = family_df.drop(['f19a', 'f19b', 'f19c', 'f19d', 'f19e'], axis=1)
 
     family_df.to_csv("../../data/pre_processed/family_questionnaire_pre_processed.csv", index=True)
