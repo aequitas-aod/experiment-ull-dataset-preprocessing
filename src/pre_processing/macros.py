@@ -1,5 +1,13 @@
 import os
 
+import os
+from data import PATH as DATA_PATH
+from data.split import PATH as DATA_SPLIT_PATH
+from data.pre_processed import PATH as DATA_PREPROC_PATH
+
+HOME_PATH = os.path.join("/", "home")
+ORIGINAL_DATASET_NAME = "original.csv"
+
 column_groups = {
     "identifiers": [
         "id_student_original",
@@ -182,7 +190,7 @@ column_groups = {
         "country_iso_nac",
         "weight",
     ],
-    "school_principals_questionnaire": [
+    "principal_questionnaire": [
         "d1",
         "d2n",
         "d3n",
@@ -578,31 +586,116 @@ column_groups = {
 }
 
 agg_mean = {
-        "pfc_incidence_in_job": ["p16a", "p16b", "p16c", "p16d", "p16e", "p16f", "p16g", "p16h"],
-        "work_hampered": ["p27a", "p27b", "p27c", "p27c", "p27d", "p27e", "p27f", "p27g", "p27h"],
-        "variety_of_family_interests": ["p29a", "p29b", "p29c", "p29d", "p29e"],
-        "family_attention_towards_school_activity": ["p30a", "p30b", "p30c", "p299d"],
-        "work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
-        "work_relationships_quality": ["p31d", "p311a", "p311b", "p311c", "p311e", "p311f", "p311g", "p311h"],
-        "special_attention_students": ["p7an",  "p7bn", "p7cn", "p7dn", "p7en", "p7gn"],
-        "class_involvement": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
-        "variety_of_evaluation_methods": ["p24a", "p24b", "p24c", "p24d", "p24e", "p24f", "p24g", "p24h", "p24i", "p24j", "p24k"],
-        "opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
-        "class_behaviour_during_lessons": ["p12a", "p12b", "p12c", "p12d"],
-        "variety_of_teaching_methodologies": ["p22a", "p22b", "p22c", "p22d", "p22e", "p22f", "p22g"],
-        "variety_of_resources_in_class": ["p23a", "p23b", "p23c", "p23d", "p23e", "p23f", "p23g", "p23h", 'p23i'],
-        "evaluation_of_non_teachers_work": ["p331a", "p331b", "p331c", "p331d", "p331e", "p331f", "p331g", "p331j"],
-        "training_offer_effectiveness": ["p19", "p20"]
-    }
+    "pfc_incidence_in_job": [
+        "p16a",
+        "p16b",
+        "p16c",
+        "p16d",
+        "p16e",
+        "p16f",
+        "p16g",
+        "p16h",
+    ],
+    "work_hampered": [
+        "p27a",
+        "p27b",
+        "p27c",
+        "p27c",
+        "p27d",
+        "p27e",
+        "p27f",
+        "p27g",
+        "p27h",
+    ],
+    "variety_of_family_interests": ["p29a", "p29b", "p29c", "p29d", "p29e"],
+    "family_attention_towards_school_activity": ["p30a", "p30b", "p30c", "p299d"],
+    "work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
+    "work_relationships_quality": [
+        "p31d",
+        "p311a",
+        "p311b",
+        "p311c",
+        "p311e",
+        "p311f",
+        "p311g",
+        "p311h",
+    ],
+    "special_attention_students": ["p7an", "p7bn", "p7cn", "p7dn", "p7en", "p7gn"],
+    "class_involvement": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
+    "variety_of_evaluation_methods": [
+        "p24a",
+        "p24b",
+        "p24c",
+        "p24d",
+        "p24e",
+        "p24f",
+        "p24g",
+        "p24h",
+        "p24i",
+        "p24j",
+        "p24k",
+    ],
+    "opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
+    "class_behaviour_during_lessons": ["p12a", "p12b", "p12c", "p12d"],
+    "variety_of_teaching_methodologies": [
+        "p22a",
+        "p22b",
+        "p22c",
+        "p22d",
+        "p22e",
+        "p22f",
+        "p22g",
+    ],
+    "variety_of_resources_in_class": [
+        "p23a",
+        "p23b",
+        "p23c",
+        "p23d",
+        "p23e",
+        "p23f",
+        "p23g",
+        "p23h",
+        "p23i",
+    ],
+    "evaluation_of_non_teachers_work": [
+        "p331a",
+        "p331b",
+        "p331c",
+        "p331d",
+        "p331e",
+        "p331f",
+        "p331g",
+        "p331j",
+    ],
+    "training_offer_effectiveness": ["p19", "p20"],
+}
 
 agg_sum = {
-        "pfc_main_topics": ['p15a', 'p15b', 'p15c', 'p15d', 'p15e', 'p15f', 'p15g', 'p15h', 'p15i'],
-        "individual_training_topics": ['p18a', 'p18b', 'p18c', 'p18d', 'p18e', 'p18f', 'p18g', 'p18h','p18i']
-    }
-
-agg_custom_binary = {
-    "subjects_taught": ['p9a', 'p9b', 'p9c', 'p9d', 'p9e', 'p9f']
+    "pfc_main_topics": [
+        "p15a",
+        "p15b",
+        "p15c",
+        "p15d",
+        "p15e",
+        "p15f",
+        "p15g",
+        "p15h",
+        "p15i",
+    ],
+    "individual_training_topics": [
+        "p18a",
+        "p18b",
+        "p18c",
+        "p18d",
+        "p18e",
+        "p18f",
+        "p18g",
+        "p18h",
+        "p18i",
+    ],
 }
+
+agg_custom_binary = {"subjects_taught": ["p9a", "p9b", "p9c", "p9d", "p9e", "p9f"]}
 
 to_rename = {
     "p2": "gender",
@@ -625,34 +718,24 @@ to_rename = {
 }
 
 agg_mix = {
-        "a": {
-            "satisfaction_with_job_and_school": [
-                # sensitive feature
-                "p41e", "p41g", "p41i", "p41a", "p41b", "p41h", "p41j"
-            ],
-            "behaviour_problems_solution": [
-                "p26a", "p26b"
-            ],
-            "results_satisfaction": [
-                "p13", "p13b"
-            ]   
-        },
-        "b": {
+    "a": {
+        "satisfaction_with_job_and_school": [
             # sensitive feature
-            "satisfaction_with_job_and_school": [
-                "p41c", "p41d", "p41f"
-            ],
-            "behaviour_problems_solution": [
-                "p26c", "p26d"
-            ],
-            "results_satisfaction": [
-                "p13c"
-            ]
-        }
-    }
-
-HOME_PATH = os.path.join("/", "home")
-DATA_PATH = os.path.join(HOME_PATH, "data")
-DATA_SPLIT_PATH = os.path.join(DATA_PATH, "split")
-DATA_PREPROC_PATH = os.path.join(DATA_PATH, "pre_processed")
-ORIGINAL_DATASET_NAME = "original.csv"
+            "p41e",
+            "p41g",
+            "p41i",
+            "p41a",
+            "p41b",
+            "p41h",
+            "p41j",
+        ],
+        "behaviour_problems_solution": ["p26a", "p26b"],
+        "results_satisfaction": ["p13", "p13b"],
+    },
+    "b": {
+        # sensitive feature
+        "satisfaction_with_job_and_school": ["p41c", "p41d", "p41f"],
+        "behaviour_problems_solution": ["p26c", "p26d"],
+        "results_satisfaction": ["p13c"],
+    },
+}

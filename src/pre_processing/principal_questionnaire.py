@@ -1,6 +1,5 @@
-import os
 from src.pre_processing import *
-from src.pre_processing.macros import DATA_SPLIT_PATH
+from src.pre_processing.macros import DATA_SPLIT_PATH, DATA_PREPROC_PATH
 
 
 def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
@@ -12,12 +11,12 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     df = df.set_index("id_student")
 
     # Load identifiers and change float columns to int
-    ids = pd.read_csv(
-        os.path.join(DATA_SPLIT_PATH, "identifiers.csv"), low_memory=False
-    )
-    ids = ids.set_index("id_student")
-    int_identifiers = [col for col in ids.columns if col not in ["id_class_group"]]
-    ids[int_identifiers] = ids[int_identifiers].astype("Int64")
+    # ids = pd.read_csv(
+    #     os.path.join(DATA_SPLIT_PATH, "identifiers.csv"), low_memory=False
+    # )
+    # ids = ids.set_index("id_student")
+    # int_identifiers = [col for col in ids.columns if col not in ["id_class_group"]]
+    # ids[int_identifiers] = ids[int_identifiers].astype("Int64")
 
     ############################################################################
     # Delete rows with all NaN values (823 rows)
@@ -30,7 +29,11 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     # Delete rows with all NaN values but island, capital_island and public_private (7227 rows)
     ############################################################################
     if drop_row:
-        nan_rows = df.drop(columns=["island", "capital_island", "public_private"]).isnull().all(axis=1)
+        nan_rows = (
+            df.drop(columns=["island", "capital_island", "public_private"])
+            .isnull()
+            .all(axis=1)
+        )
         df = df[~nan_rows]
 
     ############################################################################
@@ -47,7 +50,9 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d16_columns = [f"d16{n}n" for n in "abcdef"]
-    df = merge_columns(df, d16_columns, sum_merge_strategy, zero_nan_strategy, "school_resources")
+    df = merge_columns(
+        df, d16_columns, sum_merge_strategy, zero_nan_strategy, "school_resources"
+    )
 
     ############################################################################
     # Merge from d17a to d17h (values from 1 to 4).
@@ -65,7 +70,13 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d17_columns = [f"d17{n}" for n in "abcdefgh"]
-    df = merge_columns(df, d17_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "factors_limiting_effectiveness")
+    df = merge_columns(
+        df,
+        d17_columns,
+        mean_merge_ignore_nan_strategy,
+        leave_nan_strategy,
+        "factors_limiting_effectiveness",
+    )
 
     ############################################################################
     # Merge from d18a to d18n (values from 1 to 4).
@@ -89,7 +100,13 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d18_columns = [f"d18{n}" for n in "abcdefghijklmn"]
-    df = merge_columns(df, d18_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "inconveniences")
+    df = merge_columns(
+        df,
+        d18_columns,
+        mean_merge_ignore_nan_strategy,
+        leave_nan_strategy,
+        "inconveniences",
+    )
 
     ############################################################################
     # Merge from d19a to d19r (values from 1 to 4).
@@ -117,7 +134,9 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d19_columns = [f"d19{n}" for n in "abcdefghijklmnopqr"]
-    df = merge_columns(df, d19_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "problems")
+    df = merge_columns(
+        df, d19_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "problems"
+    )
 
     ############################################################################
     # Merge from d20a to d20l (values from 1 to 4).
@@ -139,7 +158,13 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d20_columns = [f"d20{n}" for n in "abcdefghijkl"]
-    df = merge_columns(df, d20_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "management")
+    df = merge_columns(
+        df,
+        d20_columns,
+        mean_merge_ignore_nan_strategy,
+        leave_nan_strategy,
+        "management",
+    )
 
     ############################################################################
     # Merge from d21a to d21f (values from 1 to 4).
@@ -155,7 +180,13 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d21_columns = [f"d21{n}" for n in "abcdef"]
-    df = merge_columns(df, d21_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "satisfaction")
+    df = merge_columns(
+        df,
+        d21_columns,
+        mean_merge_ignore_nan_strategy,
+        leave_nan_strategy,
+        "satisfaction",
+    )
 
     ############################################################################
     # Merge from d22a to d22f (values from 1 to 4).
@@ -171,7 +202,13 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
 
     d22_columns = [f"d22{n}" for n in "abcdef"]
-    df = merge_columns(df, d22_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "degree_of_agreement")
+    df = merge_columns(
+        df,
+        d22_columns,
+        mean_merge_ignore_nan_strategy,
+        leave_nan_strategy,
+        "degree_of_agreement",
+    )
 
     ############################################################################
     # Drop columns with all missing values (should be 0)
@@ -383,4 +420,8 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     df["groups"].fillna(0, inplace=True)
 
     # Merge identifiers and student questionnaire
-    return pd.merge(ids, df, left_index=True, right_index=True)
+    # return pd.merge(ids, df, left_index=True, right_index=True)
+
+    df.to_csv(os.path.join(DATA_PREPROC_PATH, "principal_questionnaire.csv"))
+
+    return df

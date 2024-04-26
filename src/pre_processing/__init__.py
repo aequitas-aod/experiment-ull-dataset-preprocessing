@@ -1,6 +1,11 @@
+import os
+
+import numpy as np
+import pandas as pd
+
 from pathlib import Path
 from typing import Callable
-import pandas as pd
+
 from matplotlib import pyplot as plt
 
 PATH = Path(__file__).parents[0]
@@ -82,11 +87,13 @@ def mode_nan_strategy(merged_column: pd.Series) -> pd.Series:
     return merged_column.fillna(merged_column.mode()[0])
 
 
-def merge_columns(df: pd.DataFrame,
-                  column_names: list[str],
-                  merge_strategy: Callable,
-                  nan_strategies: Callable,
-                  new_name: str) -> pd.DataFrame:
+def merge_columns(
+    df: pd.DataFrame,
+    column_names: list[str],
+    merge_strategy: Callable,
+    nan_strategies: Callable,
+    new_name: str,
+) -> pd.DataFrame:
     """
     Merge the columns of a DataFrame into a single column.
     :param df: DataFrame to merge the columns
@@ -116,6 +123,6 @@ def histogram_plot(df: pd.DataFrame, column_name: str) -> None:
     """
     plt.hist(df[column_name], bins=df[column_name].nunique())
     plt.xlabel(column_name)
-    plt.ylabel('Frequency')
-    plt.title(f'Histogram of {column_name}')
+    plt.ylabel("Frequency")
+    plt.title(f"Histogram of {column_name}")
     plt.show()

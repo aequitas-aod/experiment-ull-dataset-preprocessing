@@ -1,9 +1,5 @@
-import os
-
-import numpy as np
-import pandas as pd
-
-from macros import (
+from src.pre_processing import *
+from src.pre_processing.macros import (
     column_groups,
     DATA_PATH,
     DATA_SPLIT_PATH,
@@ -12,7 +8,7 @@ from macros import (
 )
 
 
-def main():
+def preprocess_student_questionnaire():
 
     # Loading student questionnaire
     df = pd.read_csv(
@@ -611,7 +607,4 @@ def main():
     # print(df)
 
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "student_questionnaire.csv"))
-
-
-if __name__ == "__main__":
-    main()
+    return df
