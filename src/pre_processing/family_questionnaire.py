@@ -24,11 +24,7 @@ def main():
     ids[int_identifiers] = ids[int_identifiers].astype("Int64")
 
     # Merge identifiers and student questionnaire
-    df = pd.merge(ids, df, left_index=True, right_index=True)
-
-    numeric_columns = df.select_dtypes(include='number')
-    means = numeric_columns.mean().round()
-    family_df = df.fillna(means)
+    family_df = pd.merge(ids, df, left_index=True, right_index=True)
 
     ##############################
     # Deletion of columns
