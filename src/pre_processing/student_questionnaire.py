@@ -441,12 +441,12 @@ def preprocess_student_questionnaire():
         "a8a",
         "a8b",
         "a8c",
-        # classroom_condition
-        "a09a",
-        "a09b",
-        "a09c",
-        "a09d",
-        "a09e",
+        # classroom_condition for too many missing values
+        # "a09a",
+        # "a09b",
+        # "a09c",
+        # "a09d",
+        # "a09e",
         # frequency_of_internet
         "a9a",
         "a9b",
@@ -489,12 +489,12 @@ def preprocess_student_questionnaire():
         "a12g",
         "a12h",
         "a12i",
-        # teacher_relationship
-        "a13a",
-        "a13b",
-        "a13c",
-        "a13d",
-        "a13e",
+        # teacher_relationship for too many missing values
+        # "a13a",
+        # "a13b",
+        # "a13c",
+        # "a13d",
+        # "a13e",
         # classmate_relationships
         "a14a",
         "a14b",
@@ -504,13 +504,13 @@ def preprocess_student_questionnaire():
         "a14f",
         "a14g",
         "a14h",
-        #
-        "a141g",
-        "a144d",
-        "a144h",
-        "a166f",
-        #
-        "a177d",
+        # drop for too many missing values
+        # "a141g",
+        # "a144d",
+        # "a144h",
+        # "a166f",
+        # #
+        # "a177d",
         # teacher_performance
         "a15a",
         "a15b",
@@ -531,11 +531,11 @@ def preprocess_student_questionnaire():
         "a16f",
         "a16g",
         "a16h",
-        # classes
-        "a16i",
-        "a16j",
-        "a16k",
-        "a16l",
+        # classes for too many missing values
+        # "a16i",
+        # "a16j",
+        # "a16k",
+        # "a16l",
         # school
         "a17a",
         "a17b",
@@ -544,7 +544,8 @@ def preprocess_student_questionnaire():
         "a17e",
         "a17f",
         "a17g",
-        "a17h",
+        # drop for too many missing values
+        # "a17h",
         #
         "a171h",
         # math
@@ -553,53 +554,53 @@ def preprocess_student_questionnaire():
         "a20c",
         "a20d",
         "a20e",
-        # reading
-        "a21a",
-        "a21b",
-        "a21c",
-        "a21d",
-        "a21e",
+        # reading for too many missing values
+        # "a21a",
+        # "a21b",
+        # "a21c",
+        # "a21d",
+        # "a21e",
         #
-        "a211a",
-        # natural_sciences
-        "a22a",
-        "a22b",
-        "a22c",
-        "a22d",
-        #
-        "a222b",
-        # misc
-        "a23a",
-        "a23b",
-        "a23c",
-        "a23d",
-        "a23e",
-        "a23f",
-        "a23g",
-        "a23h",
-        "a23i",
-        "a23j",
-        "a23k",
-        # next_studies
-        "a24",
-        # social_media
-        "a40a",
-        "a40b",
-        "a40c",
-        "a40d",
-        # activity
-        "a111a",
-        # english
-        "a160k",
-        "a162k",
-        "a163k",
-        "a166k",
-        # birth_country
-        "country_iso_cnac",
-        # nazionality_country
-        "country_iso_nac",
-        # weight
-        "weight",
+        # "a211a",
+        # natural_sciences for too many missing values
+        # "a22a",
+        # "a22b",
+        # "a22c",
+        # "a22d",
+        # #
+        # "a222b",
+        # misc for too many missing values
+        # "a23a",
+        # "a23b",
+        # "a23c",
+        # "a23d",
+        # "a23e",
+        # "a23f",
+        # "a23g",
+        # "a23h",
+        # "a23i",
+        # "a23j",
+        # "a23k",
+        # next_studies for too many missing values
+        # "a24",
+        # social_media for too many missing values
+        # "a40a",
+        # "a40b",
+        # "a40c",
+        # "a40d",
+        # activity for too many missing values
+        # "a111a",
+        # english for too many missing values
+        # "a160k",
+        # "a162k",
+        # "a163k",
+        # "a166k",
+        # birth_country for too many missing values
+        # "country_iso_cnac",
+        # nazionality_country for too many missing values
+        # "country_iso_nac",
+        # weight for too many missing values
+        # "weight",
     ]
 
     df = df.drop(to_drop, axis=1)
