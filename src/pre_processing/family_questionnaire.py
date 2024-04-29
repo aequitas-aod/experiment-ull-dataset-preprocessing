@@ -33,13 +33,11 @@ def main():
     ##############################
     # Deletion of columns
     ##############################
-    family_df = family_df.dropna(subset=['f0'], how='all')
     family_df = family_df.drop('mother_education', axis=1)
     family_df = family_df.drop('father_education', axis=1)
     family_df = family_df.drop('inmigrant', axis=1)
     family_df = family_df.drop('inmigrant2', axis=1)
     family_df = family_df.drop('inmigrant_second_gen', axis=1)
-    family_df = family_df.drop('f6', axis=1)
     family_df = family_df.drop('f8ta', axis=1)
     family_df = family_df.drop('f8tm', axis=1)
     family_df = family_df.drop('f11', axis=1)
@@ -72,7 +70,9 @@ def main():
     family_df = family_df.rename(columns={'f5a': 'mother_place_of_birth'})
     family_df = family_df.rename(columns={'f5b': 'father_place_of_birth'})
     family_df = family_df.rename(columns={'f5n': 'student_place_of_birth'})
+    family_df = family_df.rename(columns={'f6': 'years_in_spanish_education_system'})
     family_df = family_df.rename(columns={'f7': 'language_spoken_at_home'})
+    family_df = family_df.rename(columns={'f13n': 'number_of_school_meetings'})
     family_df = family_df.rename(columns={'f20': 'school_recommendation'})
     family_df = family_df.rename(columns={'f21n': 'homework_hours_a_week'})
     family_df = family_df.rename(columns={'f23': 'parental_education_expectations'})

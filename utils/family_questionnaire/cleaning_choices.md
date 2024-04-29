@@ -6,11 +6,9 @@
 - _inmigrant_: removed, derived from column f5n;
 - _inmigrant2_: removed, derived from column f5n;
 - _inmigrant_second_gen_: removed, derived from column f5n;
-- _f6_: removed, too much missing data;
 - _f8ta_: removed, as there is a better aggregated column: "_start_schooling_age_";
 - _f8tm_: removed, as there is a better aggregated column: "_start_schooling_age_";
 - _f11_: removed, the column "_books_" provides the same informative content, better;
-- _f13n_: removed, too much missing data;
 - _f22_: removed, the column is very similar to _"f21n"_;
 - _f24a_: removed, duplicate of _mother_occupation_;
 - _f24b_: removed, duplicate of _father_occupation_;
@@ -99,7 +97,17 @@
   - sensitive: false
 - teacher_satisfaction
   - sensitive: false
+- years_in_spanish_education_system
+  - sensitive: false
+- number_of_school_meetings
+  - sensitive: false
 - nhousehold
   - sensitive: false
 - ESCS
   - sensitive: true
+
+## "Too Much Missing Value Columns Restored"
+- _f6_: too much missing data;
+  - transformed into _years_in_spanish_education_system_;
+- _f13n_ : too much missing data;
+  - transformed into _number_of_school_meetings_;
