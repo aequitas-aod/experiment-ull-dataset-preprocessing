@@ -345,13 +345,26 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     # df["d15"].fillna(df["d15"].mode()[0], inplace=True)
 
     ############################################################################
-    # Keeping columns d30[abcdef] separated since they are labeled as important
-    # Student grouping criteria
-    # All NaN values are filled with 2 (No)
+    # Merge columns d30[abdef] with d30[13456] since they refer to the same question
+    # The nan values of the first group are filled with non nan values of the second group
+    # This operation is done pair wise (e.g., d30a with d301)
+    # After that the second group is dropped
     ############################################################################
 
-    d30x_columns = [f"d30{n}" for n in "abcdef"]
-    df[d30x_columns] = df[d30x_columns].fillna(2)
+    d30x_columns = [f"d30{n}" for n in "abdef"]
+    d30y_columns = [f"d30{n}" for n in "13456"]
+    for x, y in zip(d30x_columns, d30y_columns):
+        df[x].fillna(df[y], inplace=True)
+    df.drop(columns=d30y_columns, inplace=True)
+
+    ############################################################################
+    # Keeping columns d30[abcdef] separated since they are labeled as important
+    # Student grouping criteria
+    # All NaN values are preserved
+    ############################################################################
+
+    # d30x_columns = [f"d30{n}" for n in "abcdef"]
+    # df[d30x_columns] = df[d30x_columns].fillna(2)
 
     ############################################################################
     # Keeping columns d31[abc] separated since they are labeled as important
@@ -389,12 +402,12 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     df[d131_columns] = df[d131_columns].fillna(0)
 
     ############################################################################
-    # d30[12345678] (other student grouping criteria)
-    # Fill NaN values with 2 (No)
+    # d30[278] (other student grouping criteria)
+    # Fill NaN values are preserved
     ############################################################################
 
-    d30x_columns = [f"d30{n}" for n in "12345678"]
-    df[d30x_columns] = df[d30x_columns].fillna(2)
+    # d30x_columns = [f"d30{n}" for n in "12345678"]
+    # df[d30x_columns] = df[d30x_columns].fillna(2)
 
     ############################################################################
     # tasa_nac_[eso4, pri3, pri6] (rates of nationalities in the school)
