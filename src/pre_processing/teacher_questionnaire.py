@@ -32,9 +32,23 @@ def preprocess_teacher_questionnaire():
     )
     df = df.set_index("id_student")
 
-    # drop features with too many nans
-    # df = df.drop(df.columns[features_with_too_many_nans(df, 0.8)], axis=1, inplace=False)
+    
+    # drop redundant features that have the most NaNs
+    to_drop = "p5" if df["p5"].isna().sum() > df["rep"].isna().sum() else "rep"
+    df = df.drop(to_drop, axis=1, inplace=False)
 
+    pfc_topics = ["p15a",
+              "p15b",
+              "p15c",
+              "p15d",
+              "p15e",
+              "p15f",
+              "p15g",
+              "p15h",
+              "p15i"]
+
+    df = df.drop(pfc_topics, axis=1, inplace=False)
+    
     # aggregate features row-wise using mean
     new_features = aggregate_features(df, agg_mean, aggregation_func=custom_mean)
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)
