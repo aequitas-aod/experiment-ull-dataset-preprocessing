@@ -49,6 +49,15 @@ def preprocess_teacher_questionnaire():
 
     df = df.drop(pfc_topics, axis=1, inplace=False)
     
+    class_problems = ["p26a",
+                      "p26b",
+                      "p26c",
+                      "p26d"]
+    
+    df = df.drop(class_problems, axis=1, inplace=False)
+    # drop columns with too many missing values
+    df = df.loc[:, df.isnull().mean() < 0.8]
+
     # aggregate features row-wise using mean
     new_features = aggregate_features(df, agg_mean, aggregation_func=custom_mean)
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)
@@ -103,21 +112,15 @@ def preprocess_teacher_questionnaire():
     # maximum degree of agreement
     max_deg = 4
     to_lambdate = {
-        "satisfaction_with_job_and_school": lambda x: get_good_bad_agg(
+        "agreement_of_satisfaction_job_and_schooll": lambda x: get_good_bad_agg(
             x,
-            group="satisfaction_with_job_and_school",
+            group="agreement_of_satisfaction_job_and_school",
             aggregation_map=agg_mix_new,
             max_degree_of_agreement=max_deg,
         ),
-        "behaviour_problems_solution": lambda x: get_good_bad_agg(
+        "agreement_of_results_satisfaction": lambda x: get_good_bad_agg(
             x,
-            group="behaviour_problems_solution",
-            aggregation_map=agg_mix_new,
-            max_degree_of_agreement=max_deg,
-        ),
-        "results_satisfaction": lambda x: get_good_bad_agg(
-            x,
-            group="results_satisfaction",
+            group="agreement_of_results_satisfaction",
             aggregation_map=agg_mix_new,
             max_degree_of_agreement=max_deg,
         ),
@@ -136,6 +139,7 @@ def preprocess_teacher_questionnaire():
     df = df.rename(columns=to_rename)
 
     print(f"Done! Number of columns: {df.shape[1]}")
+    print(df.columns)
     # df.to_csv(
     #     os.path.join(DATA_SPLIT_PATH, "teacher_questionnaire_preprocessed.csv"),
     #     index=False,
@@ -143,3 +147,6 @@ def preprocess_teacher_questionnaire():
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "teacher_questionnaire.csv"))
 
     return df
+
+if __name__ == "__main__":
+    preprocess_teacher_questionnaire()
