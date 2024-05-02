@@ -39,7 +39,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     ############################################################################
     # Merge from d16an to d16fn (values from 0 to 2000).
     # Merge function: sum.
-    # Treat missing values as 0.
+    # Treat missing values as NaN.
     # Drop columns after merging.
     # d16an: School resources. Available computers
     # d16bn: School resources. Available computers to students
@@ -51,7 +51,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     d16_columns = [f"d16{n}n" for n in "abcdef"]
     df = merge_columns(
-        df, d16_columns, sum_merge_strategy, zero_nan_strategy, "school_resources"
+        df, d16_columns, sum_merge_strategy, leave_nan_strategy, "school_resources"
     )
 
     ############################################################################
