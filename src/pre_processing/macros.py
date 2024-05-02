@@ -586,7 +586,20 @@ column_groups = {
 }
 
 agg_mean = {
-    "pfc_incidence_in_job": [
+    "extent_of_evaluation_variety": [
+        "p24a",
+        "p24b",
+        "p24c",
+        "p24d",
+        "p24e",
+        "p24f",
+        "p24g",
+        "p24h",
+        "p24i",
+        "p24j",
+        "p24k"
+    ], 
+    "extent_of_pfc_incidence": [
         "p16a",
         "p16b",
         "p16c",
@@ -596,7 +609,7 @@ agg_mean = {
         "p16g",
         "p16h",
     ],
-    "work_hampered": [
+    "extent_of_work_hampered": [
         "p27a",
         "p27b",
         "p27c",
@@ -607,10 +620,10 @@ agg_mean = {
         "p27g",
         "p27h",
     ],
-    "variety_of_family_interests": ["p29a", "p29b", "p29c", "p29d", "p29e"],
-    "family_attention_towards_school_activity": ["p30a", "p30b", "p30c", "p299d"],
-    "work_facilitated": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
-    "work_relationships_quality": [
+    "extent_of_family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p299d"],
+    "agreement_of_family_support": ["p30a", "p30b", "p30c"],
+    "agreement_of_work_facilitated_by_management": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
+    "extent_of_positive_relationships": [
         "p31d",
         "p311a",
         "p311b",
@@ -620,9 +633,9 @@ agg_mean = {
         "p311g",
         "p311h",
     ],
-    "special_attention_students": ["p7an", "p7bn", "p7cn", "p7dn", "p7en", "p7gn"],
-    "class_involvement": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
-    "variety_of_evaluation_methods": [
+    "number_of_special_attention_students": ["p7an", "p7bn", "p7cn", "p7dn", "p7en", "p7gn"],
+    "extent_of_student_involvement_during_class": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
+    "extent_of_teaching_methods_variety": [
         "p24a",
         "p24b",
         "p24c",
@@ -635,9 +648,9 @@ agg_mean = {
         "p24j",
         "p24k",
     ],
-    "opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
-    "class_behaviour_during_lessons": ["p12a", "p12b", "p12c", "p12d"],
-    "variety_of_teaching_methodologies": [
+    "agreement_of_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
+    "agreement_of_class_behaviour": ["p12a", "p12b", "p12c", "p12d"],
+    "extent_of_teaching_methods_variety": [
         "p22a",
         "p22b",
         "p22c",
@@ -646,7 +659,7 @@ agg_mean = {
         "p22f",
         "p22g",
     ],
-    "variety_of_resources_in_class": [
+    "extent_of_resource_variety": [
         "p23a",
         "p23b",
         "p23c",
@@ -657,7 +670,7 @@ agg_mean = {
         "p23h",
         "p23i",
     ],
-    "evaluation_of_non_teachers_work": [
+    "extent_of_good_work_by_non_teachers": [
         "p331a",
         "p331b",
         "p331c",
@@ -666,23 +679,11 @@ agg_mean = {
         "p331f",
         "p331g",
         "p331j",
-    ],
-    "training_offer_effectiveness": ["p19", "p20"],
+    ]
 }
 
 agg_sum = {
-    "pfc_main_topics": [
-        "p15a",
-        "p15b",
-        "p15c",
-        "p15d",
-        "p15e",
-        "p15f",
-        "p15g",
-        "p15h",
-        "p15i",
-    ],
-    "individual_training_topics": [
+    "number_of_individual_training_topics": [
         "p18a",
         "p18b",
         "p18c",
@@ -700,26 +701,29 @@ agg_custom_binary = {"subjects_taught": ["p9a", "p9b", "p9c", "p9d", "p9e", "p9f
 to_rename = {
     "p2": "gender",
     "p2n": "age",
-    "p3n": "years_as_teacher",
-    "p4n": "years_in_school",
-    "p5": "same_group_last_two_years",
-    "p6n": "number_of_students",
-    "p7fn": "students_in_disadvanteged_economic_situation",
-    "p8an": "foreign_students_with_other_language",
-    "p8bn": "foreign_students_with_spanish",
-    "p10n": "teaching_hours_per_week",
-    "p11": "average_class_duration",
+    "p3n": "number_of_years_as_teacher",
+    "p4n": "numer_of_years_in_school",
+    "p5": "has_taught_same_group_last_two_years",
+    "p6n": "number_of_students_in_group",
+    "p7fn": "number_of_students_disadvanteged_economic_situation",
+    "p8an": "number_of_foreign_students_speaking_spanish",
+    "p8bn": "number_of_foreign_students_not_speaking_spanish",
+    "p10n": "number_of_teaching_hours_per_week",
+    "p11": "average_explanation_time",
+    "p19": "agreement_of_training_offer_adequate_to_needs",
+    "p20": "extent_of_individual_training_incidence",
     "p25": "seat_configuration",
     "p26": "behaviour_problems_solution_categorical",
-    "p28n": "meetings_with_families_during_year",
-    "p141": "pfc_participation",
-    "p171n": "training_hours_in_last_six_years",
-    "p172n": "training_hours_through_ceu_offer",
+    "p28n": "number_of_meetings_with_families",
+    "p141": "is_enrolled_in_school_training_plan",
+    "p171n": "number_of_training_hours_last_six_years",
+    "p172n": "number_of_training_ceu_offer",
+    "pfc": "main_topic_of_pfc"
 }
 
 agg_mix = {
     "a": {
-        "satisfaction_with_job_and_school": [
+        "agreement_of_satisfaction_job_and_school": [
             # sensitive feature
             "p41e",
             "p41g",
@@ -729,13 +733,11 @@ agg_mix = {
             "p41h",
             "p41j",
         ],
-        "behaviour_problems_solution": ["p26a", "p26b"],
-        "results_satisfaction": ["p13", "p13b"],
+        "agreement_of_results_satisfaction": ["p13", "p13b"]
     },
     "b": {
         # sensitive feature
-        "satisfaction_with_job_and_school": ["p41c", "p41d", "p41f"],
-        "behaviour_problems_solution": ["p26c", "p26d"],
-        "results_satisfaction": ["p13c"],
+        "agreement_of_satisfaction_job_and_school": ["p41c", "p41d", "p41f"],
+        "agreement_of_results_satisfaction": ["p13c"]
     },
 }
