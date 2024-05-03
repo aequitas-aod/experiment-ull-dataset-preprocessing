@@ -137,9 +137,6 @@ def preprocess_teacher_questionnaire():
 
     # rename features
     df = df.rename(columns=to_rename)
-
-    print(f"Done! Number of columns: {df.shape[1]}")
-    print(df.columns)
     # df.to_csv(
     #     os.path.join(DATA_SPLIT_PATH, "teacher_questionnaire_preprocessed.csv"),
     #     index=False,
