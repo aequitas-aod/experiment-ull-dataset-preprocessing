@@ -70,15 +70,17 @@ def preprocess_family_questionnaire():
     family_df = family_df.rename(columns={'f5a': 'mother_place_of_birth'})
     family_df = family_df.rename(columns={'f5b': 'father_place_of_birth'})
     family_df = family_df.rename(columns={'f5n': 'student_place_of_birth'})
-    family_df = family_df.rename(columns={'f6': 'years_in_spanish_education_system'})
+    family_df = family_df.rename(columns={'f6': 'extent_of_years_in_spanish_education_system'})
     family_df = family_df.rename(columns={'f7': 'language_spoken_at_home'})
+    family_df = family_df.rename(columns={'start_schooling_age': 'extent_of_start_schooling_age'})
     family_df = family_df.rename(columns={'f20': 'has_been_recommended_school'})
     family_df = family_df.rename(columns={'f21n': 'number_of_homework_hours_a_week'})
     family_df = family_df.rename(columns={'f23': 'parental_education_expectations'})
     family_df = family_df.rename(columns={'f30': 'number_of_children_in_household'})
     family_df = family_df.rename(columns={'f31': 'type_of_family_unit'})
-    family_df = family_df.rename(columns={'f34': 'monthly_household_income'})
+    family_df = family_df.rename(columns={'f34': 'extent_of_monthly_household_income'})
     family_df = family_df.rename(columns={'nhousehold': 'number_of_people_in_household'})
+
 
     ##############################
     # Aggregation of columns
