@@ -72,35 +72,36 @@ def preprocess_family_questionnaire():
     family_df = family_df.rename(columns={'f5n': 'student_place_of_birth'})
     family_df = family_df.rename(columns={'f6': 'years_in_spanish_education_system'})
     family_df = family_df.rename(columns={'f7': 'language_spoken_at_home'})
-    family_df = family_df.rename(columns={'f20': 'school_recommendation'})
-    family_df = family_df.rename(columns={'f21n': 'homework_hours_a_week'})
+    family_df = family_df.rename(columns={'f20': 'has_been_recommended_school'})
+    family_df = family_df.rename(columns={'f21n': 'number_of_homework_hours_a_week'})
     family_df = family_df.rename(columns={'f23': 'parental_education_expectations'})
     family_df = family_df.rename(columns={'f30': 'number_of_children_in_household'})
     family_df = family_df.rename(columns={'f31': 'type_of_family_unit'})
     family_df = family_df.rename(columns={'f34': 'monthly_household_income'})
+    family_df = family_df.rename(columns={'nhousehold': 'number_of_people_in_household'})
 
     ##############################
     # Aggregation of columns
     ##############################
     # Aggregation by making mean of the value of all fields measuring the level of reading and literature in the home
-    family_df["lecture_at_home_score"] = family_df[
+    family_df["frequency_of_lecture_at_home"] = family_df[
         ["f9b", "f9c", "f9h", "books"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f9b", "f9c", "f9h", "books"], axis=1)
 
     # Aggregation by performing mean of the value of all fields that measure the level of technology and
     # electronic devices in the home
-    family_df["tech_at_home_score"] = family_df[
+    family_df["frequency_of_tech_at_home"] = family_df[
         ["f9d", "f9e", "f9f", "f10n"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f9d", "f9e", "f9f", "f10n"], axis=1)
 
     # Aggregation that specifies how much students see reading and how much parents read to their children
-    family_df["see_adult_read"] = family_df[["f12a", "f12b"]].agg("mean", axis=1)
+    family_df["frequency_of_see_adult_read"] = family_df[["f12a", "f12b"]].agg("mean", axis=1)
     family_df = family_df.drop(["f12a", "f12b"], axis=1)
 
     # Aggregation by making the sum of all visits the student receives, from mother, father, and other relatives
-    family_df["visit_in_school_by_people"] = family_df[["f14a", "f14b"]].agg(
+    family_df["frequency_of_visit_in_school_by_people"] = family_df[["f14a", "f14b"]].agg(
         "mean", axis=1
     )
     family_df = family_df.drop(["f14a", "f14b"], axis=1)
@@ -112,19 +113,19 @@ def preprocess_family_questionnaire():
     family_df = family_df.drop(["f15a", "f15b", "f15c", "f15d", "f15e", "f15f"], axis=1)
 
     # Aggregation by averaging the help they receive at home from parents
-    family_df["support_at_home"] = family_df[
+    family_df["frequency_of_support_at_home"] = family_df[
         ["f16a", "f16b", "f16c", "f16d", "f16e", "f16f"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f16a", "f16b", "f16c", "f16d", "f16e", "f16f"], axis=1)
 
     # Aggregation by averaging the frequency of participation by parents in school activities
-    family_df["parent_involved_in_school_activities"] = family_df[
+    family_df["frequency_of_parent_involved_in_school_activities"] = family_df[
         ["f17a", "f17b", "f17c", "f17d"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f17a", "f17b", "f17c", "f17d"], axis=1)
 
     # Aggregation by averaging parents satisfaction about the school
-    family_df["family_satisfaction"] = family_df[
+    family_df["agreement_of_family_satisfaction"] = family_df[
         ["f18a", "f18b", "f18c", "f18d", "f18e", "f18f", "f18g", "f18h", "f18i"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(
@@ -132,7 +133,7 @@ def preprocess_family_questionnaire():
     )
 
     # Aggregation by averaging satisfaction from parents with teachers
-    family_df["teacher_satisfaction"] = family_df[
+    family_df["agreement_of_teacher_satisfaction"] = family_df[
         ["f19a", "f19b", "f19c", "f19d", "f19e"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f19a", "f19b", "f19c", "f19d", "f19e"], axis=1)
