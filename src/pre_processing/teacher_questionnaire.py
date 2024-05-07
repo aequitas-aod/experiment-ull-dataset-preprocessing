@@ -55,9 +55,12 @@ def preprocess_teacher_questionnaire():
                       "p26d"]
     
     df = df.drop(class_problems, axis=1, inplace=False)
-    # drop columns with too many missing values
-    df = df.loc[:, df.isnull().mean() < 0.8]
 
+    # drop columns with too many missing values
+    cols_to_drop = ["p27a", "p16h", "p19", "p23i", "p32e", "p41d", "p41e", "p41f", "p41j", "p299d", "p331j"]
+    cols_to_drop = [x for x in cols_to_drop if x not in pfc_topics and x not in class_problems]
+    df = df.drop(cols_to_drop, axis=1, inplace=False)
+    
     # aggregate features row-wise using mean
     new_features = aggregate_features(df, agg_mean, aggregation_func=custom_mean)
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)
