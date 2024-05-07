@@ -198,11 +198,13 @@ def preprocess_student_questionnaire():
     to_rename = {
         "gender": "a1",
         "birth_year": "a2",
-        "repeat": "a4",
-        "skip": "a5",
-        "homeworks": "a7",
-        # "birth_country": "country_iso_cnac",
-        # "nazionality_country": "country_iso_nac",
+        "repeat": "repeater",
+        "frequency_of_skips": "a5",
+        "homeworks_day_per_week": "a7",
+        "extent_of_teachers_affinity": "a13e",
+        "birth_country": "country_iso_cnac",
+        "nazionality_country": "country_iso_nac",
+        "weight": "subsample_fair_weight",
     }
 
     df = df.rename(columns={v: k for k, v in to_rename.items()})
@@ -210,12 +212,12 @@ def preprocess_student_questionnaire():
     # print(df)
 
     to_aggregate = {
-        "frequency_of_computer": ["mean", ["a8a", "a8b", "a8c"]],
-        "frequency_of_internet": [
+        "frequency_of_computer_usage": ["mean", ["a8a", "a8b", "a8c"]],
+        "frequency_of_internet_usage": [
             "mean",
             ["a9a", "a9b", "a9c", "a9d", "a9e", "a9f", "a9g"],
         ],
-        "work_with_teachers": [
+        "frequency_of_work_with_teachers": [
             "mean",
             [
                 "a10a",
@@ -228,13 +230,13 @@ def preprocess_student_questionnaire():
                 "a10h",
                 "a10i",
                 "a10j",
-                "a10k",
-                "a10l",
-                "a10m",
-                "a10n",
+                # "a10k",
+                # "a10l",
+                # "a10m",
+                # "a10n",
             ],
         ],
-        "materials_in_class": [
+        "frequency_of_materials_in_class": [
             "mean",
             [
                 "a11a",
@@ -243,11 +245,11 @@ def preprocess_student_questionnaire():
                 "a11d",
                 "a11e",
                 "a11f",
-                "a11g",
+                # "a11g",
                 "a11h",
             ],
         ],
-        "evaluation": [
+        "frequency_of_evaluations": [
             "mean",
             [
                 "a12a",
@@ -261,7 +263,7 @@ def preprocess_student_questionnaire():
                 "a12i",
             ],
         ],
-        "teacher_performance": [
+        "extent_of_teacher_performance": [
             "mean",
             [
                 "a15a",
@@ -276,7 +278,7 @@ def preprocess_student_questionnaire():
                 "a15j",
             ],
         ],
-        "class_vibe": [
+        "extent_of_class_env": [
             "mean",
             [
                 "a16a",
@@ -299,13 +301,13 @@ def preprocess_student_questionnaire():
     max_degree_of_agreement = 4
     aggregation_map = {
         "good": {
-            "classmate_relationships": [
+            "extent_of_classmates_affinity": [
                 "a14a",
                 "a14b",
                 "a14g",
                 "a14h",
             ],
-            "school": [
+            "extent_of_school_satisfaction": [
                 "a17a",
                 "a17b",
                 "a17c",
@@ -314,17 +316,19 @@ def preprocess_student_questionnaire():
                 "a17g",
                 "a17h",
             ],
-            "math": ["a20a", "a20e"],
+            "extent_of_math_affinity": ["a20a", "a20e"],
+            "extent_of_reading_affinity": ["a21b"],
         },
         "bad": {
-            "classmate_relationships": [
-                "a14c",
+            "extent_of_classmates_affinity": [
+                # "a14c",
                 "a14d",
                 "a14e",
                 "a14f",
             ],
-            "school": ["a17d"],
-            "math": ["a20b", "a20c", "a20d"],
+            "extent_of_school_satisfaction": ["a17d"],
+            "extent_of_math_affinity": ["a20b", "a20c", "a20d"],
+            "extent_of_reading_affinity": ["a21c", "a21d", "a21e"],
         },
     }
 
@@ -405,11 +409,18 @@ def preprocess_student_questionnaire():
                 )
             )
         ),
-        "classmate_relationships": lambda x: get_good_bad_agg(
-            x, group="classmate_relationships"
+        "extent_of_classmates_affinity": lambda x: get_good_bad_agg(
+            x, group="extent_of_classmates_affinity"
         ),
-        "school": lambda x: get_good_bad_agg(x, group="school"),
-        "math": lambda x: get_good_bad_agg(x, group="math"),
+        "extent_of_school_satisfaction": lambda x: get_good_bad_agg(
+            x, group="extent_of_school_satisfaction"
+        ),
+        "extent_of_math_affinity": lambda x: get_good_bad_agg(
+            x, group="extent_of_math_affinity"
+        ),
+        "extent_of_reading_affinity": lambda x: get_good_bad_agg(
+            x, group="extent_of_reading_affinity"
+        ),
     }
 
     for new_column, lambda_rule in to_lambdate.items():
@@ -442,11 +453,11 @@ def preprocess_student_questionnaire():
         "a8b",
         "a8c",
         # classroom_condition for too many missing values
-        # "a09a",
-        # "a09b",
-        # "a09c",
-        # "a09d",
-        # "a09e",
+        "a09a",
+        "a09b",
+        "a09c",
+        "a09d",
+        "a09e",
         # frequency_of_internet
         "a9a",
         "a9b",
@@ -490,10 +501,10 @@ def preprocess_student_questionnaire():
         "a12h",
         "a12i",
         # teacher_relationship for too many missing values
-        # "a13a",
-        # "a13b",
-        # "a13c",
-        # "a13d",
+        "a13a",
+        "a13b",
+        "a13c",
+        "a13d",
         # "a13e",
         # classmate_relationships
         "a14a",
@@ -505,12 +516,12 @@ def preprocess_student_questionnaire():
         "a14g",
         "a14h",
         # drop for too many missing values
-        # "a141g",
-        # "a144d",
-        # "a144h",
-        # "a166f",
+        "a141g",
+        "a144d",
+        "a144h",
+        "a166f",
         # #
-        # "a177d",
+        "a177d",
         # teacher_performance
         "a15a",
         "a15b",
@@ -532,10 +543,10 @@ def preprocess_student_questionnaire():
         "a16g",
         "a16h",
         # classes for too many missing values
-        # "a16i",
-        # "a16j",
-        # "a16k",
-        # "a16l",
+        "a16i",
+        "a16j",
+        "a16k",
+        "a16l",
         # school
         "a17a",
         "a17b",
@@ -545,7 +556,7 @@ def preprocess_student_questionnaire():
         "a17f",
         "a17g",
         # drop for too many missing values
-        # "a17h",
+        "a17h",
         #
         "a171h",
         # math
@@ -555,46 +566,46 @@ def preprocess_student_questionnaire():
         "a20d",
         "a20e",
         # reading for too many missing values
-        # "a21a",
-        # "a21b",
-        # "a21c",
-        # "a21d",
-        # "a21e",
+        "a21a",
+        "a21b",
+        "a21c",
+        "a21d",
+        "a21e",
         #
-        # "a211a",
+        "a211a",
         # natural_sciences for too many missing values
-        # "a22a",
-        # "a22b",
-        # "a22c",
-        # "a22d",
+        "a22a",
+        "a22b",
+        "a22c",
+        "a22d",
         # #
-        # "a222b",
+        "a222b",
         # misc for too many missing values
-        # "a23a",
-        # "a23b",
-        # "a23c",
-        # "a23d",
-        # "a23e",
-        # "a23f",
-        # "a23g",
-        # "a23h",
-        # "a23i",
-        # "a23j",
-        # "a23k",
+        "a23a",
+        "a23b",
+        "a23c",
+        "a23d",
+        "a23e",
+        "a23f",
+        "a23g",
+        "a23h",
+        "a23i",
+        "a23j",
+        "a23k",
         # next_studies for too many missing values
-        # "a24",
+        "a24",
         # social_media for too many missing values
-        # "a40a",
-        # "a40b",
-        # "a40c",
-        # "a40d",
+        "a40a",
+        "a40b",
+        "a40c",
+        "a40d",
         # activity for too many missing values
-        # "a111a",
+        "a111a",
         # english for too many missing values
-        # "a160k",
-        # "a162k",
-        # "a163k",
-        # "a166k",
+        "a160k",
+        "a162k",
+        "a163k",
+        "a166k",
         # birth_country for too many missing values
         # "country_iso_cnac",
         # nazionality_country for too many missing values
