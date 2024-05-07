@@ -11,6 +11,8 @@ from src.pre_processing.macros import (
 def preprocess_student_questionnaire():
 
     # Loading student questionnaire
+    print("\t\tLoading data")
+
     df = pd.read_csv(
         os.path.join(DATA_SPLIT_PATH, "student_questionnaire.csv"), low_memory=False
     )
@@ -195,6 +197,9 @@ def preprocess_student_questionnaire():
         "nazionality_country": ["country_iso_nac"],
     }
 
+    # Renaming
+    print("\t\tRenaming")
+
     to_rename = {
         "gender": "a1",
         "birth_year": "a2",
@@ -210,6 +215,10 @@ def preprocess_student_questionnaire():
     df = df.rename(columns={v: k for k, v in to_rename.items()})
 
     # print(df)
+
+    # Aggregating
+    print("\t\tAggregating")
+    print("\t\t\tSimple")
 
     to_aggregate = {
         "frequency_of_computer_usage": ["mean", ["a8a", "a8b", "a8c"]],
@@ -298,6 +307,8 @@ def preprocess_student_questionnaire():
 
     # print(df)
 
+    print("\t\t\tGood/Bad")
+
     max_degree_of_agreement = 4
     aggregation_map = {
         "good": {
@@ -383,6 +394,9 @@ def preprocess_student_questionnaire():
                 )
             ) / (no_good + no_bad)
 
+    # Custom (Lambda)
+    print("\t\tLambda")
+
     to_lambdate = {
         "living_with": lambda x: (
             0  # "BOTH_PARENTS"
@@ -428,6 +442,9 @@ def preprocess_student_questionnaire():
 
     # print(df)
 
+    # Dropping
+    print("\t\tDropping")
+
     to_drop = [
         # living_with
         "a3a",
@@ -439,7 +456,7 @@ def preprocess_student_questionnaire():
         # living_in_foster
         "a3f",
         # repeat
-        "repeater",
+        "a4",
         "a41",
         "a42",
         # skip
@@ -617,6 +634,9 @@ def preprocess_student_questionnaire():
     df = df.drop(to_drop, axis=1)
 
     # print(df)
+
+    # Saving
+    print("\t\tSaving")
 
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "student_questionnaire.csv"))
     return df

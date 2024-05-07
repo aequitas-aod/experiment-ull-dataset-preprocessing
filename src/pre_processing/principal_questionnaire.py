@@ -230,6 +230,17 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     df.drop(columns=d30y_columns, inplace=True)
 
     ############################################################################
+    # Drop columns with more than 600% of missing values (each pair year-grade is 100%)
+    # So in total there are 10 pairs year-grade (1000%)
+    # Drop from d9d1 to d9h2, d10[abc], d12an, d13n, distnac, distnac_eso4, distnac_pri3, distnac_pri6
+    ############################################################################
+
+    d9xy_columns = [f"d9{n}{m}" for n in "defgh" for m in "12"]
+    d10_columns = [f"d10{n}" for n in "abc"]
+    columns_to_drop = d9xy_columns + d10_columns + ["d12an", "d13n", "distnac", "distnac_eso4", "distnac_pri3", "distnac_pri6"]
+    df.drop(columns=columns_to_drop, inplace=True)
+
+    ############################################################################
     # Renaming of columns
     ############################################################################
     replace_dict = {
@@ -247,24 +258,9 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         "d9b2": "number_of_preschool_groups",
         "d9c1": "number_of_primary_students",
         "d9c2": "number_of_primary_groups",
-        "d9d1": "number_of_3_grade_students",
-        "d9d2": "number_of_3_grade_groups",
-        "d9e1": "number_of_6_grade_students",
-        "d9e2": "number_of_6_grade_groups",
-        "d9f1": "number_of_mandatory_2_education_students",
-        "d9f2": "number_of_mandatory_2_education_groups",
-        "d9g1": "number_of_students_in_qualification_programs",
-        "d9g2": "number_of_groups_in_qualification_programs",
-        "d9h1": "number_of_4_grade_mandatory_2_education_students",
-        "d9h2": "number_of_4_grade_mandatory_2_education_groups",
-        "d10a": "3_grade_ratio",
-        "d10b": "6_grade_ratio",
-        "d10c": "4_grade_ratio",
         "d11an": "abroad_students_country_no_spanish",
         "d11bn": "abroad_students_country_spanish",
-        "d12an": "teachers_evaluated_grade",
         "d12bn": "teachers_in_school",
-        "d13n": "teachers_in_school_more_5_years",
         "d14": "teachers_changed_school_last_year",
         "d15": "attitude_teacher_training_courses",
         "d30a": "group_criteria_alphabet",
@@ -288,15 +284,12 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         "tasa_nac_eso4": "rate_4_grade_mandatory_2_education_students_different_nationality",
         "tasa_nac_pri3": "rate_3_grade_mandatory_2_education_students_different_nationality",
         "tasa_nac_pri6": "rate_6_grade_mandatory_2_education_students_different_nationality",
-        "distnac": "number_of_student_different_nationality",
-        "distnac_eso4": "number_of_students_different_nationality_4_grade_mandatory_2_education",
-        "distnac_pri3": "number_of_students_different_nationality_3_grade_mandatory_2_education",
-        "distnac_pri6": "number_of_students_different_nationality_6_grade_mandatory_2_education",
         "groups": "number_of_groups_evaluated_grade",
         "island": "island",
         "capital_island": "capital_island",
         "public_private": "public_or_private",
     }
     df = df.rename(columns=replace_dict)
+
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "principal_questionnaire.csv"))
     return df
