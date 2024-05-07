@@ -31,25 +31,29 @@ def main():
     merged_df = pd.merge(merged_df, teacher_df, left_index=True, right_index=True)
     merged_df.to_csv(os.path.join(DATA_PREPROC_PATH, "merged.csv"))
     print("\tAdd indices")
-    indices_df = pd.read_csv(os.path.join(DATA_SPLIT_PATH, "identifiers.csv"), low_memory=False)[["id_student","id_year"]]
+    indices_df = pd.read_csv(
+        os.path.join(DATA_SPLIT_PATH, "identifiers.csv"), low_memory=False
+    )[["id_student", "id_year"]]
     indices_df = indices_df.set_index("id_student")
 
     # Check if a row has more than 90% of missing data and remove it
     missing_data = merged_df.isnull().sum(axis=1)
     missing_data = missing_data[missing_data > 0.9 * merged_df.shape[1]]
     print("\tSaving records with more than 90% of missing data")
-    merged_df.loc[missing_data.index].to_csv(os.path.join(DATA_PREPROC_PATH, "missing_data.csv"))
+    merged_df.loc[missing_data.index].to_csv(
+        os.path.join(DATA_PREPROC_PATH, "missing_data.csv")
+    )
     print(f"\tRemoving {missing_data.shape[0]} rows with more than 90% of missing data")
     merged_df = merged_df.drop(index=missing_data.index)
 
-    # If a column is nan for at least one year (id_year), then it is a MCAR type of missing data
+    # If a column is nan for at least one year (id_year), then it is a MAR type of missing data
     null_df = merged_df.isnull()
     null_df_id_year = pd.merge(null_df, indices_df, left_index=True, right_index=True)
-    mcar = null_df_id_year.groupby("id_year").all().sum(axis=0)
-    mcar = mcar[mcar > 0].index
-    print(f"\tThere are {len(mcar)} columns with MCAR missing data")
+    mar = null_df_id_year.groupby("id_year").all().sum(axis=0)
+    mar = mar[mar > 0].index
+    print(f"\tThere are {len(mar)} columns with MAR missing data")
 
-    merged_df = merged_df.drop(columns=mcar)
+    # merged_df = merged_df.drop(columns=mar)
     merged_df.to_csv(os.path.join(DATA_PREPROC_PATH, "merged.csv"))
 
     print("Done!")
