@@ -51,7 +51,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     d16_columns = [f"d16{n}n" for n in "abcdef"]
     df = merge_columns(
-        df, d16_columns, sum_merge_strategy, leave_nan_strategy, "school_resources"
+        df, d16_columns, sum_merge_strategy, leave_nan_strategy, "number_of_school_resources"
     )
 
     ############################################################################
@@ -75,7 +75,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d17_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "factors_limiting_effectiveness",
+        "degree_of_factors_limiting_effectiveness",
     )
 
     ############################################################################
@@ -105,7 +105,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d18_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "inconveniences",
+        "degree_of_inconveniences",
     )
 
     ############################################################################
@@ -135,7 +135,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     d19_columns = [f"d19{n}" for n in "abcdefghijklmnopqr"]
     df = merge_columns(
-        df, d19_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "problems"
+        df, d19_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "degree_of_problems"
     )
 
     ############################################################################
@@ -163,7 +163,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d20_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "management",
+        "degree_of_management",
     )
 
     ############################################################################
@@ -185,7 +185,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d21_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "satisfaction",
+        "degree_of_satisfaction",
     )
 
     ############################################################################
@@ -230,6 +230,73 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     df.drop(columns=d30y_columns, inplace=True)
 
     ############################################################################
-
+    # Renaming of columns
+    ############################################################################
+    replace_dict = {
+        "d1": "sex",
+        "d2n": "age",
+        "d3n": "years_of_teaching",
+        "d4n": "years_in_school",
+        "d5n": "years_as_principal",
+        "d6n": "years_as_principal_in_school",
+        "d7n": "class_hours_per_week",
+        "d8n": "number_of_principlas_10_years",
+        "d9a1": "number_of_students",
+        "d9a2": "number_of_groups",
+        "d9b1": "number_of_preschool_students",
+        "d9b2": "number_of_preschool_groups",
+        "d9c1": "number_of_primary_students",
+        "d9c2": "number_of_primary_groups",
+        "d9d1": "number_of_3_grade_students",
+        "d9d2": "number_of_3_grade_groups",
+        "d9e1": "number_of_6_grade_students",
+        "d9e2": "number_of_6_grade_groups",
+        "d9f1": "number_of_mandatory_2_education_students",
+        "d9f2": "number_of_mandatory_2_education_groups",
+        "d9g1": "number_of_students_in_qualification_programs",
+        "d9g2": "number_of_groups_in_qualification_programs",
+        "d9h1": "number_of_4_grade_mandatory_2_education_students",
+        "d9h2": "number_of_4_grade_mandatory_2_education_groups",
+        "d10a": "3_grade_ratio",
+        "d10b": "6_grade_ratio",
+        "d10c": "4_grade_ratio",
+        "d11an": "abroad_students_country_no_spanish",
+        "d11bn": "abroad_students_country_spanish",
+        "d12an": "teachers_evaluated_grade",
+        "d12bn": "teachers_in_school",
+        "d13n": "teachers_in_school_more_5_years",
+        "d14": "teachers_changed_school_last_year",
+        "d15": "attitude_teacher_training_courses",
+        "d30a": "group_criteria_alphabet",
+        "d30b": "group_criteria_gender",
+        "d30c": "group_criteria_language",
+        "d30d": "group_criteria_performance",
+        "d30e": "group_criteria_homogeneity",
+        "d30f": "group_criteria_heterogeneity",
+        "d31a": "degree_of_agreement_satisfaction_students_results",
+        "d31b": "degree_of_agreement_expected_students_results",
+        "d31c": "degree_of_agreement_students_improvement",
+        "d32a": "school_teacher_training_plan",
+        "d33a": "school_teacher_training_plan_main_theme",
+        "d121a": "number_of_teachers_1_education",
+        "d121b": "number_of_mandatory_teachers_2_education",
+        "d131a": "number_of_teachers_1_education_more_5_years",
+        "d131b": "number_of_mandatory_teachers_2_education_more_5_years",
+        "d302": "group_criteria_random",
+        "d307": "group_criteria_subjects",
+        "d308": "group_criteria_other",
+        "tasa_nac_eso4": "rate_4_grade_mandatory_2_education_students_different_nationality",
+        "tasa_nac_pri3": "rate_3_grade_mandatory_2_education_students_different_nationality",
+        "tasa_nac_pri6": "rate_6_grade_mandatory_2_education_students_different_nationality",
+        "distnac": "number_of_student_different_nationality",
+        "distnac_eso4": "number_of_students_different_nationality_4_grade_mandatory_2_education",
+        "distnac_pri3": "number_of_students_different_nationality_3_grade_mandatory_2_education",
+        "distnac_pri6": "number_of_students_different_nationality_6_grade_mandatory_2_education",
+        "groups": "number_of_groups_evaluated_grade",
+        "island": "island",
+        "capital_island": "capital_island",
+        "public_private": "public_or_private",
+    }
+    df = df.rename(columns=replace_dict)
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "principal_questionnaire.csv"))
     return df
