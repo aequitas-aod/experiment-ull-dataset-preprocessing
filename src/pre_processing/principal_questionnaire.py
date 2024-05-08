@@ -51,7 +51,11 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     d16_columns = [f"d16{n}n" for n in "abcdef"]
     df = merge_columns(
-        df, d16_columns, sum_merge_strategy, leave_nan_strategy, "number_of_school_resources"
+        df,
+        d16_columns,
+        sum_merge_strategy,
+        leave_nan_strategy,
+        "number_of_school_resources",
     )
 
     ############################################################################
@@ -99,7 +103,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     # d18n: It is an inconvenience in your school: Lack of computers in the classroom or for students.
     ############################################################################
 
-    d18_columns = [f"d18{n}" for n in "abcdefghijklmn"]
+    d18_columns = [f"d18{n}" for n in "abcefghijklmn"]
     df = merge_columns(
         df,
         d18_columns,
@@ -135,7 +139,11 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     d19_columns = [f"d19{n}" for n in "abcdefghijklmnopqr"]
     df = merge_columns(
-        df, d19_columns, mean_merge_ignore_nan_strategy, leave_nan_strategy, "degree_of_problems"
+        df,
+        d19_columns,
+        mean_merge_ignore_nan_strategy,
+        leave_nan_strategy,
+        "degree_of_problems",
     )
 
     ############################################################################
@@ -237,7 +245,11 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
 
     d9xy_columns = [f"d9{n}{m}" for n in "defgh" for m in "12"]
     d10_columns = [f"d10{n}" for n in "abc"]
-    columns_to_drop = d9xy_columns + d10_columns + ["d12an", "d13n", "distnac", "distnac_eso4", "distnac_pri3", "distnac_pri6"]
+    columns_to_drop = (
+        d9xy_columns
+        + d10_columns
+        + ["d12an", "d13n", "distnac", "distnac_eso4", "distnac_pri3", "distnac_pri6"]
+    )
     df.drop(columns=columns_to_drop, inplace=True)
 
     ############################################################################
