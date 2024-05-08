@@ -8,6 +8,7 @@ from src.pre_processing.utils import (
     get_good_bad_agg,
     aggregate_mixed_features,
     mixed_features_to_drop,
+    normalize_bad_column
 )
 
 from src.pre_processing.macros import (
@@ -32,7 +33,10 @@ def preprocess_teacher_questionnaire():
     )
     df = df.set_index("id_student")
 
-    
+    # normalize "bad" columns
+    df["p331g"] = df["p331g"].apply(lambda x: normalize_bad_column(x, r_min=1, r_max=5, t_min=1, t_max=4))
+    df["p331j"] = df["p331j"].apply(lambda x: normalize_bad_column(x, r_min=1, r_max=5, t_min=1, t_max=4))
+
     # drop redundant features that have the most NaNs
     to_drop = "p5" if df["p5"].isna().sum() > df["rep"].isna().sum() else "rep"
     df = df.drop(to_drop, axis=1, inplace=False)
@@ -61,6 +65,34 @@ def preprocess_teacher_questionnaire():
     cols_to_drop = [x for x in cols_to_drop if x not in pfc_topics and x not in class_problems]
     df = df.drop(cols_to_drop, axis=1, inplace=False)
     
+    # drop columns due to functional dependencies
+    cols_to_drop = ["p12a",
+                    "p12c",
+                    "p13b",
+                    "p16d",
+                    "p16e", 
+                    "p16b",
+                    "p16f",
+                    "p18c",
+                    "p18b",
+                    "p22b",
+                    "p22c",
+                    "p32d",
+                    "p32a",
+                    "p32c",
+                    "p34f",
+                    "p34e",
+                    "p34c",
+                    "p34a",
+                    "p34g",
+                    "p311h",
+                    "p311f",
+                    "p311g",
+                    "p331c",
+                    "p331b",
+                    "p331a"]
+    
+    df = df.drop(cols_to_drop, axis=1, inplace=False)
     # aggregate features row-wise using mean
     new_features = aggregate_features(df, agg_mean, aggregation_func=custom_mean)
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)

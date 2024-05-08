@@ -12,7 +12,7 @@ def aggregate_features(df: pd.DataFrame, feature_lists: dict, aggregation_func, 
     aggregated_features = {}
     for k in feature_list_idxs.keys():
         if feature_list_idxs[k]:
-            df_subset = df.iloc[:, feature_list_idxs[k][0]:feature_list_idxs[k][-1]+1]
+            df_subset = df.iloc[:, feature_list_idxs[k]]
             if na_values_strategy == "zeros":
                 df_subset = df_subset.fillna(0)
             elif na_values_strategy == "mean":
@@ -43,6 +43,15 @@ def custom_sum(series):
 def custom_mean(series):
     return series.mean(skipna=True)
 
+def normalize_bad_column(m, r_min, r_max, t_min, t_max):
+    if m not in range(1, 5):
+        num = m - r_min
+        den = r_max - r_min
+        res = num/den * (t_max - t_min) + t_min
+        return res
+    else:
+        return m
+    
 ################### MIXED FEATURES ###################
 
 def get_good_bad_agg(row, group, aggregation_map, max_degree_of_agreement):
