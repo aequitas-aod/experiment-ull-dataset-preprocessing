@@ -224,7 +224,7 @@ def preprocess_student_questionnaire():
         "frequency_of_computer_usage": ["mean", ["a8a", "a8b", "a8c"]],
         "frequency_of_internet_usage": [
             "mean",
-            ["a9a", "a9b", "a9c", "a9d", "a9e", "a9f", "a9g"],
+            ["a9a", "a9b", "a9c", "a9d", "a9e", "a9g"],
         ],
         "frequency_of_work_with_teachers": [
             "mean",
@@ -323,8 +323,6 @@ def preprocess_student_questionnaire():
                 "a17b",
                 "a17c",
                 "a17e",
-                "a17f",
-                "a17g",
                 "a17h",
             ],
             "extent_of_math_affinity": ["a20a", "a20e"],
