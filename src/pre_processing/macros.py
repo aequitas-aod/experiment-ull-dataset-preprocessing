@@ -702,7 +702,7 @@ to_rename = {
     "p2": "gender",
     "p2n": "age",
     "p3n": "number_of_years_as_teacher",
-    "p4n": "numer_of_years_in_school",
+    "p4n": "number_of_years_in_school",
     "p5": "has_taught_same_group_last_two_years",
     "p6n": "number_of_students_in_group",
     "p7fn": "number_of_students_disadvanteged_economic_situation",
