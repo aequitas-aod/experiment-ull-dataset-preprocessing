@@ -597,8 +597,8 @@ agg_mean = {
         "p24h",
         "p24i",
         "p24j",
-        "p24k"
-    ], 
+        "p24k",
+    ],
     "extent_of_pfc_incidence": [
         "p16a",
         "p16b",
@@ -622,7 +622,15 @@ agg_mean = {
     ],
     "extent_of_family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p299d"],
     "agreement_of_family_support": ["p30a", "p30b", "p30c"],
-    "agreement_of_work_facilitated_by_management": ["p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g"],
+    "agreement_of_work_facilitated_by_management": [
+        "p34a",
+        "p34b",
+        "p34c",
+        "p34d",
+        "p34e",
+        "p34f",
+        "p34g",
+    ],
     "extent_of_positive_relationships": [
         "p31d",
         "p311a",
@@ -633,8 +641,22 @@ agg_mean = {
         "p311g",
         "p311h",
     ],
-    "number_of_special_attention_students": ["p7an", "p7bn", "p7cn", "p7dn", "p7en", "p7gn"],
-    "extent_of_student_involvement_during_class": ["p21a", "p21b", "p21c", "p21d", "p21e", "p21f"],
+    "number_of_special_attention_students": [
+        "p7an",
+        "p7bn",
+        "p7cn",
+        "p7dn",
+        "p7en",
+        "p7gn",
+    ],
+    "extent_of_student_involvement_during_class": [
+        "p21a",
+        "p21b",
+        "p21c",
+        "p21d",
+        "p21e",
+        "p21f",
+    ],
     "extent_of_teaching_methods_variety": [
         "p24a",
         "p24b",
@@ -679,7 +701,7 @@ agg_mean = {
         "p331f",
         "p331g",
         "p331j",
-    ]
+    ],
 }
 
 agg_sum = {
@@ -717,8 +739,8 @@ to_rename = {
     "p28n": "number_of_meetings_with_families",
     "p141": "is_enrolled_in_school_training_plan",
     "p171n": "number_of_training_hours_last_six_years",
-    "p172n": "number_of_training_ceu_offer",
-    "pfc": "main_topic_of_pfc"
+    "p172n": "number_of_training_hours_ceu_offer",
+    "pfc": "main_topic_of_pfc",
 }
 
 agg_mix = {
@@ -733,11 +755,11 @@ agg_mix = {
             "p41h",
             "p41j",
         ],
-        "agreement_of_results_satisfaction": ["p13", "p13b"]
+        "agreement_of_results_satisfaction": ["p13", "p13b"],
     },
     "b": {
         # sensitive feature
         "agreement_of_satisfaction_job_and_school": ["p41c", "p41d", "p41f"],
-        "agreement_of_results_satisfaction": ["p13c"]
+        "agreement_of_results_satisfaction": ["p13c"],
     },
 }

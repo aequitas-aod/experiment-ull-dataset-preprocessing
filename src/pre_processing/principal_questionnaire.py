@@ -256,7 +256,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     # Renaming of columns
     ############################################################################
     replace_dict = {
-        "d1": "sex",
+        "d1": "gender",
         "d2n": "age",
         "d3n": "years_of_teaching",
         "d4n": "years_in_school",

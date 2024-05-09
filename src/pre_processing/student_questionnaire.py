@@ -203,7 +203,7 @@ def preprocess_student_questionnaire():
     to_rename = {
         "gender": "a1",
         "birth_year": "a2",
-        "repeat": "repeater",
+        "has_repeated": "repeater",
         "frequency_of_skips": "a5",
         "homeworks_day_per_week": "a7",
         "extent_of_teachers_affinity": "a13e",

@@ -197,7 +197,7 @@ def preprocess_family_questionnaire():
     # Aggregation of columns
     ##############################
     # Aggregation by making mean of the value of all fields measuring the level of reading and literature in the home
-    family_df["frequency_of_lecture_at_home"] = family_df[["f9b", "f9c", "f9h"]].agg(
+    family_df["frequency_of_books_at_home"] = family_df[["f9b", "f9c", "f9h"]].agg(
         "mean", axis=1
     )
     family_df = family_df.drop(["f9b", "f9c", "f9h"], axis=1)

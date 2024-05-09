@@ -1,0 +1,2272 @@
+{
+    "groups": [
+        {
+            "columns": [
+                "a1",
+                "d1",
+                "p2"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Boy",
+                    "Girl"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a2"
+            ],
+            "values": [
+                {
+                    "min": "1999",
+                    "max": "2009"
+                }
+            ],
+            "labels": [
+                [
+                    "Years"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a3a",
+                "a3b",
+                "living_with_father_mother",
+                "a3c",
+                "a3d",
+                "a3et",
+                "d30a",
+                "d30b",
+                "d30c",
+                "d30d",
+                "d30e",
+                "d30f",
+                "d32a",
+                "d301",
+                "d302",
+                "d303",
+                "d304",
+                "d305",
+                "d306",
+                "d307",
+                "d308"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Yes",
+                    "no"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a3f"
+            ],
+            "values": [
+                [
+                    "1"
+                ]
+            ],
+            "labels": [
+                [
+                    "Yes"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a4"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            ],
+            "labels": [
+                [
+                    "No",
+                    "Yes, one time",
+                    "Yes, two times"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "repeater"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Non repeater",
+                    "Repeater one or more time"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a5"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Once per week",
+                    "Once every two weeks",
+                    "Once per month",
+                    "Never/almost never"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a6nm"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "120"
+                }
+            ],
+            "labels": [
+                [
+                    "Minuts per day"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a7"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "5"
+                }
+            ],
+            "labels": [
+                [
+                    "Days per week"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a8a",
+                "a8b",
+                "a8c"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Sometimes",
+                    "Often",
+                    "Every/nearly every day"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a09a",
+                "a09b",
+                "a09c",
+                "a09d",
+                "a09e",
+                "a11a",
+                "a11b",
+                "a11c",
+                "a11d",
+                "a11e",
+                "a11f",
+                "a11g",
+                "a11h",
+                "a111a"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "In some classes",
+                    "In almost all classes",
+                    "In all classes"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a9a",
+                "a9b",
+                "a9c",
+                "a9d",
+                "a9e",
+                "a9f",
+                "a9g",
+                "f9a",
+                "f9b",
+                "f9c",
+                "f9d",
+                "f9e",
+                "f9f",
+                "f9g",
+                "f9h",
+                "f16a",
+                "f16b",
+                "f16c",
+                "f16d",
+                "f16e",
+                "f16f"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Once or twice per month",
+                    "Once or twice per week",
+                    "Every/nearly every day"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a10a",
+                "a10b",
+                "a10c",
+                "a10d",
+                "a10e",
+                "a10f",
+                "a10g",
+                "a10h",
+                "a10i",
+                "a10j",
+                "a10k",
+                "a10l",
+                "a10m",
+                "a10n"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Sometimes",
+                    "Almost always",
+                    "Always"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a12a",
+                "a12b",
+                "a12c",
+                "a12d",
+                "a12e",
+                "a12f",
+                "a12g",
+                "a12h",
+                "a12i",
+                "a20a",
+                "a20b",
+                "a20c",
+                "a20d",
+                "a20e",
+                "a21a",
+                "a21b",
+                "a21c",
+                "a21d",
+                "a21e",
+                "a22a",
+                "a22b",
+                "a22c",
+                "a22d",
+                "a160k",
+                "a162k",
+                "a163k",
+                "a211a",
+                "a222b"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Sometimes",
+                    "Many times/often",
+                    "Almost always/always"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a13a",
+                "a13b",
+                "a13c",
+                "a13d",
+                "a13e",
+                "a14a",
+                "a14b",
+                "a14c",
+                "a14d",
+                "a14e",
+                "a14f",
+                "a14g",
+                "a14h",
+                "a15a",
+                "a15b",
+                "a15c",
+                "a15d",
+                "a15e",
+                "a15f",
+                "a15g",
+                "a15h",
+                "a15i",
+                "a15j",
+                "a16a",
+                "a16b",
+                "a16c",
+                "a16d",
+                "a16e",
+                "a16f",
+                "a16g",
+                "a16h",
+                "a16i",
+                "a16j",
+                "a16k",
+                "a16l",
+                "a17a",
+                "a17b",
+                "a17c",
+                "a17d",
+                "a17e",
+                "a17f",
+                "a17g",
+                "a17h",
+                "a23a",
+                "a23b",
+                "a23c",
+                "a23d",
+                "a23e",
+                "a23f",
+                "a23g",
+                "a23h",
+                "a23i",
+                "a23j",
+                "a23k",
+                "a40a",
+                "a40b",
+                "a40c",
+                "a40d",
+                "a141g",
+                "a144d",
+                "a144h",
+                "a166f",
+                "a166k",
+                "a171h",
+                "a177d",
+                "d22a",
+                "d22b",
+                "d22c",
+                "d22d",
+                "d22e",
+                "d22f",
+                "d31a",
+                "d31b",
+                "d31c",
+                "p12a",
+                "p12b",
+                "p12c",
+                "p12d",
+                "p13",
+                "p13b",
+                "p13c",
+                "p19",
+                "p32a",
+                "p32b",
+                "p32c",
+                "p32d",
+                "p32e",
+                "p34a",
+                "p34b",
+                "p34c",
+                "p34d",
+                "p34e",
+                "p34f",
+                "p34g",
+                "p41a",
+                "p41b",
+                "p41c",
+                "p41d",
+                "p41e",
+                "p41f",
+                "p41g",
+                "p41h",
+                "p41i",
+                "p41j"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Strongly disagree",
+                    "Disagree",
+                    "Agree",
+                    "Strongly agree"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a24"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10"
+                ]
+            ],
+            "labels": [
+                [
+                    "Any",
+                    "4\u00a7 ESO (I will repeat)",
+                    "1\u00a7 Bachillerato (Sciences)",
+                    "1\u00a7 Bachillerato (Humanities and Social Sciences)",
+                    "1\u00a7 Bachillerato (Arts)",
+                    "FP intermediate",
+                    "FP intermediate (Plastic arts and design)",
+                    "FP intermediate (Music)",
+                    "FP intermediate (Sports)",
+                    "Adult learning programs (EPA)"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a41",
+                "a42"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            ],
+            "labels": [
+                [
+                    "No",
+                    "S\u00a1, un curso",
+                    "S\u00a1, dos cursos"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a51"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "Less than two days",
+                    "Between two or more days and less than four days",
+                    "Between four of more days and less than six days",
+                    "Between six or more days and less than fifteen",
+                    "More than fifteen days"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a61"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8"
+                ]
+            ],
+            "labels": [
+                [
+                    "Less than 3 hours",
+                    "Between 3 and 6 hours ",
+                    "Between 6 and 9 hours ",
+                    "Between 9 and 12 hours ",
+                    "Between 12 and 15 hours ",
+                    "Between 15 and 18 hours ",
+                    "Between 18 and 21 hours ",
+                    "More than 21 hours"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "a71"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "Less than 15 minutes",
+                    "Between 15 minutes and 30 minutes",
+                    "Between 31 minutes and 45 minutes",
+                    "Between 46 minutes and 60 minutes",
+                    "More than 1 hour"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "country_iso_cnac",
+                "country_iso_nac"
+            ],
+            "values": [
+                [
+                    "PAK",
+                    "CHE",
+                    "GBR",
+                    "GNB",
+                    "USA",
+                    "CAN",
+                    "PAN",
+                    "PRY",
+                    "BEL",
+                    "ETH",
+                    "ROU",
+                    "SLV",
+                    "PRT",
+                    "IND",
+                    "KEN",
+                    "POL",
+                    "PHL",
+                    "CPV",
+                    "LVA",
+                    "PER",
+                    "HND",
+                    "VEN",
+                    "SVN",
+                    "MLI",
+                    "CHN",
+                    "BGD",
+                    "GNQ",
+                    "COL",
+                    "NGA",
+                    "AUT",
+                    "DMA",
+                    "ARG",
+                    "NLD",
+                    "PRK",
+                    "DEU",
+                    "FIN",
+                    "MEX",
+                    "ESH",
+                    "CHL",
+                    "DZA",
+                    "BRA",
+                    "MRT",
+                    "SLE",
+                    "IDN",
+                    "DNK",
+                    "BLR",
+                    "LTU",
+                    "SEN",
+                    "HUN",
+                    "CUB",
+                    "CMR",
+                    "MCO",
+                    "RUS",
+                    "COG",
+                    "DOM",
+                    "THA",
+                    "MAR",
+                    "FRA",
+                    "BIH",
+                    "LKA",
+                    "SVK",
+                    "IRN",
+                    "URY",
+                    "GEO",
+                    "NPL",
+                    "ISL",
+                    "GTM",
+                    "UKR",
+                    "ITA",
+                    "ECU",
+                    "BGR",
+                    "ARM",
+                    "GMB",
+                    "SYR",
+                    "CZE",
+                    "PRI",
+                    "IRL",
+                    "ESP",
+                    "CIV",
+                    "CRI",
+                    "SRB",
+                    "BOL",
+                    "SWE",
+                    "GIN"
+                ]
+            ],
+            "labels": [
+                [
+                    "ISO codes 3 digits"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d2n",
+                "p2n"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "99"
+                }
+            ],
+            "labels": [
+                [
+                    "Age"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d3n",
+                "d4n",
+                "d5n",
+                "d6n",
+                "p3n",
+                "p4n"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "50"
+                }
+            ],
+            "labels": [
+                [
+                    "Years"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d7n"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "30"
+                }
+            ],
+            "labels": [
+                [
+                    "Hours"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d8n"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "10"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of directors/principals"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d9a1",
+                "d9b1",
+                "d9c1",
+                "d9d1",
+                "d9e1",
+                "d9f1",
+                "d9g1",
+                "d9h1"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "10000"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of students"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d9a2",
+                "d9b2",
+                "d9c2",
+                "d9d2",
+                "d9e2",
+                "d9f2",
+                "d9g2",
+                "d9h2"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "10000"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of groups"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d10a",
+                "d10b",
+                "d10c"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "10000"
+                }
+            ],
+            "labels": [
+                [
+                    "ratio"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d11an",
+                "d11bn"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "500"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of students"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d12an",
+                "d12bn",
+                "d13n"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "500"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of teachers"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d14"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Almost no change",
+                    "Less than 25%",
+                    "Between 25% and 50%",
+                    "More than 50%"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d15"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Not at all adequate",
+                    "Barely adequate",
+                    "Adequate",
+                    "Very adequate"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d16an",
+                "d16bn",
+                "d16cn",
+                "d16dn",
+                "d16en",
+                "d16fn"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "2000"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of resources"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d17a",
+                "d17b",
+                "d17c",
+                "d17d",
+                "d17e",
+                "d17f",
+                "d17g",
+                "d17h"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Not at all",
+                    "Low importance",
+                    "Up to a certain point",
+                    "A lot"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d18a",
+                "d18b",
+                "d18c",
+                "d18d",
+                "d18e",
+                "d18f",
+                "d18g",
+                "d18h",
+                "d18i",
+                "d18j",
+                "d18k",
+                "d18l",
+                "d18m",
+                "d18n"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "it is not an inconvenience",
+                    "It is a slight inconvenience",
+                    "It is a moderate inconvenience",
+                    "It is a serious inconvenience"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d19a",
+                "d19b",
+                "d19c",
+                "d19d",
+                "d19e",
+                "d19f",
+                "d19g",
+                "d19h",
+                "d19i",
+                "d19j",
+                "d19k",
+                "d19l",
+                "d19m",
+                "d19n",
+                "d19o",
+                "d19p",
+                "d19q",
+                "d19r"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "It is not a problem",
+                    "It is a slight problem",
+                    "It is a moderate problem",
+                    "It is a serious problem"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d20a",
+                "d20b",
+                "d20c",
+                "d20d",
+                "d20e",
+                "d20f",
+                "d20g",
+                "d20h",
+                "d20i",
+                "d20j",
+                "d20k",
+                "d20l",
+                "d21a",
+                "d21b",
+                "d21c",
+                "d21d",
+                "d21e",
+                "d21f",
+                "p16a",
+                "p16b",
+                "p16c",
+                "p16d",
+                "p16e",
+                "p16f",
+                "p16g",
+                "p16h",
+                "p20",
+                "p27a",
+                "p27b",
+                "p27c",
+                "p27d",
+                "p27e",
+                "p27f",
+                "p27g",
+                "p27h"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Not at all",
+                    "A little",
+                    "Considerably",
+                    "A lot"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d33a",
+                "pfc"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10"
+                ]
+            ],
+            "labels": [
+                [
+                    "Competences and didactic program",
+                    "Attention to diversity",
+                    "Didactic methodologies",
+                    "Evaluation of the teaching/learning process",
+                    "School management and participatory culture",
+                    "Training in the use of TICs",
+                    "Speaking another language (AICLE, CLIL, PILE) ",
+                    "Improving school environment",
+                    "Other topics",
+                    "There is no Training School Plan (PFC) in mi school"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "d121a",
+                "d121b",
+                "d131a",
+                "d131b"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "300"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of teachers"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "tasa_nac_eso4",
+                "tasa_nac_pri3",
+                "tasa_nac_pri6"
+            ],
+            "values": [
+                [
+                    "Unknown"
+                ]
+            ],
+            "labels": [
+                [
+                    "Unknown"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "distnac",
+                "distnac_eso4",
+                "distnac_pri3",
+                "distnac_pri6",
+                "groups"
+            ],
+            "values": [
+                [
+                    "Unknown"
+                ]
+            ],
+            "labels": [
+                [
+                    "Number"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "island"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Gran Canaria",
+                    "Gran Canaria province, non capital island",
+                    "Tenerife province, non capital island",
+                    "Tenerife"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "capital_island"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Capital island (Tenerife-Gran Canaria)",
+                    "Non capital island (Small islands)"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "public_private"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Private",
+                    "Public"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f0"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            ],
+            "labels": [
+                [
+                    "Mother",
+                    "Father",
+                    "Another person"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f1n"
+            ],
+            "values": [
+                {
+                    "min": "2",
+                    "max": "15"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of people"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f2an",
+                "f2bn"
+            ],
+            "values": [
+                {
+                    "min": "20",
+                    "max": "99"
+                }
+            ],
+            "labels": [
+                [
+                    "Age"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f3a",
+                "f3b"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9"
+                ]
+            ],
+            "labels": [
+                [
+                    "No education",
+                    "Primary education",
+                    "Lower secondary education",
+                    "Upper secondary education",
+                    "Post-secondary non-tertiary education",
+                    "Short-cycle tertiary education",
+                    "Bachelor",
+                    "Master",
+                    "Doctorate"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "mother_education",
+                "father_education"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "No education/primary education",
+                    "Lower secondary education",
+                    "Upper secondary education",
+                    "Tertiary education"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f4a",
+                "f4b"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "Self-employed/wage employment full time",
+                    "Wage employment part time",
+                    "Unemployed looking for job",
+                    "Retired, pre-retired, pensioner",
+                    "Unemployed not looking for job"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f5a",
+                "f5b",
+                "f5n"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Canary islands",
+                    "Spain (excluding canary islands)",
+                    "Another UE country",
+                    "Another non UE country"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "inmigrant"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            ],
+            "labels": [
+                [
+                    "Spain",
+                    "Another UE country",
+                    "Another non UE country"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "inmigrant2",
+                "inmigrant_second_gen"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Spain",
+                    "Another country"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f6"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            ],
+            "labels": [
+                [
+                    "Less than 2 academic years",
+                    "Between 2 and 4 academic years",
+                    "5 or more academic years"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f7"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Spanish",
+                    "Other language"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f8ta"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "9"
+                }
+            ],
+            "labels": [
+                [
+                    "Years"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f8tm"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "11"
+                }
+            ],
+            "labels": [
+                [
+                    "Months"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "start_schooling_age"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3"
+                ]
+            ],
+            "labels": [
+                [
+                    "Less than 3 years old",
+                    "Between 3 and 4 years old",
+                    "Four or more years old"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f10n"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "20"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of devices"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f11"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "From 0 to 10 books",
+                    "From 11 to 50 books",
+                    "From 51 to 100 books",
+                    "From 101 to 200 books",
+                    "More than 200 books"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "books"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Less than 11",
+                    "From 11 to 50 books",
+                    "From 51 to 100 books",
+                    "More than 100 books"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f12a",
+                "f12b"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Sometimes",
+                    "Once per month",
+                    "Once per week",
+                    "Daily"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f13n",
+                "p28n"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "20"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of meetings"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f14a",
+                "f14b",
+                "f14c"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Sometimes",
+                    "Once per month",
+                    "Once per week",
+                    "No sabe"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f15a",
+                "f15b",
+                "f15c",
+                "f15d",
+                "f15e",
+                "f15f",
+                "f17a",
+                "f17b",
+                "f17c",
+                "f17d"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Never/almost never",
+                    "Never/almost never",
+                    "Almost always/always"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f18a",
+                "f18b",
+                "f18c",
+                "f18d",
+                "f18e",
+                "f18f",
+                "f18g",
+                "f18h",
+                "f18i",
+                "f19a",
+                "f19b",
+                "f19c",
+                "f19d",
+                "f19e"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5"
+                ]
+            ],
+            "labels": [
+                [
+                    "Not satisfied at all",
+                    "Not satisfied at all",
+                    "Not satisfied at all",
+                    "Not satisfied at all",
+                    "Very satisfied "
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f20",
+                "f33a",
+                "f33b",
+                "f33c",
+                "f33d",
+                "f33e",
+                "f33f",
+                "f33g",
+                "f33h",
+                "p5",
+                "p9a",
+                "p9b",
+                "p9c",
+                "p9d",
+                "p9e",
+                "p9f",
+                "p15a",
+                "p15b",
+                "p15c",
+                "p15d",
+                "p15e",
+                "p15f",
+                "p15g",
+                "p15h",
+                "p15i",
+                "p18a",
+                "p18b",
+                "p18c",
+                "p18d",
+                "p18e",
+                "p18f",
+                "p18g",
+                "p18h",
+                "p18i",
+                "p141",
+                "rep"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2"
+                ]
+            ],
+            "labels": [
+                [
+                    "Yes",
+                    "No"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f21n"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "50"
+                }
+            ],
+            "labels": [
+                [
+                    "Hours"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f22"
+            ],
+            "values": [
+                [
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "1 day or less",
+                    "2 or 3 days",
+                    "4 or 5 days",
+                    "More than 5 days"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f23"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "9"
+                ]
+            ],
+            "labels": [
+                [
+                    "Until finishing secondary education (4\u00a7 ESO)",
+                    "Until finishing intermediate FP",
+                    "Until finishing Bachillerato",
+                    "Until finishing upper FP",
+                    "Until finishing a bachelor degree",
+                    "I do not know"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f24a",
+                "f24b"
+            ],
+            "values": [
+                [
+                    "11",
+                    "12",
+                    "13",
+                    "14",
+                    "15",
+                    "16",
+                    "17",
+                    "18",
+                    "19",
+                    "20",
+                    "21",
+                    "22",
+                    "23",
+                    "24"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never had a paid job",
+                    "Elementary occupations",
+                    "Plant and machine operators, and assemblers",
+                    "Armed forces occupations. Troop and navy military personnel",
+                    "Craft related trades workers",
+                    "Skilled agricultural, forestry and fishery workers",
+                    "Protective services workers",
+                    "Personal care workers in health services",
+                    "Service and sales workers",
+                    "Clerical support workers",
+                    "Technicians and associate professionals",
+                    "Armed forces occupations. Officers",
+                    "Professionals",
+                    "Managers"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "mother_occupation",
+                "father_occupation"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Unemployed",
+                    "Low occupation",
+                    "Mid occupation",
+                    "High occupation"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f30"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "10"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of children in the household"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f31"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7"
+                ]
+            ],
+            "labels": [
+                [
+                    "Mother and father with children",
+                    "Mother and her partner with children",
+                    "Father and her partner with children",
+                    "Mother alone with children",
+                    "Father alone with children",
+                    "No father, no mother. Children living with other relatives",
+                    "Other type of household"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "single_parent_household"
+            ],
+            "values": [
+                [
+                    "Single parent household",
+                    "Non single parent household"
+                ]
+            ],
+            "labels": [
+                [
+                    "Single parent household",
+                    "Non single parent household"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "f34"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "10"
+                ]
+            ],
+            "labels": [
+                [
+                    "No regular income",
+                    "500 euros or less",
+                    "From 501 to 1.000 euros ",
+                    "From 1.001 to 1.500 euros ",
+                    "From 1.501 to 2.000 euros ",
+                    "From 2.001 to 2.500 euros ",
+                    "From 2.501 to 3.000 euros ",
+                    "From 3.001 to 3.500 euros ",
+                    "More than 3.500 euros ",
+                    "No answer/don't know "
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "household_income_q"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "q1",
+                    "q2",
+                    "q3",
+                    "q4"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "nhousehold"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "25"
+                }
+            ],
+            "labels": [
+                [
+                    "people"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "ESCS"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "25"
+                }
+            ],
+            "labels": [
+                [
+                    "index"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p6n"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "35"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of students"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p7an",
+                "p7bn",
+                "p7cn",
+                "p7dn",
+                "p7en",
+                "p7fn",
+                "p7gn",
+                "p8an",
+                "p8bn"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "35"
+                }
+            ],
+            "labels": [
+                [
+                    "Number of students"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p10n"
+            ],
+            "values": [
+                {
+                    "min": "1",
+                    "max": "30"
+                }
+            ],
+            "labels": [
+                [
+                    "Teaching hours"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p11"
+            ],
+            "values": [
+                [
+                    "Unknown"
+                ]
+            ],
+            "labels": [
+                [
+                    "Time explaining"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p21a",
+                "p21b",
+                "p21c",
+                "p21d",
+                "p21e",
+                "p21f",
+                "p22a",
+                "p22b",
+                "p22c",
+                "p22d",
+                "p22e",
+                "p22f",
+                "p22g",
+                "p23a",
+                "p23b",
+                "p23c",
+                "p23d",
+                "p23e",
+                "p23f",
+                "p23g",
+                "p23h",
+                "p23i",
+                "p24a",
+                "p24b",
+                "p24c",
+                "p24d",
+                "p24e",
+                "p24f",
+                "p24g",
+                "p24h",
+                "p24i",
+                "p24j",
+                "p24k",
+                "p26a",
+                "p26b",
+                "p26c",
+                "p26d",
+                "p29a",
+                "p29b",
+                "p29c",
+                "p29d",
+                "p29e",
+                "p30a",
+                "p30b",
+                "p30c",
+                "p299d"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Never/almost never",
+                    "Sometimes",
+                    "Considerably",
+                    "Almost always/always"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p25"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6"
+                ]
+            ],
+            "labels": [
+                [
+                    "Students seated individually",
+                    "Students seated in pairs",
+                    "In groups of 3 to 6 students",
+                    "Horizontal lines, with the tables assembled",
+                    "Tables arranged in U shape",
+                    "Other type of arranging"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p26"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Students are sent to the principal",
+                    "Students are sent to the management team",
+                    "It is solved in the class, with the help of the rest of classmates",
+                    "It is solved in the class, individually"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p31d",
+                "p311a",
+                "p311b",
+                "p311c",
+                "p311e",
+                "p311f",
+                "p311g",
+                "p311h",
+                "p331a",
+                "p331b",
+                "p331c",
+                "p331d",
+                "p331e",
+                "p331f",
+                "p331g",
+                "p331j"
+            ],
+            "values": [
+                [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
+            ],
+            "labels": [
+                [
+                    "Bad",
+                    "Regular",
+                    "Good",
+                    "Very good"
+                ]
+            ]
+        },
+        {
+            "columns": [
+                "p171n",
+                "p172n"
+            ],
+            "values": [
+                {
+                    "min": "0",
+                    "max": "1000"
+                }
+            ],
+            "labels": [
+                [
+                    "Training hours"
+                ]
+            ]
+        }
+    ]
+}
