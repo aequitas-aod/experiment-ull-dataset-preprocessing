@@ -132,7 +132,7 @@ def preprocess_family_questionnaire():
     family_df["has_been_recommended_school"] = (
         family_df["has_been_recommended_school"]
         .apply(lambda x: 0 if x == 2 else x)
-        .astype(bool)
+        .astype("boolean")
     )
 
     family_df["parental_education_expectations"] = family_df[

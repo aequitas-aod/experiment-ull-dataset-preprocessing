@@ -203,6 +203,10 @@ def preprocess_student_questionnaire():
     to_rename = {
         "gender": "a1",
         "birth_year": "a2",
+        "is_living_with_mother": "a3a",
+        "is_living_with_father": "a3b",
+        "is_living_with_sibling": "a3c",
+        "is_living_with_other_relatives": "a3d",
         "has_repeated": "repeater",
         "frequency_of_skips": "a5",
         "homeworks_day_per_week": "a7",
@@ -396,31 +400,10 @@ def preprocess_student_questionnaire():
     print("\t\tLambda")
 
     to_lambdate = {
-        "living_with": lambda x: (
-            0  # "BOTH_PARENTS"
-            if x["living_with_father_mother"] == 1.0 and x["a3d"] == 2.0  # only parents
-            else (
-                1  # "BOTH_PARENTS_RELATIVES"
-                if x["living_with_father_mother"] == 1.0
-                and x["a3d"] == 1.0  # parents and relatives
-                else (
-                    2  # "SINGLE_PARENT"
-                    if x["a3a"] + x["a3b"] == 3.0
-                    and x["a3d"] == 2.0  # one parent and no relatives
-                    else (
-                        3  # "SINGLE_PARENT_RELATIVES"
-                        if x["a3a"] + x["a3b"] == 3.0
-                        and x["a3d"] == 1.0  # one parent and no relatives
-                        else (
-                            4  # "ONLY_RELATIVES"
-                            if x["a3a"] + x["a3b"] == 4.0
-                            and x["a3d"] == 1.0  # one parent and no relatives
-                            else (5)  # "OTHER"
-                        )
-                    )
-                )
-            )
-        ),
+        "is_living_with_mother": lambda x: 0 if x == 2 else x,
+        "is_living_with_father": lambda x: 0 if x == 2 else x,
+        "is_living_with_siblings": lambda x: 0 if x == 2 else x,
+        "is_living_with_other_relatives": lambda x: 0 if x == 2 else x,
         "extent_of_classmates_affinity": lambda x: get_good_bad_agg(
             x, group="extent_of_classmates_affinity"
         ),
@@ -433,10 +416,23 @@ def preprocess_student_questionnaire():
         "extent_of_reading_affinity": lambda x: get_good_bad_agg(
             x, group="extent_of_reading_affinity"
         ),
+        "gender": lambda x: "MALE" if x == 1 else ("FEMALE" if x == 2 else np.nan),
+        "has_repeated": lambda x: 0 if x == 1 else (1 if x == 2 else np.nan),
     }
 
     for new_column, lambda_rule in to_lambdate.items():
         df[new_column] = df.apply(lambda_rule, axis=1)
+
+    print("\t\tConverting to booleans")
+    to_boolean = [
+        "has_repeated",
+        "is_living_with_mother",
+        "is_living_with_father",
+        "is_living_with_sibling",
+        "is_living_with_other_relatives",
+    ]
+    for column in to_boolean:
+        df[column] = df[column].astype("boolean")
 
     # print(df)
 

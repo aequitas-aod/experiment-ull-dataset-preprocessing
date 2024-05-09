@@ -6,16 +6,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "FEMALE",
+                    "MALE"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Boy",
-                    "Girl"
+                    "Female",
+                    "Male"
                 ]
             ]
         ]
@@ -40,25 +40,86 @@
             ]
         ]
     },
-    "s_living_with": {
+    "s_is_living_with_mother": {
         "original_columns": [
-            "a3a",
-            "a3b",
-            "a3d"
+            "a3a"
         ],
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
+                ]
+            ]
+        ]
+    },
+    "s_is_living_with_father": {
+        "original_columns": [
+            "a3b"
+        ],
+        "values": [
+            [
+                [
+                    "False",
+                    "True"
+                ]
+            ]
+        ],
+        "labels": [
+            [
+                [
+                    "False",
+                    "True"
+                ]
+            ]
+        ]
+    },
+    "s_is_living_with_siblings": {
+        "original_columns": [
+            "a3c"
+        ],
+        "values": [
+            [
+                [
+                    "False",
+                    "True"
+                ]
+            ]
+        ],
+        "labels": [
+            [
+                [
+                    "False",
+                    "True"
+                ]
+            ]
+        ]
+    },
+    "s_is_living_with_other_relatives": {
+        "original_columns": [
+            "a3d"
+        ],
+        "values": [
+            [
+                [
+                    "False",
+                    "True"
+                ]
+            ]
+        ],
+        "labels": [
+            [
+                [
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -70,8 +131,8 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
