@@ -170,7 +170,7 @@ def preprocess_teacher_questionnaire():
     # maximum degree of agreement
     max_deg = 4
     to_lambdate = {
-        "agreement_of_satisfaction_job_and_schooll": lambda x: get_good_bad_agg(
+        "agreement_of_satisfaction_job_and_school": lambda x: get_good_bad_agg(
             x,
             group="agreement_of_satisfaction_job_and_school",
             aggregation_map=agg_mix_new,
@@ -187,6 +187,7 @@ def preprocess_teacher_questionnaire():
     new_features = aggregate_mixed_features(df, agg_mix_new, to_lambdate)
     new_features_df = pd.concat([new_features[k] for k in new_features.keys()], axis=1)
     new_features_df.columns = new_features.keys()
+    df = pd.concat([df, new_features_df], axis=1)
 
     # drop features after aggregating
     df = df.drop(
@@ -205,4 +206,5 @@ def preprocess_teacher_questionnaire():
 
 
 if __name__ == "__main__":
-    preprocess_teacher_questionnaire()
+    df = preprocess_teacher_questionnaire()
+    print(f"Done! Number of columns: {df.shape[1]}")
