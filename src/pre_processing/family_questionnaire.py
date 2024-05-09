@@ -56,6 +56,7 @@ def preprocess_family_questionnaire():
     family_df = family_df.drop("f33g", axis=1)
     family_df = family_df.drop("f33h", axis=1)
     family_df = family_df.drop("household_income_q", axis=1)
+    family_df = family_df.drop("nhousehold", axis=1)
 
     ##############################
     # Renaming of columns
@@ -72,13 +73,13 @@ def preprocess_family_questionnaire():
     family_df = family_df.rename(columns={"f5b": "father_place_of_birth"})
     family_df = family_df.rename(columns={"f5n": "student_place_of_birth"})
     family_df = family_df.rename(
-        columns={"f6": "extent_of_years_in_spanish_education_system"}
+        columns={"f6": "number_of_years_in_spanish_education_system"}
     )
     family_df = family_df.rename(columns={"f7": "language_spoken_at_home"})
     family_df = family_df.rename(columns={"f10n": "number_of_tech_at_home"})
     family_df = family_df.rename(columns={"f11": "extent_of_books_at_home"})
     family_df = family_df.rename(
-        columns={"start_schooling_age": "extent_of_start_schooling_age"}
+        columns={"start_schooling_age": "degree_of_start_schooling_age"}
     )
     family_df = family_df.rename(columns={"f14a": "visits_in_school_by_mother"})
     family_df = family_df.rename(columns={"f14b": "visits_in_school_by_father"})
@@ -88,9 +89,9 @@ def preprocess_family_questionnaire():
     family_df = family_df.rename(columns={"f30": "number_of_children_in_household"})
     family_df = family_df.rename(columns={"f31": "type_of_family_unit"})
     family_df = family_df.rename(columns={"f34": "monthly_household_income"})
-    family_df = family_df.rename(
-        columns={"nhousehold": "number_of_people_in_household"}
-    )
+    # family_df = family_df.rename(
+    #     columns={"nhousehold": "number_of_people_in_household"}
+    # )
 
     ##############################
     # Custom transformations of columns
@@ -103,6 +104,27 @@ def preprocess_family_questionnaire():
             else ("FATHER" if x == 2 else ("OTHER" if x == 3 else np.nan))
         )
     )
+
+    for col in [
+        "mother_place_of_birth",
+        "father_place_of_birth",
+        "student_place_of_birth",
+    ]:
+        family_df[col] = family_df[col].apply(
+            lambda x: (
+                "CANARY_ISLANDS"
+                if x == 1
+                else (
+                    "SPAIN_NO_CANARY_ISLANDS"
+                    if x == 2
+                    else (
+                        "ANOTHER_EU"
+                        if x == 3
+                        else ("ANOTHER_NON_EU" if x == 4 else np.nan)
+                    )
+                )
+            )
+        )
 
     family_df["language_spoken_at_home"] = family_df["language_spoken_at_home"].apply(
         lambda x: "SPANISH" if x == 1 else ("OTHER" if x == 2 else np.nan)
@@ -240,7 +262,7 @@ def preprocess_family_questionnaire():
     family_df = family_df.drop(["f17a", "f17b", "f17c", "f17d"], axis=1)
 
     # Aggregation by averaging parents satisfaction about the school
-    family_df["agreement_of_family_satisfaction"] = family_df[
+    family_df["extent_of_family_satisfaction"] = family_df[
         ["f18a", "f18b", "f18e", "f18f", "f18g", "f18h"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(
@@ -248,7 +270,7 @@ def preprocess_family_questionnaire():
     )
 
     # Aggregation by averaging satisfaction from parents with teachers
-    family_df["agreement_of_teacher_satisfaction"] = family_df[
+    family_df["extent_of_teacher_satisfaction"] = family_df[
         ["f19a", "f19b", "f19c", "f19d", "f19e"]
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f19a", "f19b", "f19c", "f19d", "f19e"], axis=1)

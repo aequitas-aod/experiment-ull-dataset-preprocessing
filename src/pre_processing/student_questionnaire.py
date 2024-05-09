@@ -400,10 +400,12 @@ def preprocess_student_questionnaire():
     print("\t\tLambda")
 
     to_lambdate = {
+        "gender": lambda x: "MALE" if x == 1 else ("FEMALE" if x == 2 else np.nan),
         "is_living_with_mother": lambda x: 0 if x == 2 else x,
         "is_living_with_father": lambda x: 0 if x == 2 else x,
         "is_living_with_siblings": lambda x: 0 if x == 2 else x,
         "is_living_with_other_relatives": lambda x: 0 if x == 2 else x,
+        "has_repeated": lambda x: 0 if x == 1 else (1 if x == 2 else np.nan),
         "extent_of_classmates_affinity": lambda x: get_good_bad_agg(
             x, group="extent_of_classmates_affinity"
         ),
@@ -416,8 +418,6 @@ def preprocess_student_questionnaire():
         "extent_of_reading_affinity": lambda x: get_good_bad_agg(
             x, group="extent_of_reading_affinity"
         ),
-        "gender": lambda x: "MALE" if x == 1 else ("FEMALE" if x == 2 else np.nan),
-        "has_repeated": lambda x: 0 if x == 1 else (1 if x == 2 else np.nan),
     }
 
     for new_column, lambda_rule in to_lambdate.items():

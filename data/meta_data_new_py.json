@@ -737,16 +737,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "FEMALE",
+                    "MALE"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Boy",
-                    "Girl"
+                    "Female",
+                    "Male"
                 ]
             ]
         ]
@@ -771,7 +771,7 @@
             ]
         ]
     },
-    "p_years_of_teaching": {
+    "p_number_of_years_of_teaching": {
         "original_columns": [
             "d3n"
         ],
@@ -791,7 +791,7 @@
             ]
         ]
     },
-    "p_years_in_school": {
+    "p_number_of_years_in_school": {
         "original_columns": [
             "d4n"
         ],
@@ -811,7 +811,7 @@
             ]
         ]
     },
-    "p_years_as_principal": {
+    "p_number_of_years_as_principal": {
         "original_columns": [
             "d5n"
         ],
@@ -831,7 +831,7 @@
             ]
         ]
     },
-    "p_years_as_principal_in_school": {
+    "p_number_of_years_as_principal_in_school": {
         "original_columns": [
             "d6n"
         ],
@@ -851,7 +851,7 @@
             ]
         ]
     },
-    "p_class_hours_per_week": {
+    "p_number_of_class_hours_per_week": {
         "original_columns": [
             "d7n"
         ],
@@ -1011,7 +1011,7 @@
             ]
         ]
     },
-    "p_abroad_students_country_no_spanish": {
+    "p_number_of_abroad_students_country_no_spanish": {
         "original_columns": [
             "d11an"
         ],
@@ -1031,7 +1031,7 @@
             ]
         ]
     },
-    "p_abroad_students_country_spanish": {
+    "p_number_of_abroad_students_country_spanish": {
         "original_columns": [
             "d11bn"
         ],
@@ -1051,7 +1051,7 @@
             ]
         ]
     },
-    "p_teachers_in_school": {
+    "p_number_of_teachers_in_school": {
         "original_columns": [
             "d12bn"
         ],
@@ -1071,7 +1071,7 @@
             ]
         ]
     },
-    "p_teachers_changed_school_last_year": {
+    "p_percentage_of_teachers_changed_school_last_year": {
         "original_columns": [
             "d14"
         ],
@@ -1121,7 +1121,7 @@
             ]
         ]
     },
-    "p_number_of_school_resources": {
+    "p_number_of_school_tech_resources": {
         "original_columns": [
             "d16an",
             "d16bn",
@@ -1146,7 +1146,7 @@
             ]
         ]
     },
-    "p_degree_of_factors_limiting_effectiveness": {
+    "p_extent_of_factors_limiting_effectiveness": {
         "original_columns": [
             "d17a",
             "d17b",
@@ -1176,7 +1176,7 @@
             ]
         ]
     },
-    "p_degree_of_inconveniences": {
+    "p_extent_of_inconveniences": {
         "original_columns": [
             "d18a",
             "d18b",
@@ -1211,7 +1211,7 @@
             ]
         ]
     },
-    "p_degree_of_problems": {
+    "p_extent_of_problems": {
         "original_columns": [
             "d19a",
             "d19b",
@@ -1251,7 +1251,7 @@
             ]
         ]
     },
-    "p_degree_of_management": {
+    "p_extent_of_management": {
         "original_columns": [
             "d20a",
             "d20b",
@@ -1285,7 +1285,7 @@
             ]
         ]
     },
-    "p_degree_of_satisfaction": {
+    "p_extent_of_satisfaction": {
         "original_columns": [
             "d21a",
             "d21b",
@@ -1313,7 +1313,7 @@
             ]
         ]
     },
-    "p_degree_of_agreement": {
+    "p_extent_of_agreement": {
         "original_columns": [
             "d22a",
             "d22b",
@@ -1348,16 +1348,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1369,16 +1369,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1390,16 +1390,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1411,16 +1411,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1432,16 +1432,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1453,21 +1453,21 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
     },
-    "p_degree_of_agreement_satisfaction_students_results": {
+    "p_extent_of_satisfaction_students_results": {
         "original_columns": [
             "d31a"
         ],
@@ -1490,7 +1490,7 @@
             ]
         ]
     },
-    "p_degree_of_agreement_expected_students_results": {
+    "p_extent_of_expected_students_results": {
         "original_columns": [
             "d31b"
         ],
@@ -1513,7 +1513,7 @@
             ]
         ]
     },
-    "p_degree_of_agreement_students_improvement": {
+    "p_extent_of_students_improvement_expectation": {
         "original_columns": [
             "d31c"
         ],
@@ -1543,16 +1543,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1681,16 +1681,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1702,16 +1702,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1723,16 +1723,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "no"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -1744,14 +1744,14 @@
         "values": [
             [
                 [
-                    "Unknown"
+                    "Float"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Unknown"
+                    "Rate"
                 ]
             ]
         ]
@@ -1763,14 +1763,14 @@
         "values": [
             [
                 [
-                    "Unknown"
+                    "Float"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Unknown"
+                    "Rate"
                 ]
             ]
         ]
@@ -1782,14 +1782,14 @@
         "values": [
             [
                 [
-                    "Unknown"
+                    "Float"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Unknown"
+                    "Rate"
                 ]
             ]
         ]
@@ -1801,7 +1801,7 @@
         "values": [
             [
                 [
-                    "Unknown"
+                    "Integer"
                 ]
             ]
         ],
@@ -1820,10 +1820,10 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
+                    "GRAN_CANARIA_CAPITAL",
+                    "GRAN_CANARIA_PROVINCE",
+                    "TENERIFE_PROVINCE",
+                    "TENERIFE_CAPITAL"
                 ]
             ]
         ],
@@ -1838,27 +1838,6 @@
             ]
         ]
     },
-    "p_capital_island": {
-        "original_columns": [
-            "capital_island"
-        ],
-        "values": [
-            [
-                [
-                    "1",
-                    "2"
-                ]
-            ]
-        ],
-        "labels": [
-            [
-                [
-                    "Capital island (Tenerife-Gran Canaria)",
-                    "Non capital island (Small islands)"
-                ]
-            ]
-        ]
-    },
     "p_public_or_private": {
         "original_columns": [
             "public_private"
@@ -1866,8 +1845,8 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "PRIVATE",
+                    "PUBLIC"
                 ]
             ]
         ],
@@ -1887,9 +1866,9 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3"
+                    "MOTHER",
+                    "FATHER",
+                    "OTHER"
                 ]
             ]
         ],
@@ -1905,8 +1884,7 @@
     },
     "f_number_of_people_in_household": {
         "original_columns": [
-            "f1n",
-            "nhousehold"
+            "f1n"
         ],
         "values": [
             [
@@ -1914,23 +1892,12 @@
                     "min": "2",
                     "max": "15"
                 }
-            ],
-            [
-                {
-                    "min": "0",
-                    "max": "25"
-                }
             ]
         ],
         "labels": [
             [
                 [
                     "Number of people"
-                ]
-            ],
-            [
-                [
-                    "people"
                 ]
             ]
         ]
@@ -2106,10 +2073,10 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
+                    "CANARY_ISLANDS",
+                    "SPAIN_NO_CANARY_ISLANDS",
+                    "ANOTHER_EU",
+                    "ANOTHER_NON_EU"
                 ]
             ]
         ],
@@ -2131,10 +2098,10 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
+                    "CANARY_ISLANDS",
+                    "SPAIN_NO_CANARY_ISLANDS",
+                    "ANOTHER_EU",
+                    "ANOTHER_NON_EU"
                 ]
             ]
         ],
@@ -2156,10 +2123,10 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
+                    "CANARY_ISLANDS",
+                    "SPAIN_NO_CANARY_ISLANDS",
+                    "ANOTHER_EU",
+                    "ANOTHER_NON_EU"
                 ]
             ]
         ],
@@ -2174,7 +2141,7 @@
             ]
         ]
     },
-    "f_extent_of_years_in_spanish_education_system": {
+    "f_degree_of_years_in_spanish_education_system": {
         "original_columns": [
             "f6"
         ],
@@ -2203,8 +2170,8 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "SPANISH",
+                    "OTHER"
                 ]
             ]
         ],
@@ -2217,7 +2184,7 @@
             ]
         ]
     },
-    "f_extent_of_start_schooling_age": {
+    "f_degree_of_start_schooling_age": {
         "original_columns": [
             "start_schooling_age"
         ],
@@ -2391,11 +2358,11 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5"
+                    "NEVER",
+                    "SOMETIMES",
+                    "ONCE_PER_MONTH",
+                    "ONCE_PER_WEEK",
+                    "DONT_KNOW"
                 ]
             ]
         ],
@@ -2429,8 +2396,6 @@
         "labels": [
             [
                 [
-                    "Never/almost never",
-                    "Never/almost never",
                     "Never/almost never",
                     "Almost always/always"
                 ]
@@ -2484,14 +2449,12 @@
             [
                 [
                     "Never/almost never",
-                    "Never/almost never",
-                    "Never/almost never",
                     "Almost always/always"
                 ]
             ]
         ]
     },
-    "f_agreement_of_family_satisfaction": {
+    "f_extent_of_family_satisfaction": {
         "original_columns": [
             "f18a",
             "f18b",
@@ -2512,15 +2475,12 @@
             [
                 [
                     "Not satisfied at all",
-                    "Not satisfied at all",
-                    "Not satisfied at all",
-                    "Not satisfied at all",
                     "Very satisfied "
                 ]
             ]
         ]
     },
-    "f_agreement_of_teacher_satisfaction": {
+    "f_extent_of_teacher_satisfaction": {
         "original_columns": [
             "f19a",
             "f19b",
@@ -2540,9 +2500,6 @@
             [
                 [
                     "Not satisfied at all",
-                    "Not satisfied at all",
-                    "Not satisfied at all",
-                    "Not satisfied at all",
                     "Very satisfied "
                 ]
             ]
@@ -2555,16 +2512,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "No"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -2596,12 +2553,12 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "9"
+                    "4_ESO",
+                    "INT_FP",
+                    "BACH_ATO",
+                    "UP_FP",
+                    "BACH_DEG",
+                    "DONT_KNOW"
                 ]
             ]
         ],
@@ -2695,13 +2652,13 @@
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4",
-                    "5",
-                    "6",
-                    "7"
+                    "MOTHER_FATHER_CHILDREN",
+                    "MOTHER_PARTNER_CHILDREN",
+                    "FATHER_PARTNER_CHILDREN",
+                    "MOTHER_CHILDREN",
+                    "FATHER_CHILDREN",
+                    "RELATIVES_CHILDREN",
+                    "OTHERS"
                 ]
             ]
         ],
@@ -2735,7 +2692,7 @@
                     "7",
                     "8",
                     "9",
-                    "10"
+                    "NO_ANSWER"
                 ]
             ]
         ],
@@ -2783,16 +2740,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "FEMALE",
+                    "MALE"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Boy",
-                    "Girl"
+                    "Female",
+                    "Male"
                 ]
             ]
         ]
@@ -2864,16 +2821,16 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "False",
+                    "True"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "No"
+                    "False",
+                    "True"
                 ]
             ]
         ]
@@ -2963,7 +2920,7 @@
             ]
         ]
     },
-    "t_subjects_taught": {
+    "t_number_of_subjects_taught": {
         "original_columns": [
             "p9a",
             "p9b",
@@ -2975,16 +2932,14 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "Integer"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "No"
+                    "Number"
                 ]
             ]
         ]
@@ -3016,7 +2971,7 @@
         "values": [
             [
                 [
-                    "Unknown"
+                    "Integer"
                 ]
             ]
         ],
@@ -3028,8 +2983,9 @@
             ]
         ]
     },
-    "t_agreement_of_class_behaviour": {
+    "t_extent_of_class_behaviour": {
         "original_columns": [
+            "p12a",
             "p12b"
         ],
         "values": [
@@ -3051,7 +3007,7 @@
             ]
         ]
     },
-    "t_agreement_of_results_satisfaction": {
+    "t_extent_of_results_satisfaction": {
         "original_columns": [
             "p13",
             "p13c"
@@ -3113,21 +3069,19 @@
         "values": [
             [
                 [
-                    "1",
-                    "2"
+                    "Integer"
                 ]
             ]
         ],
         "labels": [
             [
                 [
-                    "Yes",
-                    "No"
+                    "Number"
                 ]
             ]
         ]
     },
-    "t_extent_of_individual_training_incidence": {
+    "t_degree_of_individual_training_incidence": {
         "original_columns": [
             "p20"
         ],
@@ -3400,7 +3354,7 @@
             ]
         ]
     },
-    "t_agreement_of_family_support": {
+    "t_extent_of_family_support": {
         "original_columns": [
             "p30a",
             "p30b",
@@ -3452,7 +3406,7 @@
             ]
         ]
     },
-    "t_agreement_of_opinion_on_school": {
+    "t_extent_of_opinion_on_school": {
         "original_columns": [
             "p32c"
         ],
@@ -3475,7 +3429,7 @@
             ]
         ]
     },
-    "t_agreement_of_work_facilitated_by_management": {
+    "t_extent_of_work_facilitated_by_management": {
         "original_columns": [
             "p34a",
             "p34b",
@@ -3500,7 +3454,7 @@
             ]
         ]
     },
-    "t_agreement_of_satisfaction_job_and_school": {
+    "t_extent_of_satisfaction_job_and_school": {
         "original_columns": [
             "p41a",
             "p41b",

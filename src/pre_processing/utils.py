@@ -46,7 +46,7 @@ def features_with_too_many_nans(df: pd.DataFrame, nan_threshold: float):
 
 
 def custom_binary_agg(series):
-    binary = [1 if x == 1 else 0 if x == 2 else x for x in series]
+    binary = [1 if x == 1 else (0 if x == 2 else x) for x in series]
     return sum(val * (2**idx) for idx, val in enumerate(reversed(binary)))
 
 

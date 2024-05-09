@@ -621,8 +621,8 @@ agg_mean = {
         "p27h",
     ],
     "extent_of_family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p299d"],
-    "agreement_of_family_support": ["p30a", "p30b", "p30c"],
-    "agreement_of_work_facilitated_by_management": [
+    "extent_of_family_support": ["p30a", "p30b", "p30c"],
+    "extent_of_work_facilitated_by_management": [
         "p34a",
         "p34b",
         "p34c",
@@ -670,8 +670,8 @@ agg_mean = {
         "p24j",
         "p24k",
     ],
-    "agreement_of_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
-    "agreement_of_class_behaviour": ["p12a", "p12b", "p12c", "p12d"],
+    "extent_of_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
+    "extent_of_class_behaviour": ["p12a", "p12b", "p12c", "p12d"],
     "extent_of_teaching_methods_variety": [
         "p22a",
         "p22b",
@@ -718,7 +718,9 @@ agg_sum = {
     ],
 }
 
-agg_custom_binary = {"subjects_taught": ["p9a", "p9b", "p9c", "p9d", "p9e", "p9f"]}
+agg_custom_binary = {
+    "number_of_subjects_taught": ["p9a", "p9b", "p9c", "p9d", "p9e", "p9f"]
+}
 
 to_rename = {
     "p2": "gender",
@@ -732,8 +734,8 @@ to_rename = {
     "p8bn": "number_of_foreign_students_not_speaking_spanish",
     "p10n": "number_of_teaching_hours_per_week",
     "p11": "average_explanation_time",
-    "p19": "agreement_of_training_offer_adequate_to_needs",
-    "p20": "extent_of_individual_training_incidence",
+    "p19": "extent_of_training_offer_adequate_to_needs",
+    "p20": "degree_of_individual_training_incidence",
     "p25": "seat_configuration",
     "p26": "behaviour_problems_solution_categorical",
     "p28n": "number_of_meetings_with_families",
@@ -745,7 +747,7 @@ to_rename = {
 
 agg_mix = {
     "a": {
-        "agreement_of_satisfaction_job_and_school": [
+        "extent_of_satisfaction_job_and_school": [
             # sensitive feature
             "p41e",
             "p41g",
@@ -755,11 +757,11 @@ agg_mix = {
             "p41h",
             "p41j",
         ],
-        "agreement_of_results_satisfaction": ["p13", "p13b"],
+        "extent_of_results_satisfaction": ["p13", "p13b"],
     },
     "b": {
         # sensitive feature
-        "agreement_of_satisfaction_job_and_school": ["p41c", "p41d", "p41f"],
-        "agreement_of_results_satisfaction": ["p13c"],
+        "extent_of_satisfaction_job_and_school": ["p41c", "p41d", "p41f"],
+        "extent_of_results_satisfaction": ["p13c"],
     },
 }

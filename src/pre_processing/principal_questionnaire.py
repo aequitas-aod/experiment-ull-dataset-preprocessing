@@ -55,7 +55,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d16_columns,
         sum_merge_strategy,
         leave_nan_strategy,
-        "number_of_school_resources",
+        "number_of_school_tech_resources",
     )
 
     ############################################################################
@@ -79,7 +79,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d17_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "degree_of_factors_limiting_effectiveness",
+        "extent_of_factors_limiting_effectiveness",
     )
 
     ############################################################################
@@ -109,7 +109,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d18_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "degree_of_inconveniences",
+        "extent_of_inconveniences",
     )
 
     ############################################################################
@@ -143,7 +143,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d19_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "degree_of_problems",
+        "extent_of_problems",
     )
 
     ############################################################################
@@ -171,7 +171,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d20_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "degree_of_management",
+        "extent_of_management",
     )
 
     ############################################################################
@@ -193,7 +193,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d21_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "degree_of_satisfaction",
+        "extent_of_satisfaction",
     )
 
     ############################################################################
@@ -215,7 +215,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         d22_columns,
         mean_merge_ignore_nan_strategy,
         leave_nan_strategy,
-        "degree_of_agreement",
+        "extent_of_agreement",
     )
 
     ############################################################################
@@ -253,16 +253,54 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
     df.drop(columns=columns_to_drop, inplace=True)
 
     ############################################################################
+    # Custom Adjustments
+    ############################################################################
+
+    df["d1"] = df["d1"].apply(
+        lambda x: "MALE" if x == 1 else ("FEMALE" if x == 2 else np.nan)
+    )
+
+    d30x_columns = [f"d30{n}" for n in "abcdef"]
+    d30y_columns = [f"d30{n}" for n in "278"]
+    for col in d30x_columns + d30y_columns:
+        df[col] = df[col].replace(2, 0).replace(np.nan, 0).astype("boolean")
+
+    for col in ["d32a"]:
+        df[col] = df[col].apply(lambda x: 0 if x == 2 else x).astype("boolean")
+
+    df["island"] = df["island"].apply(
+        lambda x: (
+            "GRAN_CANARIA_CAPITAL"
+            if x == 1
+            else (
+                "GRAN_CANARIA_PROVINCE"
+                if x == 2
+                else (
+                    "TENERIFE_PROVINCE"
+                    if x == 3
+                    else ("TENERIFE_CAPITAL" if x == 4 else np.nan)
+                )
+            )
+        )
+    )
+
+    df.drop(columns=["capital_island"], inplace=True)
+
+    df["public_private"] = df["public_private"].apply(
+        lambda x: ("PRIVATE" if x == 1 else ("PUBLIC" if x == 2 else np.nan))
+    )
+
+    ############################################################################
     # Renaming of columns
     ############################################################################
     replace_dict = {
         "d1": "gender",
         "d2n": "age",
-        "d3n": "years_of_teaching",
-        "d4n": "years_in_school",
-        "d5n": "years_as_principal",
-        "d6n": "years_as_principal_in_school",
-        "d7n": "class_hours_per_week",
+        "d3n": "number_of_years_of_teaching",
+        "d4n": "number_of_years_in_school",
+        "d5n": "number_of_years_as_principal",
+        "d6n": "number_of_years_as_principal_in_school",
+        "d7n": "number_of_class_hours_per_week",
         "d8n": "number_of_principlas_10_years",
         "d9a1": "number_of_students",
         "d9a2": "number_of_groups",
@@ -270,10 +308,10 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         "d9b2": "number_of_preschool_groups",
         "d9c1": "number_of_primary_students",
         "d9c2": "number_of_primary_groups",
-        "d11an": "abroad_students_country_no_spanish",
-        "d11bn": "abroad_students_country_spanish",
-        "d12bn": "teachers_in_school",
-        "d14": "teachers_changed_school_last_year",
+        "d11an": "number_of_abroad_students_country_no_spanish",
+        "d11bn": "number_of_abroad_students_country_spanish",
+        "d12bn": "number_of_teachers_in_school",
+        "d14": "percentage_of_teachers_changed_school_last_year",
         "d15": "attitude_teacher_training_courses",
         "d30a": "group_criteria_alphabet",
         "d30b": "group_criteria_gender",
@@ -281,9 +319,9 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         "d30d": "group_criteria_performance",
         "d30e": "group_criteria_homogeneity",
         "d30f": "group_criteria_heterogeneity",
-        "d31a": "degree_of_agreement_satisfaction_students_results",
-        "d31b": "degree_of_agreement_expected_students_results",
-        "d31c": "degree_of_agreement_students_improvement",
+        "d31a": "extent_of_satisfaction_students_results",
+        "d31b": "extent_of_expected_students_results",
+        "d31c": "extent_of_students_improvement_expectation",
         "d32a": "school_teacher_training_plan",
         "d33a": "school_teacher_training_plan_main_theme",
         "d121a": "number_of_teachers_1_education",
@@ -298,7 +336,7 @@ def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
         "tasa_nac_pri6": "rate_6_grade_mandatory_2_education_students_different_nationality",
         "groups": "number_of_groups_evaluated_grade",
         "island": "island",
-        "capital_island": "capital_island",
+        # "capital_island": "capital_island",
         "public_private": "public_or_private",
     }
     df = df.rename(columns=replace_dict)

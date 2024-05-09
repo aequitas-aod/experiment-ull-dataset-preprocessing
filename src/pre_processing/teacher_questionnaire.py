@@ -170,15 +170,15 @@ def preprocess_teacher_questionnaire():
     # maximum degree of agreement
     max_deg = 4
     to_lambdate = {
-        "agreement_of_satisfaction_job_and_school": lambda x: get_good_bad_agg(
+        "extent_of_satisfaction_job_and_school": lambda x: get_good_bad_agg(
             x,
-            group="agreement_of_satisfaction_job_and_school",
+            group="extent_of_satisfaction_job_and_school",
             aggregation_map=agg_mix_new,
             max_degree_of_agreement=max_deg,
         ),
-        "agreement_of_results_satisfaction": lambda x: get_good_bad_agg(
+        "extent_of_results_satisfaction": lambda x: get_good_bad_agg(
             x,
-            group="agreement_of_results_satisfaction",
+            group="extent_of_results_satisfaction",
             aggregation_map=agg_mix_new,
             max_degree_of_agreement=max_deg,
         ),
@@ -200,6 +200,14 @@ def preprocess_teacher_questionnaire():
     #     os.path.join(DATA_SPLIT_PATH, "teacher_questionnaire_preprocessed.csv"),
     #     index=False,
     # )
+
+    df["gender"] = df["gender"].apply(
+        lambda x: "MALE" if x == 1 else ("FEMALE" if x == 2 else np.nan)
+    )
+
+    for col in ["has_taught_same_group_last_two_years"]:
+        df[col] = df[col].apply(lambda x: 0 if x == 2 else x).astype("boolean")
+
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "teacher_questionnaire.csv"))
 
     return df
