@@ -57,15 +57,14 @@ def custom_sum(series):
 def custom_mean(series):
     return series.mean(skipna=True)
 
+
 def normalize_bad_column(m, r_min, r_max, t_min, t_max):
-    if m not in range(1, 5):
-        num = m - r_min
-        den = r_max - r_min
-        res = num/den * (t_max - t_min) + t_min
-        return res
-    else:
-        return m
-    
+    num = m - r_min
+    den = r_max - r_min
+    res = (num / den * (t_max - t_min)) + t_min
+    return res
+
+
 ################### MIXED FEATURES ###################
 
 
