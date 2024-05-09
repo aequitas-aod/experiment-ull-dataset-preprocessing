@@ -58,11 +58,8 @@ def custom_mean(series):
     return series.mean(skipna=True)
 
 
-def normalize_bad_column(m, r_min, r_max, t_min, t_max):
-    num = m - r_min
-    den = r_max - r_min
-    res = (num / den * (t_max - t_min)) + t_min
-    return res
+def normalize_in_new_range(num, old_min, old_max, new_min, new_max):
+    return ((num - old_min) / (old_max - old_min) * (new_max - new_min)) + new_min
 
 
 ################### MIXED FEATURES ###################
