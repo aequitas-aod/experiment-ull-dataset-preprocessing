@@ -26,3 +26,5 @@ contains:
 ```src``` contains the source code for running the pre-processing and corresponding analysis:
 - ```pre_processing``` and ```stats```contain the code for the two corresponding tasks, and
 - ```pre_processing.py``` and ```split.py``` are two entry points.
+
+Finally, ```Dockerfile``` and ```requirements.txt``` set up the environment for running the applications across multiple platforms and with Python, respectively.
