@@ -1,5 +1,15 @@
 import os
 
+import os
+from raw_data import PATH as DATA_PATH
+from raw_data.split import PATH as DATA_SPLIT_PATH
+from raw_data.pre_processed import PATH as DATA_PREPROC_PATH
+from res import PATH as RES_PATH
+from benchmark import PATH as BEN_PATH
+
+HOME_PATH = os.path.join("/", "home")
+ORIGINAL_DATASET_NAME = "original.csv"
+
 column_groups = {
     "identifiers": [
         "id_student_original",
@@ -182,7 +192,7 @@ column_groups = {
         "country_iso_nac",
         "weight",
     ],
-    "school_principals_questionnaire": [
+    "principal_questionnaire": [
         "d1",
         "d2n",
         "d3n",
@@ -577,8 +587,183 @@ column_groups = {
     ],
 }
 
-HOME_PATH = os.path.join("/", "home")
-DATA_PATH = os.path.join(HOME_PATH, "data")
-DATA_SPLIT_PATH = os.path.join(DATA_PATH, "split")
-DATA_PREPROC_PATH = os.path.join(DATA_PATH, "pre_processed")
-ORIGINAL_DATASET_NAME = "original.csv"
+agg_mean = {
+    "extent_of_evaluation_variety": [
+        "p24a",
+        "p24b",
+        "p24c",
+        "p24d",
+        "p24e",
+        "p24f",
+        "p24g",
+        "p24h",
+        "p24i",
+        "p24j",
+        "p24k",
+    ],
+    "extent_of_pfc_incidence": [
+        "p16a",
+        "p16b",
+        "p16c",
+        "p16d",
+        "p16e",
+        "p16f",
+        "p16g",
+        "p16h",
+    ],
+    "extent_of_work_hampered": [
+        "p27a",
+        "p27b",
+        "p27c",
+        "p27c",
+        "p27d",
+        "p27e",
+        "p27f",
+        "p27g",
+        "p27h",
+    ],
+    "extent_of_family_interest": ["p29a", "p29b", "p29c", "p29d", "p29e", "p299d"],
+    "extent_of_family_support": ["p30a", "p30b", "p30c"],
+    "extent_of_work_facilitated_by_management": [
+        "p34a",
+        "p34b",
+        "p34c",
+        "p34d",
+        "p34e",
+        "p34f",
+        "p34g",
+    ],
+    "extent_of_positive_relationships": [
+        "p31d",
+        "p311a",
+        "p311b",
+        "p311c",
+        "p311e",
+        "p311f",
+        "p311g",
+        "p311h",
+    ],
+    "number_of_special_attention_students": [
+        "p7an",
+        "p7bn",
+        "p7cn",
+        "p7dn",
+        "p7en",
+        "p7gn",
+    ],
+    "extent_of_student_involvement_during_class": [
+        "p21a",
+        "p21b",
+        "p21c",
+        "p21d",
+        "p21e",
+        "p21f",
+    ],
+    "extent_of_teaching_methods_variety": [
+        "p24a",
+        "p24b",
+        "p24c",
+        "p24d",
+        "p24e",
+        "p24f",
+        "p24g",
+        "p24h",
+        "p24i",
+        "p24j",
+        "p24k",
+    ],
+    "extent_of_opinion_on_school": ["p32a", "p32b", "p32c", "p32d", "p32e"],
+    "extent_of_class_behaviour": ["p12a", "p12b", "p12c", "p12d"],
+    "extent_of_teaching_methods_variety": [
+        "p22a",
+        "p22b",
+        "p22c",
+        "p22d",
+        "p22e",
+        "p22f",
+        "p22g",
+    ],
+    "extent_of_resource_variety": [
+        "p23a",
+        "p23b",
+        "p23c",
+        "p23d",
+        "p23e",
+        "p23f",
+        "p23g",
+        "p23h",
+        "p23i",
+    ],
+    "extent_of_good_work_by_non_teachers": [
+        "p331a",
+        "p331b",
+        "p331c",
+        "p331d",
+        "p331e",
+        "p331f",
+        "p331g",
+        "p331j",
+    ],
+}
+
+agg_sum = {
+    "number_of_individual_training_topics": [
+        "p18a",
+        "p18b",
+        "p18c",
+        "p18d",
+        "p18e",
+        "p18f",
+        "p18g",
+        "p18h",
+        "p18i",
+    ],
+}
+
+agg_custom_binary = {
+    "number_of_subjects_taught": ["p9a", "p9b", "p9c", "p9d", "p9e", "p9f"]
+}
+
+to_rename = {
+    "p2": "gender",
+    "p2n": "age",
+    "p3n": "number_of_years_as_teacher",
+    "p4n": "number_of_years_in_school",
+    "p5": "has_taught_same_group_last_two_years",
+    "p6n": "number_of_students_in_group",
+    "p7fn": "number_of_students_disadvanteged_economic_situation",
+    "p8an": "number_of_foreign_students_speaking_spanish",
+    "p8bn": "number_of_foreign_students_not_speaking_spanish",
+    "p10n": "number_of_teaching_hours_per_week",
+    "p11": "average_explanation_time",
+    "p19": "extent_of_training_offer_adequate_to_needs",
+    "p20": "degree_of_individual_training_incidence",
+    "p25": "seat_configuration",
+    "p26": "behaviour_problems_solution",
+    "p28n": "number_of_meetings_with_families",
+    "p141": "is_enrolled_in_school_training_plan",
+    "p171n": "number_of_training_hours_last_six_years",
+    "p172n": "number_of_training_hours_ceu_offer",
+    "pfc": "main_topic_of_pfc",
+}
+
+agg_mix = {
+    "a": {
+        "extent_of_satisfaction_job_and_school": [
+            # sensitive feature
+            "p41e",
+            "p41g",
+            "p41i",
+            "p41a",
+            "p41b",
+            "p41h",
+            "p41j",
+        ],
+        "extent_of_results_satisfaction": ["p13", "p13b"],
+    },
+    "b": {
+        # sensitive feature
+        "extent_of_satisfaction_job_and_school": ["p41c", "p41d", "p41f"],
+        "extent_of_results_satisfaction": ["p13c"],
+    },
+}

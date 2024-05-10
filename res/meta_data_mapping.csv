@@ -1,0 +1,548 @@
+original_column,15-16_3°,15-16_6°,16-17_3°,16-17_6°,16-17_4°,18-19_3°,18-19_6°,18-19_4°,19-20_6,19-20_4,missing_cat,transformation,new_column,sensitive,desc,notes,
+a1,4%,7%,7%,8%,6%,5%,6%,6%,1%,0%,MNAR,discretize,gender,Yes,Sex,,
+a2,11%,10%,7%,8%,7%,5%,6%,6%,100%,100%,MAR/MNAR,none,birth_year,No (Yes),Birth year,,
+a3a,13%,12%,7%,8%,6%,100%,100%,12%,100%,13%,MAR/MNAR,booleanize,is_living_with_mother,No (Yes),Living with the mother,we generate a decision tree so check the most influent ones wrt. the performance scores according to the GINI index,
+a3b,19%,20%,7%,8%,6%,100%,100%,35%,100%,37%,MAR/MNAR,booleanize,is_living_with_father,No (Yes),Living the father,,
+living_with_father_mother,20%,21%,7%,8%,6%,100%,100%,39%,100%,41%,MAR/MNAR,drop,living_with,No (Yes),Transformation of a3a and a3b. Living with the father and the mother,,
+a3c,27%,28%,7%,8%,6%,100%,100%,48%,100%,52%,MAR/MNAR,booleanize,is_living_with_siblings,No (Yes),Living with brother/sister,,
+a3d,51%,54%,7%,8%,6%,100%,100%,91%,100%,92%,MAR/MNAR,booleanize,is_living_with_other_relatives,No (Yes),Living with other relatives,,
+a3et,58%,60%,7%,8%,6%,100%,100%,93%,100%,94%,MAR/MNAR,drop,living_with,No (Yes),Living with other people,,
+a3f,100%,100%,100%,100%,100%,100%,100%,99%,100%,99%,MAR/MNAR,drop,living_with,No (Yes),Living in foster homes,,
+a4,14%,18%,7%,8%,6%,5%,6%,100%,10%,100%,MAR/MNAR,drop,,Yes,Has repeated one or two times,repeated info,
+repeater,14%,18%,7%,8%,6%,5%,6%,100%,10%,100%,MAR/MNAR,booleanize,has_repeated,Yes,Transformation of A4. Has repeated one or more times,,
+a41,100%,100%,100%,100%,6%,100%,100%,7%,100%,8%,MAR/MNAR,drop,,Yes,I repeated in primary education,repeated info,
+a42,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MAR/MNAR,drop,,Yes,I repeated in secondary education,repeated info,
+a5,12%,10%,7%,8%,100%,5%,6%,100%,10%,100%,MCAR/MAR,normalize,frequency_of_skips,No,Frequency has missed class unexcused this course,,
+a51,100%,100%,100%,100%,6%,100%,100%,6%,100%,6%,MCAR/MAR,drop,,No,Unexcused absences during trimester,repeated info,
+a6nm,42%,31%,24%,21%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,homework hours/day,repeated info,
+a61,39%,25%,43%,23%,6%,100%,100%,6%,100%,6%,MCAR/MAR,drop,,No,Homework hours per week,repeated info,
+a71,100%,100%,100%,100%,100%,100%,6%,100%,10%,100%,MCAR/MAR,drop,,No,Homework time per day,repeated info,
+a7,10%,9%,7%,8%,100%,5%,6%,100%,10%,100%,MCAR/MAR,none,homeworks_day_per_week,No,homework days/week,,
+a8a,12%,11%,7%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_computer_usage,No,Frequency of computer use at home,,
+a8b,18%,15%,7%,8%,6%,100%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_computer_usage,No,Frequency of computer use at school,,
+a8c,20%,17%,100%,8%,6%,100%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_computer_usage,No,Frequency of computer use elsewhere,,
+a09a,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: Students pay attention to what the teachers say,too many missing values,
+a09b,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: There is silence and order,too many missing values,
+a09c,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: The teacher has to wait a long time for the students to shut up,too many missing values,
+a09d,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: Students can work in good conditions,too many missing values,
+a09e,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: Students do not start working long after the class has started,too many missing values,
+a9a,12%,11%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_internet_usage,No,Frequency I use the internet: information about studies,too many missing values,
+a9b,15%,12%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_internet_usage,No,Frequency I use the internet: play/search for info about games,,
+a9c,15%,13%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_internet_usage,No,Frequency I use the internet: search for information on sports,,
+a9d,15%,12%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_internet_usage,No,Frequency I use the Internet: search for information about music,,
+a9e,15%,12%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_internet_usage,No,Frequency I use the Internet: search for information on other topics,,
+a9f,15%,12%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,drop,,No,Frequency I use the internet: communicate with other people,mutual info with g,
+a9g,100%,100%,100%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize),frequency_of_internet_usage,No,Frequency I use the internet: use of social media networks,,
+a10a,13%,11%,7%,8%,6%,5%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: they explain most of the class,,
+a10b,14%,12%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we do presentations of certain topics,,
+a10c,14%,12%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: while they explain they ask us,,
+a10d,13%,11%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_work_with_teachers,No,"Work with teachers: while they explain, we ask them",,
+a10e,14%,12%,100%,8%,6%,100%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we make debates,,
+a10f,13%,11%,7%,8%,6%,100%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we do exercises,,
+a10g,14%,11%,7%,8%,6%,100%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we work individually,,
+a10h,15%,12%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we work in small groups,,
+a10i,15%,12%,100%,8%,6%,100%,6%,6%,10%,7%,MCAR/MAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we take notes,,
+a10j,14%,11%,7%,8%,6%,100%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_work_with_teachers,No,Work with teachers: we study individually and then they ask us,,
+a10k,14%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Work with teachers: They introduce the activitities,too many missing values,
+a10l,14%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Work with teachers: they make us feel good,too many missing values,
+a10m,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Work with teachers: I listen to the explanation,too many missing values,
+a10n,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Work with teachers: I understand what they explain,too many missing values,
+a11a,12%,11%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: textbook,,
+a11b,13%,12%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: library books,,
+a11c,14%,12%,7%,8%,6%,6%,6%,7%,10%,7%,MCAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: newspapers or magazines,,
+a11d,14%,12%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: computers or tablets,,
+a11e,14%,12%,7%,8%,6%,6%,6%,7%,10%,7%,MCAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: videos,,
+a11f,14%,12%,7%,8%,100%,100%,6%,100%,10%,100%,MCAR/MAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: school agenda,,
+a11g,14%,12%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Materials in class: material prepared by the teacher,too many missing values,
+a11h,13%,11%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),frequency_of_materials_in_class,No,Materials in class: digital whiteboard,,
+a12a,12%,11%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: They ask us about what we know before starting a topic,,
+a12b,13%,11%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: We are examined after each topic,,
+a12c,14%,12%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: We have a single exam in each trimester,,
+a12d,14%,12%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: They correct our homework and notebooks,,
+a12e,14%,12%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: They review the activities that we do in class,,
+a12f,14%,12%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: We have oral exams,,
+a12g,14%,12%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: They take into account our self-evaluation,,
+a12h,14%,11%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: They value interest and participation in class,,
+a12i,14%,11%,100%,8%,6%,100%,6%,7%,11%,7%,MCAR/MAR,mean (normalize),frequency_of_evaluations,No,Evaluation: Our behavior influences the scores,,
+a13a,12%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: We get along  with teachers,too many missing values,
+a13b,13%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: Teachers care about us,too many missing values,
+a13c,13%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: Teachers listen to us,too many missing values,
+a13d,13%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I receive help from my teachers,too many missing values,
+a13e,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR,none,extent_of_teachers_affinity,No,Degree of agreement: The teachers are fair,,
+a14a,12%,11%,7%,8%,6%,6%,6%,6%,10%,6%,MCAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: I make friends easily,mean (normalize)_gb considers semantic good and bad questions,
+a14b,14%,12%,7%,8%,6%,100%,6%,6%,10%,6%,MCAR/MAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: I feel comfortable with my classmates,,
+a14c,16%,14%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I feel alone,too many missing values,
+a14d,14%,12%,7%,8%,6%,100%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: My classmates leave me out of their games,,
+a14e,13%,11%,7%,8%,6%,100%,6%,6%,11%,7%,MCAR/MAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: I am afraid of my classmates,,
+a14f,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: The attitude of my classmates towards me bothers me,,
+a14g,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: I like to be with my classmates,,
+a14h,13%,11%,7%,8%,6%,6%,6%,6%,11%,7%,MCAR,mean (normalize)_gb,extent_of_classmates_affinity,No,Degree of agreement: My classmates help me in class,,
+a141g,100%,100%,100%,100%,6%,100%,100%,6%,100%,6%,MCAR/MAR,drop,,No,Degree of agreement: I have a good relationship with my classmates,too many missing values,
+a144d,100%,100%,100%,100%,100%,100%,100%,6%,100%,6%,MCAR/MAR,drop,,No,Degree of agreement: My classmates leave me out of their conversations,too many missing values,
+a144h,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: We help each other in class,too many missing values,
+a166f,100%,100%,100%,100%,100%,6%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: Some classmate treats me badly,too many missing values,
+a177d,100%,100%,100%,100%,100%,6%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I would like to change to other class group,too many missing values,
+a15a,12%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: I know what my teachers expect me to do,,
+a15b,13%,11%,7%,8%,100%,5%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: It is easy to understand my teachers,,
+a15c,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: I am interested in what my teachers say,,
+a15d,13%,11%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers propose interesting things,,
+a15e,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers clearly answer my questions,,
+a15f,13%,11%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers are good at explaining,,
+a15g,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers let me demonstrate what I have learned,,
+a15h,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers do different things to help us learn,,
+a15i,13%,11%,7%,8%,100%,5%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers tell me how to improve when I am wrong,,
+a15j,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/ MAR,mean (normalize),extent_of_teacher_performance,No,Degree of agreement: My teachers listen to me,,
+a16a,12%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: The activities are fun,too many missing values,
+a16b,13%,11%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),extent_of_class_env,No,Degree of agreement: The teacher is happy with the group,,
+a16c,13%,11%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),extent_of_class_env,No,Degree of agreement: Students participate in decision-making,,
+a16d,13%,11%,100%,100%,6%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: Students help each other,too many missing values,
+a16e,13%,11%,7%,8%,6%,6%,6%,6%,10%,7%,MCAR,mean (normalize),extent_of_class_env,No,Degree of agreement: In my class they respect me and I feel safe,,
+a16f,13%,11%,7%,8%,100%,5%,6%,100%,10%,100%,MCAR/MAR,mean (normalize),extent_of_class_env,No,Degree of agreement: I like the organization and decoration of my class,,
+a16g,13%,11%,7%,8%,100%,6%,6%,100%,10%,100%,MCAR/MAR,mean (normalize),extent_of_class_env,No,Degree of agreement: I really like working in class,,
+a16h,13%,11%,7%,8%,6%,6%,6%,6%,11%,7%,MCAR,mean (normalize),extent_of_class_env,No,Degree of agreement: In class there is a good working environment,,
+a16i,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I really like the work in mathematics,too many missing values,
+a16j,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement:  I really like the spanish language work,too many missing values,
+a16k,100%,100%,100%,100%,6%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: I really like the english work,too many missing values,
+a16l,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I really like the work in geography and history,too many missing values,
+a17a,12%,10%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,mean (normalize)_gb,extent_of_school_satisfaction,No,Degree of agreement: In my school there are appropriate rules/norms,,
+a17b,12%,11%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_school_satisfaction,No,Degree of agreement: My school is very good,,
+a17c,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,mean (normalize)_gb,extent_of_school_satisfaction,No,Degree of agreement: I like being in this school,,
+a17d,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,mean (normalize)_gb,extent_of_school_satisfaction,No,Degree of agreement: I would like to change to other school,,
+a17e,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,mean (normalize)_gb,extent_of_school_satisfaction,No,Degree of agreement: I feel safe in this school,,
+a17f,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,drop,,No,Degree of agreement: I feel part of this school,mutual info with b,
+a17g,13%,11%,7%,8%,6%,100%,6%,6%,11%,6%,MCAR/MAR,drop,,No,Degree of agreement: I am proud to go to this school,mutual info with b,
+a17h,13%,11%,7%,8%,100%,100%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_school_satisfaction,No,Degree of agreement: I learn a lot at school,,
+a171h,100%,100%,100%,100%,6%,100%,100%,6%,100%,6%,MCAR/MAR,drop,,No,Degree of agreement: The education I receive is good,too many missing values,
+a20a,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_math_affinity,No,Degree of agreement: I am a good student in mathematics,,
+a20b,100%,100%,7%,8%,100%,100%,100%,100%,100%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_math_affinity,No,Degree of agreement: I wish I did not have mathematics,,
+a20c,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_math_affinity,No,Degree of agreement: Mathematics is more difficult for me than for my classmates,,
+a20d,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_math_affinity,No,Degree of agreement: Mathematics is more difficult than other subjects,,
+a20e,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_math_affinity,No,Degree of agreement: I like studying in the math class,,
+a21a,100%,100%,7%,8%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I read because I have to,too many missing values,
+a21b,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_reading_affinity,No,Degree of agreement: I read very well,,
+a21c,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_reading_affinity,No,Degree of agreement: Language is more difficult for me than for my classmates,,
+a21d,100%,100%,7%,8%,100%,100%,100%,100%,100%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_reading_affinity,No,Degree of agreement: It is difficult for me to read,,
+a21e,100%,100%,7%,8%,100%,6%,6%,100%,11%,100%,MCAR/MAR,mean (normalize)_gb,extent_of_reading_affinity,No,Degree of agreement: Language is more difficult than other subjects,,
+a211a,100%,100%,100%,100%,100%,6%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: I like to read,,
+a22a,100%,100%,100%,8%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: I am a good student in Natural Sciences,,
+a22b,100%,100%,100%,8%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I wish I dit not have Nature Sciences,,
+a22c,100%,100%,100%,8%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: Natural Sciences is more difficult for me than for my classmates,,
+a22d,100%,100%,100%,8%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: Natural Sciences is more difficult than other subjects,,
+a222b,100%,100%,100%,100%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: I like studying Natural Sciences,,
+a23a,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I am concerned that the written tests are difficult,,
+a23b,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: In the written tests I feel very nervous,,
+a23c,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I want to have the best scores in my class,,
+a23d,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I want to have the best scores possible,,
+a23e,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I prefer to work individually than in a group,,
+a23f,100%,100%,100%,100%,6%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I listen to others,,
+a23g,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I like to know different points of view,,
+a23h,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I take into account the opinions and interests of my classmates,,
+a23i,100%,100%,100%,100%,6%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Degree of agreement: I like cooperative work,,
+a23j,100%,100%,100%,100%,6%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: Better decisions are taken in a group than individually,,
+a23k,100%,100%,100%,100%,100%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I am happy with the scores I have,,
+a24,100%,100%,100%,100%,8%,100%,100%,7%,100%,7%,MCAR/MAR,drop,,Yes,Studies that I will do next year,,
+a40a,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I use social media networks with my classmates,,
+a40b,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I am affected by the use of social media networks in my day-to-day life at the school,,
+a40c,100%,100%,100%,100%,6%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I have ever felt hurt on social media networks,,
+a40d,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I dedicate a lot of time in my day to day to the use of social media networks,,
+a111a,100%,100%,100%,100%,100%,6%,6%,100%,10%,100%,MCAR/MAR,drop,,No,Degree of agreement: Use of activity booklet,,
+a160k,100%,100%,100%,100%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: I am a good student in English,,
+a162k,100%,100%,100%,100%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: English is more difficult for me than for my classmates,,
+a163k,100%,100%,100%,100%,100%,100%,6%,100%,11%,100%,MCAR/MAR,drop,,No,Degree of agreement: English is more difficult than other subjects,,
+a166k,100%,100%,100%,100%,100%,100%,100%,6%,100%,7%,MCAR/MAR,drop,,No,Degree of agreement: I like the work I do in English classes and I find it interesting,,
+country_iso_cnac,100%,100%,9%,14%,15%,7%,10%,11%,100%,100%,MAR/MNAR,none,birth_country,Yes,Birth country ISO,,
+country_iso_nac,100%,100%,8%,12%,11%,5%,6%,8%,100%,100%,MAR/MNAR,none,nazionality_country,Yes,Nationality country ISO,,
+Weight,100%,100%,0%,0%,0%,0%,0%,0%,100%,6%,MAR,none,weight,No,Weight for the sample observations,,
+d1,9%,9%,9%,9%,9%,9%,9%,9%,9%,9%,MCAR,discretize,gender,No,Sex,,FALSE
+d2n,9%,8%,7%,10%,13%,8%,11%,7%,14%,8%,MCAR,none,age,No,Age,,FALSE
+d3n,10%,9%,7%,10%,13%,8%,11%,7%,14%,8%,MCAR,none,number_of_years_of_teaching,No,Year of teaching experience,,FALSE
+d4n,9%,8%,7%,10%,13%,8%,11%,7%,14%,8%,MCAR,none,number_of_years_in_school,No,Years in the school,,FALSE
+d5n,10%,9%,7%,10%,13%,8%,10%,7%,14%,8%,MCAR,none,number_of_years_as_principal,No,Years of experience as a principal,,FALSE
+d6n,10%,8%,7%,10%,13%,8%,11%,7%,14%,8%,MCAR,none,number_of_years_as_principal_in_school,No,Years of experience as a principal in the school,,FALSE
+d7n,14%,12%,24%,26%,16%,8%,9%,7%,14%,8%,MCAR,none,number_of_class_hours_per_week,No,Number of weekly class hours,,FALSE
+d8n,10%,8%,7%,10%,13%,8%,11%,7%,14%,8%,MCAR,none,number_of_principlas_10_years,No,Principals that the center has had in the last 10 years,,FALSE
+d9a1,28%,27%,7%,10%,13%,8%,9%,7%,100%,100%,MCAR/MAR,none,number_of_students,No,Total number of students,,FALSE
+d9a2,26%,25%,8%,10%,13%,8%,13%,7%,100%,100%,MCAR/MAR,none,number_of_groups,No,Total number of groups,,FALSE
+d9b1,11%,9%,8%,11%,80%,8%,10%,80%,100%,100%,MCAR/MAR,none,number_of_preschool_students,No,Total number of preschool students,,FALSE
+d9b2,12%,10%,22%,30%,80%,22%,26%,80%,100%,100%,MCAR/MAR,none,number_of_preschool_groups,No,Total number of preschool groups,,FALSE
+d9c1,10%,8%,7%,10%,80%,8%,9%,80%,100%,100%,MCAR/MAR,none,number_of_primary_students,No,Total number of primary education students,,FALSE
+d9c2,11%,10%,17%,26%,80%,20%,20%,79%,100%,100%,MCAR/MAR,none,number_of_primary_groups,No,Total number of primary education groups,,FALSE
+d9d1,10%,10%,7%,100%,100%,8%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Total number of 3rd grade students,,TRUE
+d9d2,14%,13%,7%,100%,100%,8%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Total number of 3rd grade groups,,TRUE
+d9e1,12%,10%,100%,10%,100%,100%,9%,100%,100%,100%,MCAR/MAR,drop,,No,Total number of 6th grade students,,TRUE
+d9e2,14%,12%,100%,10%,100%,100%,9%,100%,100%,100%,MCAR/MAR,drop,,No,Total number of 6th grade groups,,TRUE
+d9f1,77%,77%,80%,80%,13%,72%,76%,7%,100%,100%,MCAR/MAR,drop,,No,Total number of mandadory secondary education students,,TRUE
+d9f2,78%,77%,80%,80%,14%,72%,76%,7%,100%,100%,MCAR/MAR,drop,,No,Total number of mandadory secondary education groups,,TRUE
+d9g1,99%,99%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Total number of students in Qualification Programs,,TRUE
+d9g2,99%,99%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Total number of groups in Qualification Programs,,TRUE
+d9h1,100%,100%,100%,100%,13%,100%,100%,7%,100%,100%,MCAR/MAR,drop,,No,Total number of 4th grade of mandatory secondary education students,,TRUE
+d9h2,100%,100%,100%,100%,13%,100%,100%,7%,100%,100%,MCAR/MAR,drop,,No,Total number of 4th grade of mandatory secondary education groups,,TRUE
+d10a,9%,7%,7%,100%,100%,8%,100%,100%,100%,100%,MCAR/MAR,drop,,No,3rd grade ratio,,TRUE
+d10b,9%,7%,100%,10%,100%,100%,9%,100%,100%,100%,MCAR/MAR,drop,,No,6th grade ratio,,TRUE
+d10c,100%,100%,100%,100%,13%,100%,100%,7%,100%,100%,MCAR/MAR,drop,,No,4th grade of mandatory secondary ESO Ratio,,TRUE
+d11an,16%,14%,7%,10%,13%,8%,12%,7%,15%,8%,MCAR,none,number_of_abroad_students_country_no_spanish,No,Students born in another country with a language  other than Spanish,,FALSE
+d11bn,17%,16%,12%,13%,15%,8%,12%,7%,15%,8%,MCAR,none,number_of_abroad_students_country_spanish,No,Students born in another country with the same language  as Spanish,,FALSE
+d12an,10%,9%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Teachers of the evaluated grade,,TRUE
+d12bn,10%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,none,number_of_teachers_in_school,No,Total teachers of the school,,FALSE
+d13n,12%,10%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,"Among the teachers, how many have been in the school five or more years?",,TRUE
+d14,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,none,percentage_of_teachers_changed_school_last_year,No,Teachers who change school each year,,FALSE
+d15,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,none,attitude_teacher_training_courses,No,Administration attitude to teacher training courses,,FALSE
+d16an,11%,10%,7%,10%,13%,9%,11%,7%,16%,8%,MCAR,custom,number_of_school_tech_resources,No,School resources. Available computers,sum,FALSE
+d16bn,10%,9%,7%,10%,13%,9%,11%,7%,16%,8%,MCAR,custom,number_of_school_tech_resources,No,School resources. Computers available to students,sum,FALSE
+d16cn,10%,8%,7%,10%,13%,9%,11%,7%,16%,8%,MCAR,custom,number_of_school_tech_resources,No,School resources. Computers available for teachers,sum,FALSE
+d16dn,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,custom,number_of_school_tech_resources,No,School resources. Computers for the administrative management of the school,sum,FALSE
+d16en,100%,100%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR/MAR,custom,number_of_school_tech_resources,No,School resources. Tablets/laptops available to students,sum,FALSE
+d16fn,100%,100%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR/MAR,custom,number_of_school_tech_resources,No,School resources. Interactive digital whiteboards or touch screens in classrooms,sum,FALSE
+d17a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of budget and resources,,FALSE
+d17b,10%,9%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of attendance of the teachers,,FALSE
+d17c,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of participation and support of families,,FALSE
+d17d,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of teacher training plan in my school for teachers,,FALSE
+d17e,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of opportunities/support for professional development of the management team,,FALSE
+d17f,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of agility to cover teacher absences,,FALSE
+d17g,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of coordination between members of the management team,,FALSE
+d17h,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of autonomy to make decisions,,FALSE
+d18a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of good/qualified teachers,,FALSE
+d18b,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of teachers trained to teach students with special educational needs,,FALSE
+d18c,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack or inadequate teaching material,,FALSE
+d18d,10%,9%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,drop,,No,It is an inconvenience in your school: Lack or inadequacy of technological devices for teaching,,FALSE
+d18e,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Poor internet connection,,FALSE
+d18f,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack or inadequacy of software for teaching,,FALSE
+d18g,9%,8%,7%,10%,13%,8%,11%,9%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack or inadequacy of library materials,,FALSE
+d18h,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of support teachers,,FALSE
+d18i,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of administrative staff,,FALSE
+d18j,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of adequate infrastructure,,FALSE
+d18k,9%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of teacher collaboration,,FALSE
+d18l,9%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of collaboration from families,,FALSE
+d18m,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Administrative bureaucracy,,FALSE
+d18n,100%,100%,100%,100%,100%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of computers in the classroom or for students.,,FALSE
+d19a,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Arriving late to the school,,FALSE
+d19b,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Absenteeism (unexcused absences),,FALSE
+d19c,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Disruption of order in class,,FALSE
+d19d,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Vandalism and theft,,FALSE
+d19e,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Inappropriate or profanity language,,FALSE
+d19f,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Intimidation or insults between students or another type of bullying,,FALSE
+d19g,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Physical aggressions between students,,FALSE
+d19h,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Lack of respect to teachers,,FALSE
+d19i,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Intimidation or insults to the teachers or staff of the school,,FALSE
+d19j,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Arriving late to the school,,FALSE
+d19k,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: absenteeism (unexcused absences),,FALSE
+d19l,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Lack of respect towards the students,,FALSE
+d19m,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Lack of respect between teachers,,FALSE
+d19n,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Discrimination based on sex,,FALSE
+d19o,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Lack of collaboration with the school,,FALSE
+d19p,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Criticism and opposition to the rules of the school,,FALSE
+d19q,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Lack of respect towards the teachers and staff of the school,,FALSE
+d19r,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Lack of respect or discrimination towards other families,,FALSE
+d20a,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Helps to establish good relations between teachers,,FALSE
+d20b,9%,7%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Take into account the opinions of the teaching staff,,FALSE
+d20c,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Stimulate teachers to develop innovative ideas,,FALSE
+d20d,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Create a strong sense of identity in the community with the objectives of the school,,FALSE
+d20e,10%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Promote teamwork among teachers,,FALSE
+d20f,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Promotes the maximum use of capacities and teacher knowledge,,FALSE
+d20g,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Generates procedures for teacher training courses,,FALSE
+d20h,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Uses student educational outcomes/achievement to set school goals,,FALSE
+d20i,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Checks that the work of teachers is in accordance with the objectives of the school,,FALSE
+d20j,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Encourage that teaching practice is based on recent research developments,,FALSE
+d20k,100%,100%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Follow up on disruptive problems in the classrooms,,FALSE
+d20l,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Discuss the educational objectives of the school with teachers,,FALSE
+d21a,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With teachers,,FALSE
+d21b,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With students,,FALSE
+d21c,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With families,,FALSE
+d21d,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With CEP associates,,FALSE
+d21e,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With guidance teams (EOEP),,FALSE
+d21f,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With educational inspection,,FALSE
+d22a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: The staff of the school share a common methodological line,,FALSE
+d22b,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: There is a high level of cooperation between the school and the local community,,FALSE
+d22c,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: School staff speak openly about difficulties in carrying out their teaching work,,FALSE
+d22d,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: There is mutual respect for the ideas of colleagues,,FALSE
+d22e,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: There is a culture of sharing successes and failures,,FALSE
+d22f,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: Relations between teachers and students are good,,FALSE
+d30a,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_alphabet,No,Student grouping criteria: By alphabetical order of last names or other random criteria,enriched with d301,TRUE
+d30b,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_gender,No,Student grouping criteria:Balance between girls and boys,enriched with d303,TRUE
+d30c,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,booleanize,group_criteria_language,No,Student grouping criteria: Linguistic reasons,,TRUE
+d30d,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_performance,No,Student grouping criteria: According to academic performance,enriched with d304,TRUE
+d30e,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_homogeneity,No,Student grouping criteria: Looking for homogeneity according to the characteristics of the students,enriched with d305,TRUE
+d30f,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_heterogeneity,No,Student grouping criteria: Seeking heterogeneity among students,enriched with d306,TRUE
+d31a,100%,100%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR/MAR,none,extent_of_satisfaction_students_results,No,Degree of agreement: I am satisfied with the academic results of the students,,FALSE
+d31b,100%,100%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR/MAR,none,extent_of_expected_students_results,No,Degree of agreement: The students have obtained the results expected of them,,FALSE
+d31c,100%,100%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR/MAR,none,extent_of_students_improvement_expectation,No,Degree of agreement: I believe that students can improve the academic results obtained,,FALSE
+d32a,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,none,school_teacher_training_plan,No,Your school has a school teacher training plan,,FALSE
+d33a,100%,100%,14%,22%,24%,8%,11%,9%,16%,10%,MCAR/MAR,none,school_teacher_training_plan_main_theme,No,Main theme of the school teacher training plan,,FALSE
+d121a,100%,100%,7%,10%,13%,8%,11%,7%,15%,10%,MCAR/MAR,none,number_of_teachers_1_education,No,Number of teachers in primary education,,FALSE
+d121b,100%,100%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR/MAR,none,number_of_mandatory_teachers_2_education,No,Number of mandatory secondary education teachers,,FALSE
+d131a,100%,100%,7%,10%,13%,8%,11%,7%,15%,10%,MCAR/MAR,none,number_of_teachers_1_education_more_5_years,No,Number of teachers in primary education with 5 or more academic years,,FALSE
+d131b,100%,100%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR/MAR,none,number_of_mandatory_teachers_2_education_more_5_years,No,Number of mandatory secondary education teachers with 5 or more academic years,,FALSE
+d301,100%,100%,100%,100%,100%,88%,89%,99%,90%,100%,MCAR/MAR,drop,,No,Student grouping criteria: In alphabetical order of surnames,duplicated and merged with d30a,TRUE
+d302,100%,100%,100%,100%,100%,86%,91%,96%,93%,95%,MCAR/MAR,booleanize,group_criteria_random,No,Student grouping criteria: Randomly,,TRUE
+d303,100%,100%,100%,100%,100%,26%,29%,38%,43%,38%,MCAR/MAR,drop,,No,Student grouping criteria: Balance between girls and boys,duplicated and merged with d30b,TRUE
+d304,100%,100%,100%,100%,100%,88%,87%,100%,88%,90%,MCAR/MAR,drop,,No,Student grouping criteria: According to academic performance,duplicated and merged with d30d,TRUE
+d305,100%,100%,100%,100%,100%,95%,86%,91%,87%,80%,MCAR/MAR,drop,,No,Student grouping criteria: Looking for homogeneity according to student characteristics,duplicated and merged with d30e,TRUE
+d306,100%,100%,100%,100%,100%,44%,35%,20%,44%,27%,MCAR/MAR,drop,,No,Student grouping criteria: Seeking heterogeneity among students,duplicated and merged with d30f,TRUE
+d307,100%,100%,100%,100%,100%,84%,86%,26%,85%,27%,MCAR/MAR,booleanize,group_criteria_subjects,No,Student grouping criteria: By student's choice of subjects,,TRUE
+d308,100%,100%,100%,100%,100%,68%,61%,92%,67%,83%,MCAR/MAR,booleanize,group_criteria_other,No,Student grouping criteria: Other criteria,,TRUE
+tasa_nac_eso4,100%,100%,100%,100%,13%,100%,100%,7%,100%,100%,MCAR/MAR,none,rate_4_grade_mandatory_2_education_students_different_nationality,No,Rate of 4th grade of mandatory secondary education students with a different nationality,,TRUE
+tasa_nac_pri3,100%,100%,7%,100%,100%,8%,100%,100%,100%,100%,MCAR/MAR,none,rate_3_grade_mandatory_2_education_students_different_nationality,No,Rate of 3rd grade primary education students with a different nationality,,TRUE
+tasa_nac_pri6,100%,100%,100%,10%,100%,100%,9%,100%,100%,100%,MCAR/MAR,none,rate_6_grade_mandatory_2_education_students_different_nationality,No,Rate of 6th grade primary education students with a different nationality,,TRUE
+distnac,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,number_of_student_different_nationality,No,Number of students with different nationality,,TRUE
+distnac_eso4,100%,100%,100%,100%,13%,100%,100%,7%,100%,100%,MCAR/MAR,drop,number_of_students_different_nationality_4_grade_mandatory_2_education,No,Number of students with different nationalities in 4th grade of mandatory secondary education,,TRUE
+distnac_pri3,100%,100%,7%,100%,100%,8%,100%,100%,100%,100%,MCAR/MAR,drop,number_of_students_different_nationality_3_grade_mandatory_2_education,No,Number of students with different nationality in 3rd grade primary education,,TRUE
+distnac_pri6,100%,100%,100%,10%,100%,100%,9%,100%,100%,100%,MCAR/MAR,drop,number_of_students_different_nationality_6_grade_mandatory_2_education,No,Number of students with different nationality in 6th grade primary education,,TRUE
+groups,100%,100%,7%,10%,13%,8%,11%,7%,100%,100%,MAR/MNAR,none,number_of_groups_evaluated_grade,No,Number of groups in the evaluated grade,,FALSE
+island,0%,0%,0%,0%,6%,1%,0%,6%,0%,6%,MNAR,discretize,island,Yes,Canary island to which the school belongs,,FALSE
+capital_island,0%,0%,0%,0%,6%,1%,0%,6%,0%,6%,MNAR,drop,capital_island,Yes,Tranformation of island. Capital island vs non capital island,,FALSE
+public_private,0%,0%,0%,0%,6%,1%,0%,6%,0%,6%,MNAR,discretize,public_or_private,Yes,Public or private school,,FALSE
+f0,33%,31%,52%,43%,100%,14%,15%,100%,39%,100%,MCAR/MAR,discretize,respondent,No,"Respondent: mother, father, other",,
+f1n,34%,31%,52%,42%,100%,11%,11%,100%,39%,100%,MCAR/MAR,none,number_of_people_in_household,No,Number of people in household,,
+f2an,32%,30%,52%,42%,100%,14%,14%,100%,40%,100%,MCAR/MAR,none,mother_age,No,Mother age,,
+f2bn,37%,35%,52%,42%,100%,23%,28%,100%,43%,100%,MCAR/MAR,none,father_age,No,Father age,,
+f3a,33%,31%,52%,43%,12%,13%,14%,9%,41%,11%,MNAR,none,mother_education_level,Yes,Mother education level,,
+f3b,39%,37%,54%,45%,15%,22%,25%,12%,44%,13%,MNAR,none,father_education_level,Yes,Father education level,,
+mother_education,33%,31%,52%,43%,12%,13%,14%,9%,41%,11%,MNAR,drop,,Yes,Transformation of f3a. Mother education,"repeated field, information already present in f3a",
+father_education,39%,37%,54%,45%,15%,22%,25%,12%,44%,13%,MNAR,drop,,Yes,Transformation of f3b. Father education,"repeated field, information already present in f3b",
+f4a,35%,33%,53%,44%,12%,15%,15%,12%,42%,12%,MNAR,none,mother_employment_status,Yes,Mother employment status,,
+f4b,40%,39%,54%,46%,15%,22%,26%,15%,46%,15%,MNAR,none,father_employment_status,Yes,Father employment status,,
+f5a,37%,34%,53%,43%,31%,13%,13%,7%,40%,7%,MNAR,discretize,mother_place_of_birth,Yes,Mother place of birth,,
+f5b,41%,38%,54%,45%,30%,20%,23%,8%,42%,8%,MNAR,discretize,father_place_of_birth,Yes,Father place of birth,,
+f5n,33%,31%,52%,43%,22%,11%,11%,7%,40%,7%,MNAR,discretize,student_place_of_birth,Yes,Student place of birth,,
+inmigrant,33%,31%,52%,43%,22%,11%,11%,7%,40%,7%,MNAR,drop,,Yes,Transformation of f5n. Immigrant status,"repeated field, information already present in f5n",
+inmigrant2,33%,31%,52%,43%,22%,11%,11%,7%,40%,7%,MNAR,drop,,Yes,Transformation of f5n. Immigrant status,"repeated field, information already present in f5n",
+inmigrant_second_gen,36%,33%,53%,43%,25%,12%,12%,6%,40%,7%,MNAR,drop,,Yes,"Transformation of f5n. Immigrant status, second generation","repeated field, information already present in f5n",
+f6,70%,66%,96%,95%,100%,89%,89%,100%,93%,100%,MCAR/MAR,none,degree_of_years_in_spanish_education_system,No,"If your child was not born in Spain, how long has he/she been studying in the Spanish educational system, including current year",,
+f7,33%,30%,52%,42%,6%,13%,12%,6%,40%,6%,MCAR,discretize,language_spoken_at_home,No,Language usually spoken at home,,
+f8ta,40%,36%,58%,49%,6%,19%,17%,6%,40%,6%,MCAR,drop,,No,Child school start age. Years,,
+f8tm,53%,53%,71%,66%,100%,30%,31%,100%,41%,100%,MCAR/MAR,drop,,No,Child school start age. Months,,
+start_schooling_age,33%,31%,52%,43%,6%,14%,14%,6%,39%,6%,MCAR,none,degree_of_start_schooling_age,No,Transformation of f8ta and f8tm. Start schooling age,,
+f9a,32%,30%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,How often does your child use at home. Quiet place to study,too many missing value,
+f9b,34%,32%,52%,42%,6%,11%,12%,6%,40%,6%,MCAR,mean (normalize),frequency_of_books_at_home,No,How often does your child use at home. Books,,
+f9c,36%,34%,52%,42%,6%,16%,15%,6%,40%,7%,MCAR,mean (normalize),frequency_of_books_at_home,No,How often does your child use at home. Encyclopedias,,
+f9d,34%,31%,52%,42%,6%,13%,13%,6%,40%,6%,MCAR,mean (normalize),frequency_of_tech_at_home,No,"How often does your child use at home. PC, tablet",,
+f9e,37%,33%,52%,42%,6%,13%,13%,6%,40%,6%,MCAR,mean (normalize),,No,How often does your child use at home. Internet,mutual info with d,
+f9f,35%,32%,100%,100%,100%,13%,12%,6%,40%,6%,MCAR/MAR,mean (normalize),frequency_of_tech_at_home,No,How often does your child use at home. Smartphone,,
+f9g,35%,32%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,How often does your child use at home. Calculator,too many missing value,
+f9h,36%,33%,52%,42%,6%,16%,16%,6%,40%,6%,MCAR,mean (normalize),frequency_of_books_at_home,No,How often does your child use at home. Newspapers,,
+f10n,32%,30%,52%,42%,7%,12%,13%,7%,40%,7%,MCAR,none,number_of_tech_at_home,No,Number of digital devices at home,,
+f11,32%,29%,52%,42%,6%,10%,11%,6%,40%,6%,MNAR,normalize,extent_of_books_at_home,Yes,Number of books at home,"repeated field, information already present in book",
+books,32%,29%,52%,42%,6%,10%,11%,6%,40%,6%,MNAR,drop,,Yes,Transformation of f11. Number of books at home,better than f11 has values from 1 to 4,
+f12a,32%,29%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),frequency_of_see_adult_read,No,Frequency of your child at home. He/she see adults reading books,,
+f12b,33%,31%,52%,42%,100%,12%,13%,100%,40%,100%,MCAR/MAR,mean (normalize),frequency_of_see_adult_read,No,Frequency of your child at home. Adults read stories to their children,,
+f13n,34%,31%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Number of collective meetings in the school during the academic year,too many missing value,
+f14a,33%,31%,52%,42%,100%,13%,14%,100%,41%,100%,MCAR/MAR,discretize,visits_in_school_by_mother,No,Frequency you go to the school to see how your child is doing: Mother,,
+f14b,42%,40%,52%,42%,100%,27%,29%,100%,44%,100%,MCAR/MAR,discretize,visits_in_school_by_father,No,Frequency you go to the school to see how your child is doing: Father,,
+f14c,90%,88%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,drop,,No,Frequency you go to the school to see how your child is doing: Other person,too many missing value,
+f15a,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_interest_in_interview,No,"In an interview with the teacher, you have been interested in: Scores",,
+f15b,33%,30%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_interest_in_interview,No,"In an interview with the teacher, you have been interested in: Dificulties in the learning process",,
+f15c,33%,31%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,drop,,No,"In an interview with the teacher, you have been interested in: Behavior",mutual info with d,
+f15d,34%,31%,52%,42%,100%,12%,12%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_interest_in_interview,No,"In an interview with the teacher, you have been interested in: Behavior of the class group",,
+f15e,34%,31%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,drop,,No,"In an interview with the teacher, you have been interested in: Relationship with classmates",mutual info with d,
+f15f,100%,100%,100%,100%,100%,12%,12%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_interest_in_interview,No,"In an interview with the teacher, you have been interested in: Teaching/learning process methodologies",,
+f16a,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),"
+frequency_of_support_at_home",No,How often do you do with your child at home: Talk about the work in class,,
+f16b,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),"
+frequency_of_support_at_home",No,How often do you do with your child at home: Planning his/her time to study/do homework,,
+f16c,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),"
+frequency_of_support_at_home",No,How often do you do with your child at home: Help him to do his/her homework,,
+f16d,33%,30%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,mean (normalize),"
+frequency_of_support_at_home",No,How often do you do with your child at home: Provide the materials and resources he/shee needs to study,,
+f16e,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),"
+frequency_of_support_at_home",No,How often do you do with your child at home: Check that he/she has done the homework,,
+f16f,33%,30%,100%,100%,100%,100%,100%,100%,100%,100%,MCAR/MAR,mean (normalize),"
+frequency_of_support_at_home",No,How often do you do with your child at home: Control class attendance,,
+f17a,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),frequency_of_parent_involved_in_school_activities,No,Frequency you participate in school activities: AMPA meetings,,
+f17b,33%,31%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,mean (normalize),frequency_of_parent_involved_in_school_activities,No,Frequency you participate in school activities: training activities for parents,,
+f17c,33%,31%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,mean (normalize),frequency_of_parent_involved_in_school_activities,No,Frequency you participate in school activities: Organization of out-of-school activities,,
+f17d,34%,31%,52%,42%,100%,12%,12%,100%,40%,100%,MCAR/MAR,mean (normalize),frequency_of_parent_involved_in_school_activities,No,Frequency you participate in school activities: other activities,,
+f18a,32%,29%,52%,42%,100%,10%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_family_satisfaction,No,Degree of satisfaction: Teachers,,
+f18b,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_family_satisfaction,No,Degree of satisfaction: Principal,,
+f18c,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,drop,,No,Degree of satisfaction: Work in class,mutual info with a,
+f18d,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,drop,,No,Degree of satisfaction: Relationship with teachers,mutual info with a,
+f18e,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_family_satisfaction,No,Degree of satisfaction: Classmates,,
+f18f,33%,30%,52%,42%,100%,12%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_family_satisfaction,No,Degree of satisfaction: Resources,,
+f18g,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_family_satisfaction,No,Degree of satisfaction: Learning level,,
+f18h,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_family_satisfaction,No,Degree of satisfaction: School environment,,
+f18i,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,drop,,No,Degree of satisfaction: In general with the school,mutual info with h,
+f19a,32%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_teacher_satisfaction,No,Degree of satisfaction with the teacher: Motivation and enthusiasm,,
+f19b,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_teacher_satisfaction,No,Degree of satisfaction with the teacher: Cordiality and closeness,,
+f19c,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_teacher_satisfaction,No,Degree of satisfaction with the teacher: Work capacity,,
+f19d,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_teacher_satisfaction,No,Degree of satisfaction with the teacher: Smooth communication,,
+f19e,33%,30%,52%,42%,100%,11%,11%,100%,40%,100%,MCAR/MAR,mean (normalize),extent_of_teacher_satisfaction,No,Degree of satisfaction with the teacher: Flexibility and patience,,
+f20,32%,30%,52%,42%,100%,16%,15%,100%,40%,100%,MCAR/MAR,booleanize,has_been_recommended_school,No,Would you recommend this school?,,
+f21n,32%,29%,52%,42%,100%,12%,12%,100%,40%,100%,MCAR/MAR,none,number_of_homework_hours_a_week,No,Homework hours/week,,
+f22,31%,28%,52%,42%,100%,10%,11%,100%,40%,100%,MCAR/MAR,drop,,No,Homework days/week,"repeated column, f21n",
+f23,41%,38%,56%,48%,100%,11%,11%,100%,40%,100%,MAR/MNAR,discretize,parental_education_expectations,Yes,Parent expectations: Up to what educational level do you expect your child to study?,,
+f24a,34%,32%,52%,42%,15%,19%,20%,20%,45%,20%,MNAR,drop,,Yes,Mother occupation,repeted column,
+f24b,39%,37%,52%,42%,18%,26%,28%,21%,49%,21%,MNAR,drop,,Yes,Father occupation,repeted column,
+mother_occupation,34%,32%,52%,42%,15%,19%,20%,20%,45%,20%,MNAR,none,mother_occupation,Yes,Transformation of f24a. Mother occupation,,
+father_occupation,39%,37%,52%,42%,18%,26%,28%,21%,49%,21%,MNAR,none,father_occupation,Yes,Transformation of f24b. Father occupation,,
+f30,100%,100%,52%,42%,100%,11%,11%,100%,39%,100%,MCAR/MAR,none,number_of_children_in_household,No,Total number of children in the household,,
+f31,100%,100%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,discretize,type_of_family_unit,No,Type of family unit,,
+single_parent_household,100%,100%,52%,42%,100%,11%,12%,100%,40%,100%,MCAR/MAR,drop,,No,Transformation of f31. Single parent household,repeted column,
+f33a,100%,100%,52%,42%,100%,23%,25%,100%,49%,100%,MCAR/MAR,drop,,No,Household income. Income from work (self-employed or wage employment),"removed, useless column (used f34);",
+f33b,100%,100%,52%,42%,100%,91%,91%,100%,93%,100%,MCAR/MAR,drop,,No,Household income. Unemployment benefits and subsidies,"removed, useless column (used f34);",
+f33c,100%,100%,52%,42%,100%,95%,94%,100%,96%,100%,MCAR/MAR,drop,,No,non,"removed, useless column (used f34);",
+f33d,100%,100%,52%,42%,100%,95%,96%,100%,97%,100%,MCAR/MAR,drop,,No,"Household income. Public economic benefits for dependent children or other economic benefits such as family aid, Canary Islands Insertion Benefit (PCI), related to housing or education","removed, useless column (used f34);",
+f33e,100%,100%,52%,42%,100%,94%,93%,100%,96%,100%,MCAR/MAR,drop,,No,"Household Income. Child support from divorce, or help from other relatives","removed, useless column (used f34);",
+f33f,100%,100%,52%,42%,100%,98%,98%,100%,99%,100%,MCAR/MAR,drop,,No,Household income. Other regular income / Other subsidy or regular social benefit,"removed, useless column (used f34);",
+f33g,100%,100%,52%,42%,100%,99%,99%,100%,100%,100%,MCAR/MAR,drop,,No,"Household income. No income, no household member provides income","removed, useless column (used f34);",
+f33h,100%,100%,52%,42%,100%,97%,98%,100%,98%,100%,MCAR/MAR,drop,,No,Household income. No answer/don't know,"removed, useless column (used f34);",
+f34,100%,100%,52%,42%,100%,11%,13%,100%,40%,100%,MAR/MNAR,discretize,monthly_household_income,Yes,Monthly household income,,
+household_income_q,100%,100%,58%,50%,100%,23%,24%,100%,48%,100%,MAR/MNAR,drop,,Yes,Tranformation of f34. Monthly household income (quartiles),"removed, useless column (used f34);",
+nhousehold,100%,100%,7%,8%,6%,100%,100%,6%,100%,6%,MCAR/MAR,drop,,No,Number of people in household,,
+ESCS,32%,29%,52%,42%,8%,11%,11%,8%,41%,9%,MNAR,none,ESCS,Yes,"Economic, Social and Cultural Status index",,
+p2,34%,37%,100%,100%,100%,7%,9%,100%,22%,100%,MAR/MCAR,discretize,gender,No,Sex,,
+p2n,36%,38%,7%,10%,100%,8%,9%,100%,22%,100%,MAR/MCAR,none ,age,No,Age,,
+p3n,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,none ,number_of_years_as_teacher,No,Years as teacher,,
+p4n,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,none ,number_of_years_in_school,No,Years in the school,,
+p5,34%,37%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,none ,has_taught_same_group_last_two_years,No,Have you teach in the same group the past two years?,,
+p6n,34%,37%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,none ,number_of_students_in_group,No,Number of students in your class group,,
+p7an,63%,61%,15%,23%,100%,12%,16%,100%,26%,100%,MAR/MCAR,mean (normalize),number_of_special_attention_students,No,Number of students in your class group with: NEE,,
+p7bn,66%,67%,24%,26%,100%,13%,17%,100%,27%,100%,MAR/MCAR,mean (normalize),number_of_special_attention_students,No,Number of students in your class group with: TDAH,,
+p7cn,78%,81%,33%,41%,100%,12%,16%,100%,27%,100%,MAR/MCAR,mean (normalize),number_of_special_attention_students,No,Number of students in your class group with: DEA,,
+p7dn,78%,72%,31%,37%,100%,13%,16%,100%,26%,100%,MAR/MCAR,mean (normalize),number_of_special_attention_students,No,Number of students in your class group with: ECOPHE,,
+p7en,75%,80%,33%,42%,100%,13%,17%,100%,27%,100%,MAR/MCAR,mean (normalize),number_of_special_attention_students,No,Number of students in your class group with: ALCAIN,,
+p7fn,63%,71%,100%,100%,100%,100%,100%,100%,100%,100%,MAR/MCAR,none,number_of_students_disadvanteged_economic_situation,No,Number of students in your class group with: Disadvantaged economic situation,for longitudinal analysis,
+p7gn,100%,100%,34%,45%,100%,13%,17%,100%,27%,100%,MAR/MCAR,mean (normalize),number_of_special_attention_students,No,Number of students in your class group with: INTARSE,,
+p8an,52%,55%,7%,10%,100%,7%,10%,100%,23%,100%,MAR/MCAR,none ,number_of_foreign_students_speaking_spanish,No,Number of students in your class group: born in another country with a language other than Spanish,,
+p8bn,52%,53%,7%,10%,100%,8%,10%,100%,23%,100%,MAR/MCAR,none ,number_of_foreign_students_not_speaking_spanish,No,Number of students in your class group: born in another country with a language equal to Spanish,,
+p9a,37%,47%,7%,10%,100%,17%,23%,100%,35%,100%,MAR/MCAR,custom_binary,number_of_subjects_taught,No,Subject you teach in your class group: Language,,
+p9b,40%,53%,7%,10%,100%,21%,33%,100%,45%,100%,MAR/MCAR,custom_binary,number_of_subjects_taught,No,Subject you teach in your class group: Mathematics,,
+p9c,57%,56%,7%,10%,100%,24%,36%,100%,49%,100%,MAR/MCAR,custom_binary,number_of_subjects_taught,No,Subject you teach in your class group: Social sciences,,
+p9d,91%,89%,7%,10%,100%,79%,82%,100%,87%,100%,MAR/MCAR,custom_binary,number_of_subjects_taught,No,Subject you teach in your class group: English,,
+p9e,100%,100%,7%,10%,100%,27%,36%,100%,48%,100%,MAR/MCAR,custom_binary,number_of_subjects_taught,No,Subject you teach in your class group: Natural sciences,,
+p9f,100%,100%,7%,10%,100%,17%,30%,100%,40%,100%,MAR/MCAR,custom_binary,number_of_subjects_taught,No,Subject you teach in your class group: Other,,
+p10n,35%,38%,7%,10%,100%,8%,9%,100%,22%,100%,MAR/MCAR,none ,number_of_teaching_hours_per_week,No,Teaching hours per week in class group,,
+p11,34%,37%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,none ,average_explanation_time,No,Average time class for explanations,,
+p12a,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,drop,,No,Degree of agreement about your class group: Has a good attitude,functional dependency with p12d,
+p12b,35%,39%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_class_behaviour,No,Degree of agreement about your class group: Comply with the standards/rules/norms,,
+p12c,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,drop,,No,Degree of agreement about your class group: Participate actively,functional dependency with p12d,
+p12d,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_class_behaviour,No,Degree of agreement about your class group: Has interest in the class,,
+p13,34%,37%,7%,10%,100%,8%,9%,100%,22%,100%,MAR/MCAR,custom,extent_of_results_satisfaction,No,Degree of agreement: Satisfied with the academic results of my students,,
+p13b,100%,100%,7%,10%,100%,8%,9%,100%,22%,100%,MAR/MCAR,drop,,No,Degree of agreement: My students have obtained the results that I expected,functional dependency with p13,
+p13c,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_results_satisfaction,No,Degree of agreement: My students can improve their academic results,,
+p15a,69%,66%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: Competences and didactic programming,redundant + too many mvs,
+p15b,87%,87%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: Attention to diversity,redundant + too many mvs,
+p15c,91%,92%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: Participatory culture,redundant + too many mvs,
+p15d,68%,69%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: TICs,redundant + too many mvs,
+p15e,95%,95%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: Speaking another language,redundant + too many mvs,
+p15f,77%,77%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: School environment,redundant + too many mvs,
+p15g,85%,85%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: Other,redundant + too many mvs,
+p15h,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the PFC: Didactic methodology,redundant + too many mvs,
+p15i,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Main topic of the CBP: Evaluation,redundant + too many mvs,
+p16a,42%,43%,24%,25%,100%,25%,19%,100%,32%,100%,MAR/MCAR,mean (normalize),extent_of_pfc_incidence,No,Incidence of the PFC in: Organization of the school,,
+p16b,41%,43%,24%,25%,100%,22%,17%,100%,31%,100%,MAR/MCAR,drop,,No,Incidence of the PFC in: Classroom management,functional dependency with p16c,
+p16c,41%,43%,24%,25%,100%,21%,16%,100%,31%,100%,MAR/MCAR,mean (normalize),extent_of_pfc_incidence,No,Incidence of the PFC in: Collaborative work,,
+p16d,41%,44%,24%,25%,100%,23%,18%,100%,32%,100%,MAR/MCAR,drop,,No,Incidence of the PFC in: Evaluation,functional dependency with p16b,
+p16e,41%,43%,24%,25%,100%,24%,20%,100%,32%,100%,MAR/MCAR,drop,,No,Incidence of the PFC in: School environment,functional dependency with p16f,
+p16f,44%,45%,24%,25%,100%,25%,20%,100%,34%,100%,MAR/MCAR,drop,,No,Incidence of the PFC in: Pedagogical leadership,functional dependecy with p16a,
+p16g,41%,43%,24%,25%,100%,22%,19%,100%,32%,100%,MAR/MCAR,mean (normalize),extent_of_pfc_incidence,No,Incidence of the PFC in: Use of TICs,,
+p16h,100%,100%,100%,100%,100%,23%,17%,100%,32%,100%,MAR/MCAR,drop,,No,Incidence of the PFC in: Methodological changes,too many mvs,
+p18a,57%,57%,7%,10%,100%,39%,45%,100%,62%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: Competences and didactic programming,,
+p18b,77%,79%,7%,10%,100%,60%,67%,100%,71%,100%,MAR/MCAR,drop,,No,Individual training topic: Attention to diversity,functional dependency with p18f,
+p18c,86%,84%,7%,10%,100%,90%,90%,100%,90%,100%,MAR/MCAR,drop,,No,Individual training topic: Participatory culture,functional dependency with p18b,
+p18d,58%,57%,7%,10%,100%,39%,53%,100%,56%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: TICs,,
+p18e,88%,85%,7%,10%,100%,80%,80%,100%,83%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: Speaking another language,,
+p18f,74%,75%,7%,10%,100%,62%,73%,100%,74%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: School environment,,
+p18g,85%,87%,7%,10%,100%,61%,60%,100%,66%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: Other,,
+p18h,100%,100%,7%,10%,100%,34%,38%,100%,52%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: Didactic methodology,,
+p18i,100%,100%,7%,10%,100%,63%,70%,100%,75%,100%,MAR/MCAR,sum ,number_of_individual_training_topics,No,Individual training topic: Evaluation,,
+p19,41%,41%,100%,100%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: The training offer of the Administration responds to the needs of the teaching staff,too many mvs,
+p20,41%,41%,7%,10%,100%,9%,10%,100%,25%,100%,MAR/MCAR,normalize,degree_of_individual_training_incidence,No,Incidence of training in your teaching practice,,
+p21a,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_student_involvement_during_class,No,"In class, your students: Suggest activities",,
+p21b,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_student_involvement_during_class,No,"In class, your students: Take notes and/or make summaries",,
+p21c,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_student_involvement_during_class,No,"In class, your students: Do the proposed activities",,
+p21d,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_student_involvement_during_class,No,"In class, your students: Listen to the explanations",,
+p21e,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_student_involvement_during_class,No,"In class, your students: Ask what they don't understand",,
+p21f,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_student_involvement_during_class,No,"In class, your students: Work individually",,
+p22a,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I do team activities",,
+p22b,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I propose topics to research and debate",,
+p22c,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I promote public presentation of works",,
+p22d,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I take into account self-evaluations",,
+p22e,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I adapt the tasks to the reality of the student",,
+p22f,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I promote student interactions",,
+p22g,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_teaching_methods_variety,No,"Methodologically, in the classroom: I ask while I explain",,
+p23a,35%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: textbook,,
+p23b,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: library books,,
+p23c,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: newspapers or magazines,,
+p23d,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: computers or tablets,,
+p23e,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,"Resources used in class: videos, images",,
+p23f,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: school agenda,,
+p23g,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: material prepared by teachers,,
+p23h,34%,37%,100%,100%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_resource_variety,No,Resources used in class: digital whiteboard,,
+p23i,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Resources used in class: material prepared by me,too many mvs,
+p24a,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I ask questions before starting a topic,,
+p24b,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I do tests after each topic,,
+p24c,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I do quarterly written tests,,
+p24d,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I correct homework and notebooks,,
+p24e,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I review activities in class,,
+p24f,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I do oral exams,,
+p24g,34%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I take into account  self-evaluations,,
+p24h,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I value interest and participation,,
+p24i,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I value the behavior,,
+p24j,36%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I take into account peer evaluation,,
+p24k,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_evaluation_variety,No,Evaluation: I use evaluation rubrics,,
+p25,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,none ,seat_configuration,No,How are the students normally seated in your class?,,
+p26,34%,37%,100%,100%,100%,100%,100%,100%,100%,100%,MAR/MCAR,none,behaviour_problems_solution,No,How do you usually solve behavior problems in class?,,
+p26a,100%,100%,7%,10%,100%,8%,10%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: How do you solve behavior problems in class?: Students are sent to the principal,redundant + too many mvs,
+p26b,100%,100%,7%,10%,100%,8%,10%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: How do you solve behavior problems in class?: Students are sent to the management team,redundant + too many mvs,
+p26c,100%,100%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,drop,,No,"Degree of agreement: How do you solve behavior problems in class?: It is solved in the class, with the help of the rest of classmates",redundant + too many mvs,
+p26d,100%,100%,7%,10%,100%,8%,10%,100%,22%,100%,MAR/MCAR,drop,,No,"Degree of agreement: How do you solve behavior problems in class?: It is solved in the class, individually",redundant + too many mvs,
+p27a,35%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree to which your teaching work is hampered by: Lack of materials,too many mvs,
+p27b,35%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Lack of computers,,
+p27c,35%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Poor internet connection,,
+p27d,35%,38%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Insufficient computer software,,
+p27e,35%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Lack of audiovisual materials,,
+p27f,35%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Lack of library resources,,
+p27g,35%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Lack of support staff,,
+p27h,35%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_hampered,No,Degree to which your teaching work is hampered by: Administrative bureaucracy,,
+p28n,37%,40%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,none,number_of_meetings_with_families,No,Number of collective meetings with families during the academic year,,
+p29a,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Knowing scores",,
+p29b,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Finding out about difficulties in the learning process",,
+p29c,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Their children behavior",,
+p29d,35%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Classmates behavior",,
+p29e,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Assesment on the teaching-learning process methodology",,
+p30a,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_offamily_support,No,Degree of agreement: Families provide their children with the materials they need,,
+p30b,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_offamily_support,No,Degree of agreement: Families control that their children do their homework,,
+p30c,34%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_offamily_support,No,Degree of agreement: Families worry about their children class attendance,,
+p31d,34%,37%,100%,100%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_positive_relationships,No,How are the relationships: Between teachers and families,,
+p32a,34%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: The school works correctly,functional dependency with p32c,
+p32b,36%,39%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: It is a school of reference,functional dependency with p32b,
+p32c,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofopinion_on_school,No,Degree of agreement: I would recommend this school,,
+p32d,35%,38%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I would like to continue in this school,functional dependency with p32c,
+p32e,100%,100%,100%,100%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: There is a good work environment in the school,too many mvs,
+p34a,34%,37%,7%,10%,100%,8%,10%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofwork_facilitated_by_management,No,"The management of the school: Promotes relationships between teachers, students and families",,
+p34b,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofwork_facilitated_by_management,No,The management of the school: Takes into account the opinions of teachers,,
+p34c,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Promotes innovative ideas,functional dependency with p34d,
+p34d,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofwork_facilitated_by_management,No,The management of the school: Creates a sense of identity,,
+p34e,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Promotes teamwork,functional dependency with p34d,
+p34f,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Enhance teaching capacities,functional dependency with p34e,
+p34g,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Encourages the Training School Plan (PFC),functional dependecy with p34d,
+p41a,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: Advantages of the teaching profession outweigh disadvantages,,
+p41b,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I would choose the teaching profession again,,
+p41c,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I would like to change to another school,,
+p41d,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I regret dedicating to teaching,too many mvs,
+p41e,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I enjoy working in this school,too many mvs,
+p41f,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: It is better to choose another profession,too many mvs,
+p41g,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I would recommend this school,,
+p41h,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: The teaching profession is highly valued by society,,
+p41i,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I am satisfied with my work at the school,,
+p41j,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I am satisfied with my job,too many mvs,
+p141,34%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,none,is_enrolled_in_school_training_plan,No,Does the center have a Training School Plan (PFC) in which you participate?,,
+p171n,40%,41%,7%,10%,100%,8%,10%,100%,24%,100%,MAR/MCAR,none,number_of_training_hours_last_six_years,No,Hours of individual training carried out in the last 6 years,,
+p172n,100%,100%,15%,17%,100%,8%,11%,100%,24%,100%,MAR/MCAR,none,number_of_training_hours_ceu_offer,No,"Of the hours of individual training, how many have been through the CEU offer?",,
+p299d,100%,100%,100%,100%,100%,7%,9%,100%,22%,100%,MAR/MCAR,drop,,No,"In meetings with families, they show interest in: Discussing their child's relationship with other classmates",too many mvs,
+p311a,34%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_positive_relationships,No,How are the relationships: Between the students,,
+p311b,34%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_positive_relationships,No,How are the relationships like: Between teachers,,
+p311c,34%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_positive_relationships,No,How are the relationships: Between teachers and students,,
+p311e,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_positive_relationships,No,How are the relationships: Between the management team and the families,,
+p311f,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,How are the relationships: Between the management team and the teaching staff,functional dependency with p311g,
+p311g,34%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,How are the relationships: Between the management team and the students,functional dependency with p311e,
+p311h,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,How are the relationships: Between the members of the management team,functional dependency with p311h,
+p331a,35%,37%,54%,64%,100%,10%,9%,100%,25%,100%,MAR/MCAR,drop,,No,Assessment of the work of: Director/Principal,functional dependency with p331d,
+p331b,51%,54%,43%,47%,100%,33%,33%,100%,49%,100%,MAR/MCAR,drop,,No,Assessment of the work of: Vice-director/Vice-principal,functional dependency with p331a,
+p331c,36%,40%,54%,60%,100%,11%,14%,100%,27%,100%,MAR/MCAR,drop,,No,Assessment of the work of: Head of studies,functional dependency with p331a,
+p331d,36%,40%,53%,63%,100%,12%,11%,100%,26%,100%,MAR/MCAR,mean (normalize),extent_of_good_work_by_non_teachers,No,Assessment of the work of: Secretary,,
+p331e,36%,38%,46%,56%,100%,10%,9%,100%,25%,100%,MAR/MCAR,mean (normalize),extent_of_good_work_by_non_teachers,No,Assessment of the work of: Counselor,,
+p331f,39%,40%,32%,34%,100%,36%,33%,100%,41%,100%,MAR/MCAR,mean (normalize),extent_of_good_work_by_non_teachers,No,Assessment of the work of: Inspector,,
+p331g,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_good_work_by_non_teachers,No,Evaluation of the work of: Adviser of the Teachers' Center,,
+p331j,100%,100%,100%,100%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Evaluation of the work of: Support teacher of NEAE,too many mvs,
+pfc,100%,100%,100%,100%,100%,8%,9%,100%,23%,100%,MAR/MCAR,none,main_topic_of_pfc,No,Main topic of the Training School Plan (PFC),,
+rep,100%,100%,100%,100%,100%,7%,9%,100%,22%,100%,MAR/MCAR,drop,,No,Teacher of the same class group last year,redundant + too many mvs,

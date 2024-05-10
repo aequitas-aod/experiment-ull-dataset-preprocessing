@@ -3,3 +3,5 @@ pandas
 matplotlib
 psutil
 scipy
+Jinja2
+scikit-learn
