@@ -25,7 +25,11 @@ from src.pre_processing.macros import (
 )
 
 
-def preprocess_teacher_questionnaire():
+def preprocess_teacher_questionnaire(load=False):
+
+    if load:
+        df = pd.read_csv(os.path.join(DATA_PREPROC_PATH, "teacher_questionnaire.csv"))
+        return df.set_index("id_student")
 
     # Loading teacher questionnaire
     df = pd.read_csv(

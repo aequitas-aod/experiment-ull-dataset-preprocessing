@@ -2,7 +2,13 @@ from src.pre_processing import *
 from src.pre_processing.macros import DATA_SPLIT_PATH, DATA_PREPROC_PATH
 
 
-def preprocess_principal_questionnaire(drop_row: bool = False) -> pd.DataFrame:
+def preprocess_principal_questionnaire(
+    load: bool = False, drop_row: bool = False
+) -> pd.DataFrame:
+
+    if load:
+        df = pd.read_csv(os.path.join(DATA_PREPROC_PATH, "principal_questionnaire.csv"))
+        return df.set_index("id_student")
 
     # Loading student questionnaire
     df = pd.read_csv(

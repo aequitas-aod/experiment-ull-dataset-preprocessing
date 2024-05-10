@@ -8,7 +8,12 @@ from src.pre_processing.macros import (
 )
 
 
-def preprocess_family_questionnaire():
+def preprocess_family_questionnaire(load=False):
+
+    if load:
+        df = pd.read_csv(os.path.join(DATA_PREPROC_PATH, "family_questionnaire.csv"))
+        return df.set_index("id_student")
+
     # Loading student questionnaire
     df = pd.read_csv(
         os.path.join(DATA_SPLIT_PATH, "family_questionnaire.csv"), low_memory=False
@@ -73,7 +78,7 @@ def preprocess_family_questionnaire():
     family_df = family_df.rename(columns={"f5b": "father_place_of_birth"})
     family_df = family_df.rename(columns={"f5n": "student_place_of_birth"})
     family_df = family_df.rename(
-        columns={"f6": "number_of_years_in_spanish_education_system"}
+        columns={"f6": "degree_of_years_in_spanish_education_system"}
     )
     family_df = family_df.rename(columns={"f7": "language_spoken_at_home"})
     family_df = family_df.rename(columns={"f10n": "number_of_tech_at_home"})
@@ -212,7 +217,43 @@ def preprocess_family_questionnaire():
     )
 
     family_df["monthly_household_income"] = family_df["monthly_household_income"].apply(
-        lambda x: "NO_ANSWER" if x == 10 else x
+        lambda x: (
+            "NO_INCOME"
+            if x == 1
+            else (
+                "UP_TO_500"
+                if x == 2
+                else (
+                    "UP_TO_1000"
+                    if x == 3
+                    else (
+                        "UP_TO_1500"
+                        if x == 4
+                        else (
+                            "UP_TO_2000"
+                            if x == 5
+                            else (
+                                "UP_TO_2500"
+                                if x == 6
+                                else (
+                                    "UP_TO_3000"
+                                    if x == 7
+                                    else (
+                                        "UP_TO_3500"
+                                        if x == 8
+                                        else (
+                                            "MORE_THAN_3500"
+                                            if x == 9
+                                            else ("NO_ANSWER" if x == 10 else np.nan)
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
     )
 
     ##############################

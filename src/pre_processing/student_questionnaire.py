@@ -8,7 +8,11 @@ from src.pre_processing.macros import (
 )
 
 
-def preprocess_student_questionnaire():
+def preprocess_student_questionnaire(load=False):
+
+    if load:
+        df = pd.read_csv(os.path.join(DATA_PREPROC_PATH, "student_questionnaire.csv"))
+        return df.set_index("id_student")
 
     # Loading student questionnaire
     print("\t\tLoading data")
@@ -205,7 +209,7 @@ def preprocess_student_questionnaire():
         "birth_year": "a2",
         "is_living_with_mother": "a3a",
         "is_living_with_father": "a3b",
-        "is_living_with_sibling": "a3c",
+        "is_living_with_siblings": "a3c",
         "is_living_with_other_relatives": "a3d",
         "has_repeated": "repeater",
         "frequency_of_skips": "a5",
@@ -400,12 +404,28 @@ def preprocess_student_questionnaire():
     print("\t\tLambda")
 
     to_lambdate = {
-        "gender": lambda x: "MALE" if x == 1 else ("FEMALE" if x == 2 else np.nan),
-        "is_living_with_mother": lambda x: 0 if x == 2 else x,
-        "is_living_with_father": lambda x: 0 if x == 2 else x,
-        "is_living_with_siblings": lambda x: 0 if x == 2 else x,
-        "is_living_with_other_relatives": lambda x: 0 if x == 2 else x,
-        "has_repeated": lambda x: 0 if x == 1 else (1 if x == 2 else np.nan),
+        "gender": lambda x: (
+            "MALE" if x["gender"] == 1 else ("FEMALE" if x["gender"] == 2 else np.nan)
+        ),
+        "is_living_with_mother": lambda x: (
+            0 if x["is_living_with_mother"] == 2 else x["is_living_with_mother"]
+        ),
+        "is_living_with_father": lambda x: (
+            0 if x["is_living_with_father"] == 2 else x["is_living_with_father"]
+        ),
+        "is_living_with_siblings": lambda x: (
+            0
+            if ["is_living_with_siblings"] == 2
+            else (1 if x["is_living_with_siblings"] == 1 else np.nan)
+        ),
+        "is_living_with_other_relatives": lambda x: (
+            0
+            if ["is_living_with_other_relatives"] == 2
+            else (1 if x["is_living_with_other_relatives"] == 1 else np.nan)
+        ),
+        "has_repeated": lambda x: (
+            0 if x["has_repeated"] == 1 else (1 if x["has_repeated"] == 2 else np.nan)
+        ),
         "extent_of_classmates_affinity": lambda x: get_good_bad_agg(
             x, group="extent_of_classmates_affinity"
         ),
@@ -428,7 +448,7 @@ def preprocess_student_questionnaire():
         "has_repeated",
         "is_living_with_mother",
         "is_living_with_father",
-        "is_living_with_sibling",
+        "is_living_with_siblings",
         "is_living_with_other_relatives",
     ]
     for column in to_boolean:
@@ -441,11 +461,11 @@ def preprocess_student_questionnaire():
 
     to_drop = [
         # living_with
-        "a3a",
-        "a3b",
+        # "a3a",
+        # "a3b",
         "living_with_father_mother",
-        "a3c",
-        "a3d",
+        # "a3c",
+        # "a3d",
         "a3et",
         # living_in_foster
         "a3f",
