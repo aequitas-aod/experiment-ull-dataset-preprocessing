@@ -316,6 +316,6 @@ def preprocess_family_questionnaire(load=False):
     ].agg("mean", axis=1)
     family_df = family_df.drop(["f19a", "f19b", "f19c", "f19d", "f19e"], axis=1)
 
-    df.to_csv(os.path.join(DATA_PREPROC_PATH, "family_questionnaire.csv"))
+    family_df.to_csv(os.path.join(DATA_PREPROC_PATH, "family_questionnaire.csv"))
 
     return family_df

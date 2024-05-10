@@ -4,6 +4,7 @@ import os
 from data import PATH as DATA_PATH
 from data.split import PATH as DATA_SPLIT_PATH
 from data.pre_processed import PATH as DATA_PREPROC_PATH
+from res import PATH as RES_PATH
 
 HOME_PATH = os.path.join("/", "home")
 ORIGINAL_DATASET_NAME = "original.csv"

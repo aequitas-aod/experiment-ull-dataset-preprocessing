@@ -290,7 +290,7 @@ def preprocess_principal_questionnaire(
         )
     )
 
-    df.drop(columns=["capital_island"], inplace=True)
+    df.drop(columns=["capital_island", "d18d"], inplace=True)
 
     df["public_private"] = df["public_private"].apply(
         lambda x: ("PRIVATE" if x == 1 else ("PUBLIC" if x == 2 else np.nan))

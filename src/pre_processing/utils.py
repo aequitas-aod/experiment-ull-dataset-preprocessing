@@ -1,5 +1,8 @@
+import json
+import os
 import pandas as pd
 import numpy as np
+from src.pre_processing.macros import DATA_PATH, RES_PATH
 
 
 def get_feature_list_indexes(df: pd.DataFrame, feature_lists: dict):
@@ -60,6 +63,32 @@ def custom_mean(series):
 
 def normalize_in_new_range(num, old_min, old_max, new_min, new_max):
     return ((num - old_min) / (old_max - old_min) * (new_max - new_min)) + new_min
+
+
+def normalize_merged_dataset(merged_df):
+    # Import meta data of merged
+    with open(os.path.join(RES_PATH, "meta_data_merged.json")) as file:
+        meta_data = json.load(file)
+
+    categories = ["s", "p", "f", "t"]
+    attrs = ["extent_of", "frequency_of"]
+
+    for col, details in meta_data.items():
+        if any(
+            col.startswith(s) for s in [f"{c}_{a}" for c in categories for a in attrs]
+        ):
+            value = details["values"][0][0]
+            merged_df[col] = merged_df[col].apply(
+                lambda x: normalize_in_new_range(
+                    num=x,
+                    old_min=value["min"],
+                    old_max=value["max"],
+                    new_min=0,
+                    new_max=1,
+                )
+            )
+
+    return merged_df
 
 
 ################### MIXED FEATURES ###################
