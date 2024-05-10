@@ -3289,17 +3289,17 @@
             ]
         ]
     },
-    "t_behaviour_problems_solution_categorical": {
+    "t_behaviour_problems_solution": {
         "original_columns": [
             "p26"
         ],
         "values": [
             [
                 [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
+                    "PRINCIPAL",
+                    "MANAGEMENT",
+                    "CLASSMATES",
+                    "INDIVIDUALLY"
                 ]
             ]
         ],

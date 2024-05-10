@@ -212,6 +212,20 @@ def preprocess_teacher_questionnaire(load=False):
     for col in ["has_taught_same_group_last_two_years"]:
         df[col] = df[col].apply(lambda x: 0 if x == 2 else x).astype("boolean")
 
+    df["behaviour_problems_solution"] = df["behaviour_problems_solution"].apply(
+        lambda x: (
+            "PRINCIPAL"
+            if x == 1
+            else (
+                "MANAGEMENT"
+                if x == 2
+                else (
+                    "CLASSMATES" if x == 3 else ("INDIVIDUALLY" if x == 4 else np.nan)
+                )
+            )
+        )
+    )
+
     df.to_csv(os.path.join(DATA_PREPROC_PATH, "teacher_questionnaire.csv"))
 
     return df

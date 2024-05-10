@@ -26,16 +26,16 @@ def main():
 
     print("Splitting and Pre-processing...")
     print("\tStudent Questionnaire")
-    student_df = preprocess_student_questionnaire(load=True)
+    student_df = preprocess_student_questionnaire(load=False)
     student_df = student_df.add_prefix("s_")
     print("\tPrincipal Questionnaire")
-    principal_df = preprocess_principal_questionnaire(load=True)
+    principal_df = preprocess_principal_questionnaire(load=False)
     principal_df = principal_df.add_prefix("p_")
     print("\tFamily Questionnaire")
-    family_df = preprocess_family_questionnaire(load=True)
+    family_df = preprocess_family_questionnaire(load=False)
     family_df = family_df.add_prefix("f_")
     print("\tTeacher Questionnaire")
-    teacher_df = preprocess_teacher_questionnaire(load=True)
+    teacher_df = preprocess_teacher_questionnaire(load=False)
     teacher_df = teacher_df.add_prefix("t_")
     print()
 
@@ -58,7 +58,7 @@ def main():
     missing_data = missing_data[missing_data > 0.9 * merged_df.shape[1]]
     print("\tSaving records with more than 90% of missing data")
     merged_df.loc[missing_data.index].to_csv(
-        os.path.join(DATA_PREPROC_PATH, "row_with_too_many_missing_data.csv")
+        os.path.join(DATA_PREPROC_PATH, "rows_with_missing_values_ge_90.csv")
     )
     print(f"\tRemoving {missing_data.shape[0]} rows with more than 90% of missing data")
     merged_df = merged_df.drop(index=missing_data.index)
@@ -182,6 +182,13 @@ def main():
     )
 
     postprocessing_stats(df_orig=df_orig, df_merged=final_df.reset_index())
+    print()
+
+    ####### EXPORTING META-DATA #######
+
+    print("Exporting meta-data for missing patterns...")
+
+    final_df.isna().to_csv(os.path.join(DATA_PREPROC_PATH, "missing_mask.csv"))
 
     print("Done!")
 

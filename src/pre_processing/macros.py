@@ -738,7 +738,7 @@ to_rename = {
     "p19": "extent_of_training_offer_adequate_to_needs",
     "p20": "degree_of_individual_training_incidence",
     "p25": "seat_configuration",
-    "p26": "behaviour_problems_solution_categorical",
+    "p26": "behaviour_problems_solution",
     "p28n": "number_of_meetings_with_families",
     "p141": "is_enrolled_in_school_training_plan",
     "p171n": "number_of_training_hours_last_six_years",
