@@ -1,10 +1,11 @@
 import os
 
 import os
-from data import PATH as DATA_PATH
-from data.split import PATH as DATA_SPLIT_PATH
-from data.pre_processed import PATH as DATA_PREPROC_PATH
+from raw_data import PATH as DATA_PATH
+from raw_data.split import PATH as DATA_SPLIT_PATH
+from raw_data.pre_processed import PATH as DATA_PREPROC_PATH
 from res import PATH as RES_PATH
+from benchmark import PATH as BEN_PATH
 
 HOME_PATH = os.path.join("/", "home")
 ORIGINAL_DATASET_NAME = "original.csv"

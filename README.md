@@ -10,7 +10,19 @@ By prioritizing fairness,  this benchmark aims to foster the development of bias
 
 ## Structure
 
-- .devcontainer: configurations for bulding a devcontainer with visual studio code
-- data: raw data (original.csv, and split folder) and final data (pre_processed)
-- res: meta-data about features' domains for testing and doc
-- src: source of the pre-processing pipeline
+```benchmark```
+contains:
+- the proposed dataset (```dataset.csv```), and
+- the mask for dealing with missing values (```missing_mask.csv```).
+
+```raw_data``` includes:
+- the original dataset (```original.csv```), and
+- the intermediate stages of the pre-processing pipeline (```split``` and ```pre_processed```).
+
+```res``` contains the documentation, including:
+- the transformation mapping each column of the original dataset to the proposed one, along with missingness category and original text (```meta_data_mapping.csv```), and
+- the value type and domains of each column of the original, intermediate-stage, and proposed datasets (rispectively, ```meta_data_original.json``` and ```meta_data_merged.json``` and ```meta_data_final.json```).
+
+```src``` contains the source code for running the pre-processing and corresponding analysis:
+- ```pre_processing``` and ```stats```contain the code for the two corresponding tasks, and
+- ```pre_processing.py``` and ```split.py``` are two entry points.
