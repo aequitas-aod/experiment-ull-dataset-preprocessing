@@ -1,13 +1,13 @@
 original_column,15-16_3°,15-16_6°,16-17_3°,16-17_6°,16-17_4°,18-19_3°,18-19_6°,18-19_4°,19-20_6,19-20_4,missing_cat,transformation,new_column,sensitive,desc,notes,
 a1,4%,7%,7%,8%,6%,5%,6%,6%,1%,0%,MNAR,discretize,gender,Yes,Sex,,
-a2,11%,10%,7%,8%,7%,5%,6%,6%,100%,100%,MAR/MNAR,none,birth_year,No (Yes),Birth year,,
-a3a,13%,12%,7%,8%,6%,100%,100%,12%,100%,13%,MAR/MNAR,booleanize,is_living_with_mother,No (Yes),Living with the mother,we generate a decision tree so check the most influent ones wrt. the performance scores according to the GINI index,
-a3b,19%,20%,7%,8%,6%,100%,100%,35%,100%,37%,MAR/MNAR,booleanize,is_living_with_father,No (Yes),Living the father,,
-living_with_father_mother,20%,21%,7%,8%,6%,100%,100%,39%,100%,41%,MAR/MNAR,drop,living_with,No (Yes),Transformation of a3a and a3b. Living with the father and the mother,,
-a3c,27%,28%,7%,8%,6%,100%,100%,48%,100%,52%,MAR/MNAR,booleanize,is_living_with_siblings,No (Yes),Living with brother/sister,,
-a3d,51%,54%,7%,8%,6%,100%,100%,91%,100%,92%,MAR/MNAR,booleanize,is_living_with_other_relatives,No (Yes),Living with other relatives,,
-a3et,58%,60%,7%,8%,6%,100%,100%,93%,100%,94%,MAR/MNAR,drop,living_with,No (Yes),Living with other people,,
-a3f,100%,100%,100%,100%,100%,100%,100%,99%,100%,99%,MAR/MNAR,drop,living_with,No (Yes),Living in foster homes,,
+a2,11%,10%,7%,8%,7%,5%,6%,6%,100%,100%,MAR/MNAR,none,birth_year,No,Birth year,,
+a3a,13%,12%,7%,8%,6%,100%,100%,12%,100%,13%,MAR/MNAR,booleanize,is_living_with_mother,No,Living with the mother,we generate a decision tree so check the most influent ones wrt. the performance scores according to the GINI index,
+a3b,19%,20%,7%,8%,6%,100%,100%,35%,100%,37%,MAR/MNAR,booleanize,is_living_with_father,No,Living the father,,
+living_with_father_mother,20%,21%,7%,8%,6%,100%,100%,39%,100%,41%,MAR/MNAR,drop,living_with,No,Transformation of a3a and a3b. Living with the father and the mother,,
+a3c,27%,28%,7%,8%,6%,100%,100%,48%,100%,52%,MAR/MNAR,booleanize,is_living_with_siblings,No,Living with brother/sister,,
+a3d,51%,54%,7%,8%,6%,100%,100%,91%,100%,92%,MAR/MNAR,booleanize,is_living_with_other_relatives,No,Living with other relatives,,
+a3et,58%,60%,7%,8%,6%,100%,100%,93%,100%,94%,MAR/MNAR,drop,living_with,No,Living with other people,,
+a3f,100%,100%,100%,100%,100%,100%,100%,99%,100%,99%,MAR/MNAR,drop,living_with,No,Living in foster homes,,
 a4,14%,18%,7%,8%,6%,5%,6%,100%,10%,100%,MAR/MNAR,drop,,Yes,Has repeated one or two times,repeated info,
 repeater,14%,18%,7%,8%,6%,5%,6%,100%,10%,100%,MAR/MNAR,booleanize,has_repeated,Yes,Transformation of A4. Has repeated one or more times,,
 a41,100%,100%,100%,100%,6%,100%,100%,7%,100%,8%,MAR/MNAR,drop,,Yes,I repeated in primary education,repeated info,
@@ -193,70 +193,70 @@ d16cn,10%,8%,7%,10%,13%,9%,11%,7%,16%,8%,MCAR,custom,number_of_school_tech_resou
 d16dn,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,custom,number_of_school_tech_resources,No,School resources. Computers for the administrative management of the school,sum,FALSE
 d16en,100%,100%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR/MAR,custom,number_of_school_tech_resources,No,School resources. Tablets/laptops available to students,sum,FALSE
 d16fn,100%,100%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR/MAR,custom,number_of_school_tech_resources,No,School resources. Interactive digital whiteboards or touch screens in classrooms,sum,FALSE
-d17a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of budget and resources,,FALSE
-d17b,10%,9%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of attendance of the teachers,,FALSE
-d17c,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of participation and support of families,,FALSE
-d17d,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of teacher training plan in my school for teachers,,FALSE
-d17e,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of opportunities/support for professional development of the management team,,FALSE
-d17f,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of agility to cover teacher absences,,FALSE
-d17g,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of coordination between members of the management team,,FALSE
-d17h,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_offactors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of autonomy to make decisions,,FALSE
-d18a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of good/qualified teachers,,FALSE
-d18b,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of teachers trained to teach students with special educational needs,,FALSE
-d18c,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack or inadequate teaching material,,FALSE
+d17a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of budget and resources,,FALSE
+d17b,10%,9%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of attendance of the teachers,,FALSE
+d17c,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of participation and support of families,,FALSE
+d17d,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of teacher training plan in my school for teachers,,FALSE
+d17e,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of opportunities/support for professional development of the management team,,FALSE
+d17f,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of agility to cover teacher absences,,FALSE
+d17g,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of coordination between members of the management team,,FALSE
+d17h,9%,8%,7%,10%,13%,8%,11%,7%,16%,8%,MCAR,mean (normalize),extent_of_factors_limiting_effectiveness,No,Factors that limit the effectiveness of my management. Lack of autonomy to make decisions,,FALSE
+d18a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of good/qualified teachers,,FALSE
+d18b,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of teachers trained to teach students with special educational needs,,FALSE
+d18c,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack or inadequate teaching material,,FALSE
 d18d,10%,9%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,drop,,No,It is an inconvenience in your school: Lack or inadequacy of technological devices for teaching,,FALSE
-d18e,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Poor internet connection,,FALSE
-d18f,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack or inadequacy of software for teaching,,FALSE
-d18g,9%,8%,7%,10%,13%,8%,11%,9%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack or inadequacy of library materials,,FALSE
-d18h,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of support teachers,,FALSE
-d18i,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of administrative staff,,FALSE
-d18j,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of adequate infrastructure,,FALSE
-d18k,9%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of teacher collaboration,,FALSE
-d18l,9%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of collaboration from families,,FALSE
-d18m,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Administrative bureaucracy,,FALSE
-d18n,100%,100%,100%,100%,100%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofinconveniences,No,It is an inconvenience in your school: Lack of computers in the classroom or for students.,,FALSE
-d19a,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Arriving late to the school,,FALSE
-d19b,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Absenteeism (unexcused absences),,FALSE
-d19c,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Disruption of order in class,,FALSE
-d19d,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Vandalism and theft,,FALSE
-d19e,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Inappropriate or profanity language,,FALSE
-d19f,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Intimidation or insults between students or another type of bullying,,FALSE
-d19g,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Physical aggressions between students,,FALSE
-d19h,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Lack of respect to teachers,,FALSE
-d19i,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the students: Intimidation or insults to the teachers or staff of the school,,FALSE
-d19j,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Arriving late to the school,,FALSE
-d19k,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: absenteeism (unexcused absences),,FALSE
-d19l,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Lack of respect towards the students,,FALSE
-d19m,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Lack of respect between teachers,,FALSE
-d19n,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the teachers: Discrimination based on sex,,FALSE
-d19o,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Lack of collaboration with the school,,FALSE
-d19p,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Criticism and opposition to the rules of the school,,FALSE
-d19q,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Lack of respect towards the teachers and staff of the school,,FALSE
-d19r,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofproblems,No,It is a problem in your school because of the families: Lack of respect or discrimination towards other families,,FALSE
-d20a,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Helps to establish good relations between teachers,,FALSE
-d20b,9%,7%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Take into account the opinions of the teaching staff,,FALSE
-d20c,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Stimulate teachers to develop innovative ideas,,FALSE
-d20d,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Create a strong sense of identity in the community with the objectives of the school,,FALSE
-d20e,10%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Promote teamwork among teachers,,FALSE
-d20f,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Promotes the maximum use of capacities and teacher knowledge,,FALSE
-d20g,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Generates procedures for teacher training courses,,FALSE
-d20h,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Uses student educational outcomes/achievement to set school goals,,FALSE
-d20i,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Checks that the work of teachers is in accordance with the objectives of the school,,FALSE
-d20j,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Encourage that teaching practice is based on recent research developments,,FALSE
-d20k,100%,100%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Follow up on disruptive problems in the classrooms,,FALSE
-d20l,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_ofmanagement,No,To what extent does the management of the school: Discuss the educational objectives of the school with teachers,,FALSE
-d21a,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With teachers,,FALSE
-d21b,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With students,,FALSE
-d21c,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With families,,FALSE
-d21d,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With CEP associates,,FALSE
-d21e,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With guidance teams (EOEP),,FALSE
-d21f,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_ofsatisfaction,No,Satisfaction level: With educational inspection,,FALSE
-d22a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: The staff of the school share a common methodological line,,FALSE
-d22b,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: There is a high level of cooperation between the school and the local community,,FALSE
-d22c,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: School staff speak openly about difficulties in carrying out their teaching work,,FALSE
-d22d,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: There is mutual respect for the ideas of colleagues,,FALSE
-d22e,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: There is a culture of sharing successes and failures,,FALSE
-d22f,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_ofagreement,No,Degree of agreement: Relations between teachers and students are good,,FALSE
+d18e,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Poor internet connection,,FALSE
+d18f,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack or inadequacy of software for teaching,,FALSE
+d18g,9%,8%,7%,10%,13%,8%,11%,9%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack or inadequacy of library materials,,FALSE
+d18h,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of support teachers,,FALSE
+d18i,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of administrative staff,,FALSE
+d18j,10%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of adequate infrastructure,,FALSE
+d18k,9%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of teacher collaboration,,FALSE
+d18l,9%,8%,7%,10%,13%,8%,11%,7%,16%,10%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of collaboration from families,,FALSE
+d18m,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Administrative bureaucracy,,FALSE
+d18n,100%,100%,100%,100%,100%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_inconveniences,No,It is an inconvenience in your school: Lack of computers in the classroom or for students.,,FALSE
+d19a,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Arriving late to the school,,FALSE
+d19b,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Absenteeism (unexcused absences),,FALSE
+d19c,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Disruption of order in class,,FALSE
+d19d,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Vandalism and theft,,FALSE
+d19e,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Inappropriate or profanity language,,FALSE
+d19f,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Intimidation or insults between students or another type of bullying,,FALSE
+d19g,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Physical aggressions between students,,FALSE
+d19h,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Lack of respect to teachers,,FALSE
+d19i,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the students: Intimidation or insults to the teachers or staff of the school,,FALSE
+d19j,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the teachers: Arriving late to the school,,FALSE
+d19k,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the teachers: absenteeism (unexcused absences),,FALSE
+d19l,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the teachers: Lack of respect towards the students,,FALSE
+d19m,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the teachers: Lack of respect between teachers,,FALSE
+d19n,10%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the teachers: Discrimination based on sex,,FALSE
+d19o,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the families: Lack of collaboration with the school,,FALSE
+d19p,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the families: Criticism and opposition to the rules of the school,,FALSE
+d19q,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the families: Lack of respect towards the teachers and staff of the school,,FALSE
+d19r,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_problems,No,It is a problem in your school because of the families: Lack of respect or discrimination towards other families,,FALSE
+d20a,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Helps to establish good relations between teachers,,FALSE
+d20b,9%,7%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Take into account the opinions of the teaching staff,,FALSE
+d20c,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Stimulate teachers to develop innovative ideas,,FALSE
+d20d,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Create a strong sense of identity in the community with the objectives of the school,,FALSE
+d20e,10%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Promote teamwork among teachers,,FALSE
+d20f,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Promotes the maximum use of capacities and teacher knowledge,,FALSE
+d20g,9%,8%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Generates procedures for teacher training courses,,FALSE
+d20h,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Uses student educational outcomes/achievement to set school goals,,FALSE
+d20i,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Checks that the work of teachers is in accordance with the objectives of the school,,FALSE
+d20j,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Encourage that teaching practice is based on recent research developments,,FALSE
+d20k,100%,100%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR/MAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Follow up on disruptive problems in the classrooms,,FALSE
+d20l,100%,100%,7%,10%,13%,8%,11%,9%,15%,10%,MCAR/MAR,mean (normalize),extent_of_management,No,To what extent does the management of the school: Discuss the educational objectives of the school with teachers,,FALSE
+d21a,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_satisfaction,No,Satisfaction level: With teachers,,FALSE
+d21b,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_satisfaction,No,Satisfaction level: With students,,FALSE
+d21c,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_satisfaction,No,Satisfaction level: With families,,FALSE
+d21d,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_satisfaction,No,Satisfaction level: With CEP associates,,FALSE
+d21e,9%,8%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_satisfaction,No,Satisfaction level: With guidance teams (EOEP),,FALSE
+d21f,9%,7%,7%,10%,13%,8%,11%,9%,16%,10%,MCAR,mean (normalize),extent_of_satisfaction,No,Satisfaction level: With educational inspection,,FALSE
+d22a,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_agreement,No,Degree of agreement: The staff of the school share a common methodological line,,FALSE
+d22b,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_agreement,No,Degree of agreement: There is a high level of cooperation between the school and the local community,,FALSE
+d22c,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_agreement,No,Degree of agreement: School staff speak openly about difficulties in carrying out their teaching work,,FALSE
+d22d,9%,7%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_agreement,No,Degree of agreement: There is mutual respect for the ideas of colleagues,,FALSE
+d22e,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_agreement,No,Degree of agreement: There is a culture of sharing successes and failures,,FALSE
+d22f,9%,8%,7%,10%,13%,8%,11%,7%,15%,8%,MCAR,mean (normalize),extent_of_agreement,No,Degree of agreement: Relations between teachers and students are good,,FALSE
 d30a,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_alphabet,No,Student grouping criteria: By alphabetical order of last names or other random criteria,enriched with d301,TRUE
 d30b,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,imputation (booleanize),group_criteria_gender,No,Student grouping criteria:Balance between girls and boys,enriched with d303,TRUE
 d30c,100%,100%,7%,10%,13%,100%,100%,100%,100%,100%,MCAR/MAR,booleanize,group_criteria_language,No,Student grouping criteria: Linguistic reasons,,TRUE
@@ -499,31 +499,31 @@ p29b,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of
 p29c,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Their children behavior",,
 p29d,35%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Classmates behavior",,
 p29e,34%,37%,7%,10%,100%,7%,9%,100%,22%,100%,MAR/MCAR,mean (normalize),extent_of_family_interest,No,"In meetings with families, they show interest in: Assesment on the teaching-learning process methodology",,
-p30a,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_offamily_support,No,Degree of agreement: Families provide their children with the materials they need,,
-p30b,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_offamily_support,No,Degree of agreement: Families control that their children do their homework,,
-p30c,34%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_offamily_support,No,Degree of agreement: Families worry about their children class attendance,,
+p30a,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_family_support,No,Degree of agreement: Families provide their children with the materials they need,,
+p30b,34%,37%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_family_support,No,Degree of agreement: Families control that their children do their homework,,
+p30c,34%,38%,7%,10%,100%,7%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_family_support,No,Degree of agreement: Families worry about their children class attendance,,
 p31d,34%,37%,100%,100%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_positive_relationships,No,How are the relationships: Between teachers and families,,
 p32a,34%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: The school works correctly,functional dependency with p32c,
 p32b,36%,39%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: It is a school of reference,functional dependency with p32b,
-p32c,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofopinion_on_school,No,Degree of agreement: I would recommend this school,,
+p32c,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_opinion_on_school,No,Degree of agreement: I would recommend this school,,
 p32d,35%,38%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I would like to continue in this school,functional dependency with p32c,
 p32e,100%,100%,100%,100%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,Degree of agreement: There is a good work environment in the school,too many mvs,
-p34a,34%,37%,7%,10%,100%,8%,10%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofwork_facilitated_by_management,No,"The management of the school: Promotes relationships between teachers, students and families",,
-p34b,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofwork_facilitated_by_management,No,The management of the school: Takes into account the opinions of teachers,,
+p34a,34%,37%,7%,10%,100%,8%,10%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_facilitated_by_management,No,"The management of the school: Promotes relationships between teachers, students and families",,
+p34b,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_facilitated_by_management,No,The management of the school: Takes into account the opinions of teachers,,
 p34c,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Promotes innovative ideas,functional dependency with p34d,
-p34d,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_ofwork_facilitated_by_management,No,The management of the school: Creates a sense of identity,,
+p34d,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,mean (normalize),extent_of_work_facilitated_by_management,No,The management of the school: Creates a sense of identity,,
 p34e,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Promotes teamwork,functional dependency with p34d,
 p34f,35%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Enhance teaching capacities,functional dependency with p34e,
 p34g,35%,37%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,drop,,No,The management of the school: Encourages the Training School Plan (PFC),functional dependecy with p34d,
-p41a,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: Advantages of the teaching profession outweigh disadvantages,,
-p41b,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I would choose the teaching profession again,,
-p41c,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I would like to change to another school,,
+p41a,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_satisfaction_job_and_school,No,Degree of agreement: Advantages of the teaching profession outweigh disadvantages,,
+p41b,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_satisfaction_job_and_school,No,Degree of agreement: I would choose the teaching profession again,,
+p41c,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_satisfaction_job_and_school,No,Degree of agreement: I would like to change to another school,,
 p41d,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I regret dedicating to teaching,too many mvs,
 p41e,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I enjoy working in this school,too many mvs,
 p41f,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: It is better to choose another profession,too many mvs,
-p41g,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I would recommend this school,,
-p41h,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: The teaching profession is highly valued by society,,
-p41i,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_ofsatisfaction_job_and_school,No,Degree of agreement: I am satisfied with my work at the school,,
+p41g,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_satisfaction_job_and_school,No,Degree of agreement: I would recommend this school,,
+p41h,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_satisfaction_job_and_school,No,Degree of agreement: The teaching profession is highly valued by society,,
+p41i,100%,100%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,custom,extent_of_satisfaction_job_and_school,No,Degree of agreement: I am satisfied with my work at the school,,
 p41j,100%,100%,7%,10%,100%,100%,100%,100%,100%,100%,MAR/MCAR,drop,,No,Degree of agreement: I am satisfied with my job,too many mvs,
 p141,34%,38%,7%,10%,100%,8%,9%,100%,23%,100%,MAR/MCAR,none,is_enrolled_in_school_training_plan,No,Does the center have a Training School Plan (PFC) in which you participate?,,
 p171n,40%,41%,7%,10%,100%,8%,10%,100%,24%,100%,MAR/MCAR,none,number_of_training_hours_last_six_years,No,Hours of individual training carried out in the last 6 years,,
