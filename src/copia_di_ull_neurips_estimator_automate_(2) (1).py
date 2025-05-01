@@ -13,34 +13,25 @@ Original file is located at
 
 """# Imports"""
 
+
+from sklearn.metrics import accuracy_score
+from scipy.stats import ttest_rel, ks_2samp, wilcoxon, chi2_contingency, f_oneway
+from sklearn.model_selection import StratifiedKFold
+from xgboost import XGBClassifier
+from sklearn.preprocessing import label_binarize
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB, MultinomialNB, CategoricalNB
+from sklearn.preprocessing import OrdinalEncoder, LabelEncoder, KBinsDiscretizer
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
+import json
+import copy
+import math
+import time
 import os
 
-import time
-
-import math
-
-import copy
-
-import json
-
-import numpy as np
-import pandas as pd
-
-import matplotlib.pyplot as plt
-
-from sklearn.preprocessing import OrdinalEncoder, LabelEncoder, KBinsDiscretizer
-from sklearn.naive_bayes import GaussianNB, MultinomialNB, CategoricalNB
-from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
-from sklearn.preprocessing import label_binarize
-
-from xgboost import XGBClassifier
-
-from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import accuracy_score
-
-from scipy.stats import ttest_rel, ks_2samp, wilcoxon, chi2_contingency, f_oneway
 
 """# Settings"""
 
@@ -92,12 +83,18 @@ labels = ["VERY LOW", "LOW", "BELOW AVG", "ABOVE AVG", "HIGH", "VERY HIGH"]
 metadata_ops = pd.read_csv(os.path.join(path, meta_data_ops))
 
 # Defining the lists
-s_columns = ["a1","a2","a3a","a3b","living_with_father_mother","a3c","a3d","a3et","a3f","a4","repeater","a5","a6nm","a7","a8a","a8b","a8c","a09a","a09b","a09c","a09d","a09e","a9a","a9b","a9c","a9d","a9e","a9f","a9g","a10a","a10b","a10c","a10d","a10e","a10f","a10g","a10h","a10i","a10j","a10k","a10l","a10m","a10n","a11a","a11b","a11c","a11d","a11e","a11f","a11g","a11h","a12a","a12b","a12c","a12d","a12e","a12f","a12g","a12h","a12i","a13a","a13b","a13c","a13d","a13e","a14a","a14b","a14c","a14d","a14e","a14f","a14g","a14h","a15a","a15b","a15c","a15d","a15e","a15f","a15g","a15h","a15i","a15j","a16a","a16b","a16c","a16d","a16e","a16f","a16g","a16h","a16i","a16j","a16k","a16l","a17a","a17b","a17c","a17d","a17e","a17f","a17g","a17h","a20a","a20b","a20c","a20d","a20e","a21a","a21b","a21c","a21d","a21e","a22a","a22b","a22c","a22d","a23a","a23b","a23c","a23d","a23e","a23f","a23g","a23h","a23i","a23j","a23k","a24","a40a","a40b","a40c","a40d","a41","a42","a51","a61","a71","a111a","a141g","a144d","a144h","a160k","a162k","a163k","a166f","a166k","a171h","a177d","a211a","a222b","country_iso_cnac","country_iso_nac","Weight"]
-p_columns = ["d1","d2n","d3n","d4n","d5n","d6n","d7n","d8n","d9a1","d9a2","d9b1","d9b2","d9c1","d9c2","d9d1","d9d2","d9e1","d9e2","d9f1","d9f2","d9g1","d9g2","d9h1","d9h2","d10a","d10b","d10c","d11an","d11bn","d12an","d12bn","d13n","d14","d15","d16an","d16bn","d16cn","d16dn","d16en","d16fn","d17a","d17b","d17c","d17d","d17e","d17f","d17g","d17h","d18a","d18b","d18c","d18d","d18e","d18f","d18g","d18h","d18i","d18j","d18k","d18l","d18m","d18n","d19a","d19b","d19c","d19d","d19e","d19f","d19g","d19h","d19i","d19j","d19k","d19l","d19m","d19n","d19o","d19p","d19q","d19r","d20a","d20b","d20c","d20d","d20e","d20f","d20g","d20h","d20i","d20j","d20k","d20l","d21a","d21b","d21c","d21d","d21e","d21f","d22a","d22b","d22c","d22d","d22e","d22f","d30a","d30b","d30c","d30d","d30e","d30f","d31a","d31b","d31c","d32a","d33a","d121a","d121b","d131a","d131b","d301","d302","d303","d304","d305","d306","d307","d308","tasa_nac_eso4","tasa_nac_pri3","tasa_nac_pri6","distnac","distnac_eso4","distnac_pri3","distnac_pri6","groups","island","capital_island","public_private"]
-f_columns = ["f0","f1n","f2an","f2bn","f3a","f3b","mother_education","father_education","f4a","f4b","f5a","f5b","f5n","inmigrant","inmigrant2","inmigrant_second_gen","f6","f7","f8ta","f8tm","start_schooling_age","f9a","f9b","f9c","f9d","f9e","f9f","f9g","f9h","f10n","f11","books","f12a","f12b","f13n","f14a","f14b","f14c","f15a","f15b","f15c","f15d","f15e","f15f","f16a","f16b","f16c","f16d","f16e","f16f","f17a","f17b","f17c","f17d","f18a","f18b","f18c","f18d","f18e","f18f","f18g","f18h","f18i","f19a","f19b","f19c","f19d","f19e","f20","f21n","f22","f23","f24a","f24b","mother_occupation","father_occupation","f30","f31","single_parent_household","f33a","f33b","f33c","f33d","f33e","f33f","f33g","f33h","f34","household_income_q","nhousehold","ESCS"]
-t_columns = ["p2","p2n","p3n","p4n","p5","p6n","p7an","p7bn","p7cn","p7dn","p7en","p7fn","p7gn","p8an","p8bn","p9a","p9b","p9c","p9d","p9e","p9f","p10n","p11","p12a","p12b","p12c","p12d","p13","p13b","p13c","p15a","p15b","p15c","p15d","p15e","p15f","p15g","p15h","p15i","p16a","p16b","p16c","p16d","p16e","p16f","p16g","p16h","p18a","p18b","p18c","p18d","p18e","p18f","p18g","p18h","p18i","p19","p20","p21a","p21b","p21c","p21d","p21e","p21f","p22a","p22b","p22c","p22d","p22e","p22f","p22g","p23a","p23b","p23c","p23d","p23e","p23f","p23g","p23h","p23i","p24a","p24b","p24c","p24d","p24e","p24f","p24g","p24h","p24i","p24j","p24k","p25","p26","p26a","p26b","p26c","p26d","p27a","p27b","p27c","p27d","p27e","p27f","p27g","p27h","p28n","p29a","p29b","p29c","p29d","p29e","p30a","p30b","p30c","p31d","p32a","p32b","p32c","p32d","p32e","p34a","p34b","p34c","p34d","p34e","p34f","p34g","p41a","p41b","p41c","p41d","p41e","p41f","p41g","p41h","p41i","p41j","p141","p171n","p172n","p299d","p311a","p311b","p311c","p311e","p311f","p311g","p311h","p331a","p331b","p331c","p331d","p331e","p331f","p331g","p331j","pfc","rep"]
+s_columns = ["a1", "a2", "a3a", "a3b", "living_with_father_mother", "a3c", "a3d", "a3et", "a3f", "a4", "repeater", "a5", "a6nm", "a7", "a8a", "a8b", "a8c", "a09a", "a09b", "a09c", "a09d", "a09e", "a9a", "a9b", "a9c", "a9d", "a9e", "a9f", "a9g", "a10a", "a10b", "a10c", "a10d", "a10e", "a10f", "a10g", "a10h", "a10i", "a10j", "a10k", "a10l", "a10m", "a10n", "a11a", "a11b", "a11c", "a11d", "a11e", "a11f", "a11g", "a11h", "a12a", "a12b", "a12c", "a12d", "a12e", "a12f", "a12g", "a12h", "a12i", "a13a", "a13b", "a13c", "a13d", "a13e", "a14a", "a14b", "a14c", "a14d", "a14e", "a14f", "a14g", "a14h", "a15a", "a15b", "a15c", "a15d", "a15e",
+             "a15f", "a15g", "a15h", "a15i", "a15j", "a16a", "a16b", "a16c", "a16d", "a16e", "a16f", "a16g", "a16h", "a16i", "a16j", "a16k", "a16l", "a17a", "a17b", "a17c", "a17d", "a17e", "a17f", "a17g", "a17h", "a20a", "a20b", "a20c", "a20d", "a20e", "a21a", "a21b", "a21c", "a21d", "a21e", "a22a", "a22b", "a22c", "a22d", "a23a", "a23b", "a23c", "a23d", "a23e", "a23f", "a23g", "a23h", "a23i", "a23j", "a23k", "a24", "a40a", "a40b", "a40c", "a40d", "a41", "a42", "a51", "a61", "a71", "a111a", "a141g", "a144d", "a144h", "a160k", "a162k", "a163k", "a166f", "a166k", "a171h", "a177d", "a211a", "a222b", "country_iso_cnac", "country_iso_nac", "Weight"]
+p_columns = ["d1", "d2n", "d3n", "d4n", "d5n", "d6n", "d7n", "d8n", "d9a1", "d9a2", "d9b1", "d9b2", "d9c1", "d9c2", "d9d1", "d9d2", "d9e1", "d9e2", "d9f1", "d9f2", "d9g1", "d9g2", "d9h1", "d9h2", "d10a", "d10b", "d10c", "d11an", "d11bn", "d12an", "d12bn", "d13n", "d14", "d15", "d16an", "d16bn", "d16cn", "d16dn", "d16en", "d16fn", "d17a", "d17b", "d17c", "d17d", "d17e", "d17f", "d17g", "d17h", "d18a", "d18b", "d18c", "d18d", "d18e", "d18f", "d18g", "d18h", "d18i", "d18j", "d18k", "d18l", "d18m", "d18n", "d19a", "d19b", "d19c", "d19d", "d19e", "d19f", "d19g", "d19h", "d19i", "d19j", "d19k",
+             "d19l", "d19m", "d19n", "d19o", "d19p", "d19q", "d19r", "d20a", "d20b", "d20c", "d20d", "d20e", "d20f", "d20g", "d20h", "d20i", "d20j", "d20k", "d20l", "d21a", "d21b", "d21c", "d21d", "d21e", "d21f", "d22a", "d22b", "d22c", "d22d", "d22e", "d22f", "d30a", "d30b", "d30c", "d30d", "d30e", "d30f", "d31a", "d31b", "d31c", "d32a", "d33a", "d121a", "d121b", "d131a", "d131b", "d301", "d302", "d303", "d304", "d305", "d306", "d307", "d308", "tasa_nac_eso4", "tasa_nac_pri3", "tasa_nac_pri6", "distnac", "distnac_eso4", "distnac_pri3", "distnac_pri6", "groups", "island", "capital_island", "public_private"]
+f_columns = ["f0", "f1n", "f2an", "f2bn", "f3a", "f3b", "mother_education", "father_education", "f4a", "f4b", "f5a", "f5b", "f5n", "inmigrant", "inmigrant2", "inmigrant_second_gen", "f6", "f7", "f8ta", "f8tm", "start_schooling_age", "f9a", "f9b", "f9c", "f9d", "f9e", "f9f", "f9g", "f9h", "f10n", "f11", "books", "f12a", "f12b", "f13n", "f14a", "f14b", "f14c", "f15a", "f15b", "f15c", "f15d", "f15e", "f15f", "f16a", "f16b",
+             "f16c", "f16d", "f16e", "f16f", "f17a", "f17b", "f17c", "f17d", "f18a", "f18b", "f18c", "f18d", "f18e", "f18f", "f18g", "f18h", "f18i", "f19a", "f19b", "f19c", "f19d", "f19e", "f20", "f21n", "f22", "f23", "f24a", "f24b", "mother_occupation", "father_occupation", "f30", "f31", "single_parent_household", "f33a", "f33b", "f33c", "f33d", "f33e", "f33f", "f33g", "f33h", "f34", "household_income_q", "nhousehold", "ESCS"]
+t_columns = ["p2", "p2n", "p3n", "p4n", "p5", "p6n", "p7an", "p7bn", "p7cn", "p7dn", "p7en", "p7fn", "p7gn", "p8an", "p8bn", "p9a", "p9b", "p9c", "p9d", "p9e", "p9f", "p10n", "p11", "p12a", "p12b", "p12c", "p12d", "p13", "p13b", "p13c", "p15a", "p15b", "p15c", "p15d", "p15e", "p15f", "p15g", "p15h", "p15i", "p16a", "p16b", "p16c", "p16d", "p16e", "p16f", "p16g", "p16h", "p18a", "p18b", "p18c", "p18d", "p18e", "p18f", "p18g", "p18h", "p18i", "p19", "p20", "p21a", "p21b", "p21c", "p21d", "p21e", "p21f", "p22a", "p22b", "p22c", "p22d", "p22e", "p22f", "p22g", "p23a", "p23b", "p23c", "p23d", "p23e", "p23f", "p23g", "p23h", "p23i",
+             "p24a", "p24b", "p24c", "p24d", "p24e", "p24f", "p24g", "p24h", "p24i", "p24j", "p24k", "p25", "p26", "p26a", "p26b", "p26c", "p26d", "p27a", "p27b", "p27c", "p27d", "p27e", "p27f", "p27g", "p27h", "p28n", "p29a", "p29b", "p29c", "p29d", "p29e", "p30a", "p30b", "p30c", "p31d", "p32a", "p32b", "p32c", "p32d", "p32e", "p34a", "p34b", "p34c", "p34d", "p34e", "p34f", "p34g", "p41a", "p41b", "p41c", "p41d", "p41e", "p41f", "p41g", "p41h", "p41i", "p41j", "p141", "p171n", "p172n", "p299d", "p311a", "p311b", "p311c", "p311e", "p311f", "p311g", "p311h", "p331a", "p331b", "p331c", "p331d", "p331e", "p331f", "p331g", "p331j", "pfc", "rep"]
 
 # Function to determine prefix based on the column
+
+
 def add_prefix(row):
     if type(row["new_column"]) == str:
         new_col = row["new_column"].replace("\r", "").replace("\n", "")
@@ -111,11 +108,14 @@ def add_prefix(row):
             return f"t_{new_col}"
     return row["new_column"]  # No prefix added if not in any list
 
+
 # Apply the prefix function
 metadata_ops["new_column"] = metadata_ops.apply(add_prefix, axis=1)
-sanity_check = metadata_ops.groupby('new_column')['sensitive'].apply(lambda x: list(dict.fromkeys(x))).apply(lambda x: all(i == x[0] for i in x)).to_list()
+sanity_check = metadata_ops.groupby('new_column')['sensitive'].apply(
+    lambda x: list(dict.fromkeys(x))).apply(lambda x: all(i == x[0] for i in x)).to_list()
 if all(sanity_check):
-    metadata_sensitive = metadata_ops.groupby('new_column')['sensitive'].first().apply(lambda x: x == "Yes").to_dict()
+    metadata_sensitive = metadata_ops.groupby(
+        'new_column')['sensitive'].first().apply(lambda x: x == "Yes").to_dict()
 
     with open(os.path.join(path, meta_data_estimator), "r") as file:
         metadata = json.load(file)
@@ -123,7 +123,8 @@ if all(sanity_check):
     for new_col in metadata.keys():
         metadata[new_col]["sensitive"] = metadata_sensitive[new_col]
 
-    sanity_check_2 = [len(value["original_columns"]) == 1 for new_col, value in metadata.items() if value["sensitive"]]
+    sanity_check_2 = [len(value["original_columns"]) == 1 for new_col,
+                      value in metadata.items() if value["sensitive"]]
     if all(sanity_check_2):
         sensitive_mapping = {
             value["original_columns"][0]: new_col
@@ -134,7 +135,8 @@ if all(sanity_check):
 
         print(metadata)
         print(sensitive_mapping)
-        print(f"{len(sensitive_features)} senstive features: ",sensitive_features)
+        print(f"{len(sensitive_features)} senstive features: ",
+              sensitive_features)
     else:
         raise Exception("Sanity check 2 failed")
 else:
@@ -161,7 +163,8 @@ for dataset in datasets:
 
     # Load
     df = pd.read_csv(os.path.join(path, f"{dataset}.csv"))
-    df = df.drop(id_features + control_features, axis="columns", errors="ignore")
+    df = df.drop(id_features + control_features,
+                 axis="columns", errors="ignore")
     if dataset == "original":
         df = df.rename(columns={"id_student": "id_questionnaire"})
         df = df.rename(columns=sensitive_mapping)
@@ -188,11 +191,13 @@ for dataset in datasets:
     # ]
 
     cat_encoder[dataset] = OrdinalEncoder()
-    df[categorical_features[dataset]] = cat_encoder[dataset].fit_transform(df[categorical_features[dataset]])
+    df[categorical_features[dataset]] = cat_encoder[dataset].fit_transform(
+        df[categorical_features[dataset]])
     # df[categorical_features] = df[categorical_features].fillna(-1)
 
     sens_encoder[dataset] = OrdinalEncoder()
-    df[sensitive_features] = sens_encoder[dataset].fit_transform(df[sensitive_features])
+    df[sensitive_features] = sens_encoder[dataset].fit_transform(
+        df[sensitive_features])
     # df[sensitive_features] = df[sensitive_features].fillna(-1)
 
     # df[numerical_features] = df[numerical_features].fillna(0)
@@ -234,10 +239,12 @@ for algorithm in ["RandomForestClassifier", "XGBClassifier"]:
             probabilities_p_y_given_si[algorithm][n_estimators][dataset] = {}
             performances[algorithm][n_estimators][dataset] = {}
 
-            X, y = df.drop(score_features + level_features, axis="columns", errors="ignore"), df[level_features]
+            X, y = df.drop(score_features + level_features,
+                           axis="columns", errors="ignore"), df[level_features]
             for target_feat in level_features:
                 print(f"\t\t\tTarget Feature: {target_feat}")
-                probabilities_p_y_given_si[algorithm][n_estimators][dataset][target_feat] = {}
+                probabilities_p_y_given_si[algorithm][n_estimators][dataset][target_feat] = {
+                }
                 performances[algorithm][n_estimators][dataset][target_feat] = {}
 
                 y_encoder = LabelEncoder()
@@ -254,8 +261,10 @@ for algorithm in ["RandomForestClassifier", "XGBClassifier"]:
                 inference_time = time.time() - start_time
 
                 acc = accuracy_score(y_encoded, y_pred)
-                precision = precision_score(y_encoded, y_pred, average='weighted', zero_division=0)
-                recall = recall_score(y_encoded, y_pred, average='weighted', zero_division=0)
+                precision = precision_score(
+                    y_encoded, y_pred, average='weighted', zero_division=0)
+                recall = recall_score(
+                    y_encoded, y_pred, average='weighted', zero_division=0)
 
                 performances[algorithm][n_estimators][dataset][target_feat] = {
                     "accuracy": acc,
@@ -272,8 +281,10 @@ for algorithm in ["RandomForestClassifier", "XGBClassifier"]:
                 print(f"\t\t\t\tInference time: {inference_time:.2f} seconds")
 
                 cat_X = copy.deepcopy(current_X)
-                cat_X[categorical_features[dataset]] = cat_encoder[dataset].inverse_transform(current_X[categorical_features[dataset]])
-                cat_X[sensitive_features] = sens_encoder[dataset].inverse_transform(current_X[sensitive_features])
+                cat_X[categorical_features[dataset]] = cat_encoder[dataset].inverse_transform(
+                    current_X[categorical_features[dataset]])
+                cat_X[sensitive_features] = sens_encoder[dataset].inverse_transform(
+                    current_X[sensitive_features])
 
                 for sens_feat in sensitive_features:
 
@@ -284,10 +295,13 @@ for algorithm in ["RandomForestClassifier", "XGBClassifier"]:
                         else:
                             X_to_input = current_X[cat_X[sens_feat] == s_value]
 
-                        class_probabilities = rf_classifier.predict_proba(X_to_input).mean(axis=0)
+                        class_probabilities = rf_classifier.predict_proba(
+                            X_to_input).mean(axis=0)
                         for cls_idx, prob in enumerate(class_probabilities):
-                            class_label = y_encoder.inverse_transform([cls_idx])[0]
-                            stringed_key = "_".join([str(s_value), str(class_label)])
+                            class_label = y_encoder.inverse_transform([cls_idx])[
+                                0]
+                            stringed_key = "___".join(
+                                [str(s_value), str(class_label)])
                             probabilities[stringed_key] = float(prob)
 
                     # Store results for the sensitive feature
@@ -297,10 +311,10 @@ for algorithm in ["RandomForestClassifier", "XGBClassifier"]:
                 for sens_feat, probs in probabilities_p_y_given_si[algorithm][n_estimators][dataset][target_feat].items():
                     print(f"\n\t\t\t\tProbabilities P(Y | {sens_feat}):")
                     for stringed_key, prob in probs.items():
-                        s_value, class_label = stringed_key.split("_")
-                        print(f"\t\t\t\t\tP(Y={class_label} | {sens_feat}={s_value}) = {prob:.4f}")
+                        s_value, class_label = stringed_key.split("___")
+                        print(
+                            f"\t\t\t\t\tP(Y={class_label} | {sens_feat}={s_value}) = {prob:.4f}")
                     print()
-
 
                 with open(os.path.join(path, "probabilities_p_y_given_si.json"), "w") as f:
                     json.dump(probabilities_p_y_given_si, f)
@@ -309,6 +323,7 @@ for algorithm in ["RandomForestClassifier", "XGBClassifier"]:
                     json.dump(performances, f)
 
 """### Statistic Tests"""
+
 
 def compare_probability_matrices(probabilities_p_y_given_si, tolerance=1e-5):
     indeces = {}
@@ -328,21 +343,28 @@ def compare_probability_matrices(probabilities_p_y_given_si, tolerance=1e-5):
                     indeces[algorithm][n_estimators][target_feat][sens_feat] = {}
 
                     # Extract probabilities
-                    original_probs = probabilities_p_y_given_si[algorithm][n_estimators]["original"][target_feat][sens_feat]
-                    final_probs = probabilities_p_y_given_si[algorithm][n_estimators]["final"][target_feat][sens_feat]
+                    original_probs = probabilities_p_y_given_si[algorithm][
+                        n_estimators]["original"][target_feat][sens_feat]
+                    final_probs = probabilities_p_y_given_si[algorithm][
+                        n_estimators]["final"][target_feat][sens_feat]
 
                     # Convert to DataFrames: Rows are sensitive values, Columns are class labels
                     original_matrix = pd.DataFrame(
-                        [(stringed_key.split("_")[0], stringed_key.split("_")[1], p) for stringed_key, p in original_probs.items()],
-                        columns=["sensitive_value", "class_label", "probability"]
+                        [(stringed_key.split("___")[0], stringed_key.split("___")[1], p)
+                         for stringed_key, p in original_probs.items()],
+                        columns=["sensitive_value",
+                                 "class_label", "probability"]
                     ).pivot(index="sensitive_value", columns="class_label", values="probability")
 
                     final_matrix = pd.DataFrame(
-                        [(stringed_key.split("_")[0], stringed_key.split("_")[1], p) for stringed_key, p in final_probs.items()],
-                        columns=["sensitive_value", "class_label", "probability"]
+                        [(stringed_key.split("___")[0], stringed_key.split("___")[1], p)
+                         for stringed_key, p in final_probs.items()],
+                        columns=["sensitive_value",
+                                 "class_label", "probability"]
                     ).pivot(index="sensitive_value", columns="class_label", values="probability")
 
-                    print(f"\n\t\t\tOriginal Probability Matrix:\n{original_matrix}")
+                    print(
+                        f"\n\t\t\tOriginal Probability Matrix:\n{original_matrix}")
                     print(f"\n\t\t\tFinal Probability Matrix:\n{final_matrix}")
 
                     # Flatten matrices to arrays for statistical tests
@@ -359,7 +381,8 @@ def compare_probability_matrices(probabilities_p_y_given_si, tolerance=1e-5):
                             "stat": t_stat,
                             "p_value": p_value
                         }
-                        print(f"\t\t\tPaired t-Test: t-stat = {t_stat:.4f}, p-value = {p_value:.4e}")
+                        print(
+                            f"\t\t\tPaired t-Test: t-stat = {t_stat:.4f}, p-value = {p_value:.4e}")
                     except Exception as e:
                         print(f"\t\t\tPaired t-Test: Failed due to {e}")
 
@@ -370,9 +393,11 @@ def compare_probability_matrices(probabilities_p_y_given_si, tolerance=1e-5):
                             "stat": w_stat,
                             "p_value": p_value
                         }
-                        print(f"\t\t\tWilcoxon Signed-Rank Test: w-stat = {w_stat:.4f}, p-value = {p_value:.4e}")
+                        print(
+                            f"\t\t\tWilcoxon Signed-Rank Test: w-stat = {w_stat:.4f}, p-value = {p_value:.4e}")
                     except Exception as e:
-                        print(f"\t\t\tWilcoxon Signed-Rank Test: Failed due to {e}")
+                        print(
+                            f"\t\t\tWilcoxon Signed-Rank Test: Failed due to {e}")
 
                     # 3. Kolmogorov-Smirnov Test
                     try:
@@ -381,23 +406,29 @@ def compare_probability_matrices(probabilities_p_y_given_si, tolerance=1e-5):
                             "stat": ks_stat,
                             "p_value": p_value
                         }
-                        print(f"\t\t\tKolmogorov-Smirnov Test: ks-stat = {ks_stat:.4f}, p-value = {p_value:.4e}")
+                        print(
+                            f"\t\t\tKolmogorov-Smirnov Test: ks-stat = {ks_stat:.4f}, p-value = {p_value:.4e}")
                     except Exception as e:
-                        print(f"\t\t\tKolmogorov-Smirnov Test: Failed due to {e}")
+                        print(
+                            f"\t\t\tKolmogorov-Smirnov Test: Failed due to {e}")
 
                     # 4. Chi-Square Test (for frequencies or probabilities summing to 1 per row)
                     try:
-                        original_frequencies = original_matrix.div(original_matrix.sum(axis=1), axis=0).fillna(0)
-                        final_frequencies = final_matrix.div(final_matrix.sum(axis=1), axis=0).fillna(0)
+                        original_frequencies = original_matrix.div(
+                            original_matrix.sum(axis=1), axis=0).fillna(0)
+                        final_frequencies = final_matrix.div(
+                            final_matrix.sum(axis=1), axis=0).fillna(0)
 
                         chi2_stat, p_value, _, _ = chi2_contingency(
-                            pd.concat([original_frequencies, final_frequencies]).values
+                            pd.concat(
+                                [original_frequencies, final_frequencies]).values
                         )
                         indeces[algorithm][n_estimators][target_feat][sens_feat]["chi_test"] = {
                             "stat": chi2_stat,
                             "p_value": p_value
                         }
-                        print(f"\t\t\tChi-Square Test: chi2-stat = {chi2_stat:.4f}, p-value = {p_value:.4e}")
+                        print(
+                            f"\t\t\tChi-Square Test: chi2-stat = {chi2_stat:.4f}, p-value = {p_value:.4e}")
                     except Exception as e:
                         print(f"\t\t\tChi-Square Test: Failed due to {e}")
 
