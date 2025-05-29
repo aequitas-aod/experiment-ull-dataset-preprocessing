@@ -5,3 +5,4 @@ psutil
 scipy
 Jinja2
 scikit-learn
+maxcorr

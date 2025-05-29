@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering
+\caption{Statistical tests results in comparing the distributions $P(h(X_\text{original})|S)$ and $P(h(X_\text{prep})|S)$ according to Sensitive Features $S$. The differences between the distributions (stat) are averaged among the possible target features (math, spanish, and english levels). The stat value, the lower the better, is colored red depending on how far it is from the critical value (critic).}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|ll|ll|ll|ll|ll}
+\textbf{Sensitive Feature} & \multicolumn{2}{c|}{T-Test} & \multicolumn{2}{c|}{KS-Test} & \multicolumn{2}{c|}{Chi-Test} & \multicolumn{2}{c|}{Max Diff} & \multicolumn{2}{c}{MAE} \\
+& Stat & Critic & Stat & Critic & Stat & Critic & Stat & Critic & Stat & Critic \\
+\hline
+s\_gender & \cellcolor{red!0}{$5e-14~(\pm~9e-14)$} & 2  & \cellcolor{red!27}{$0.13~(\pm~0.00)$} & 0.5  & \cellcolor{red!33}{$2.65~~~~~(\pm~1.00)$} & 8  & \cellcolor{red!4}{$0.04~(\pm~0.01)$} & 1 & \cellcolor{red!2}{$0.02~(\pm~0.01)$} & 1 \\
+s\_has\_repeated & \cellcolor{red!0}{$3e-13~(\pm~3e-12)$} & 2  & \cellcolor{red!18}{$0.09~(\pm~0.03)$} & 0.5  & \cellcolor{red!6}{$0.51~~~~~(\pm~0.11)$} & 8  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+s\_birth\_country & \cellcolor{red!0}{$3e-14~(\pm~2e-14)$} & 2  & \cellcolor{red!24}{$0.02~(\pm~0.00)$} & 0.1  & \cellcolor{red!28}{$81.33~~~(\pm~17.32)$} & 292  & \cellcolor{red!5}{$0.05~(\pm~0.01)$} & 1 & \cellcolor{red!1}{$0.01~(\pm~0.00)$} & 1 \\
+s\_nazionality\_country & \cellcolor{red!0}{$3e-14~(\pm~2e-14)$} & 2  & \cellcolor{red!26}{$0.03~(\pm~0.00)$} & 0.1  & \cellcolor{red!35}{$108.20~(\pm~13.50)$} & 308  & \cellcolor{red!8}{$0.08~(\pm~0.03)$} & 1 & \cellcolor{red!1}{$0.01~(\pm~0.00)$} & 1 \\
+p\_island & \cellcolor{red!0}{$1e-15~(\pm~4e-14)$} & 2  & \cellcolor{red!18}{$0.07~(\pm~0.04)$} & 0.38  & \cellcolor{red!15}{$2.36~~~~~(\pm~2.39)$} & 16  & \cellcolor{red!6}{$0.06~(\pm~0.06)$} & 1 & \cellcolor{red!1}{$0.01~(\pm~0.01)$} & 1 \\
+p\_public\_or\_private & \cellcolor{red!0}{$7e-13~(\pm~1e-12)$} & 2  & \cellcolor{red!18}{$0.09~(\pm~0.03)$} & 0.5  & \cellcolor{red!23}{$1.81~~~~~(\pm~1.73)$} & 8  & \cellcolor{red!1}{$0.01~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_mother\_education\_level & \cellcolor{red!0}{$3e-13~(\pm~9e-13)$} & 2  & \cellcolor{red!15}{$0.04~(\pm~0.00)$} & 0.27  & \cellcolor{red!6}{$2.08~~~~~(\pm~0.26)$} & 36  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_father\_education\_level & \cellcolor{red!0}{$8e-13~(\pm~1e-12)$} & 2  & \cellcolor{red!20}{$0.05~(\pm~0.01)$} & 0.27  & \cellcolor{red!5}{$1.87~~~~~(\pm~0.19)$} & 36  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_mother\_employment\_status & \cellcolor{red!0}{$2e-12~(\pm~1e-12)$} & 2  & \cellcolor{red!16}{$0.06~(\pm~0.02)$} & 0.35  & \cellcolor{red!1}{$0.21~~~~~(\pm~0.06)$} & 20  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_father\_employment\_status & \cellcolor{red!0}{$1e-12~(\pm~3e-13)$} & 2  & \cellcolor{red!16}{$0.06~(\pm~0.02)$} & 0.35  & \cellcolor{red!1}{$0.23~~~~~(\pm~0.04)$} & 20  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_mother\_place\_of\_birth & \cellcolor{red!0}{$3e-14~(\pm~2e-14)$} & 2  & \cellcolor{red!14}{$0.05~(\pm~0.02)$} & 0.38  & \cellcolor{red!1}{$0.15~~~~~(\pm~0.05)$} & 16  & \cellcolor{red!4}{$0.04~(\pm~0.01)$} & 1 & \cellcolor{red!2}{$0.02~(\pm~0.00)$} & 1 \\
+f\_father\_place\_of\_birth & \cellcolor{red!0}{$3e-14~(\pm~5e-14)$} & 2  & \cellcolor{red!18}{$0.07~(\pm~0.02)$} & 0.38  & \cellcolor{red!1}{$0.17~~~~~(\pm~0.04)$} & 16  & \cellcolor{red!5}{$0.05~(\pm~0.00)$} & 1 & \cellcolor{red!2}{$0.02~(\pm~0.00)$} & 1 \\
+f\_student\_place\_of\_birth & \cellcolor{red!0}{$3e-15~(\pm~5e-14)$} & 2  & \cellcolor{red!11}{$0.04~(\pm~0.00)$} & 0.38  & \cellcolor{red!1}{$0.21~~~~~(\pm~0.13)$} & 16  & \cellcolor{red!5}{$0.05~(\pm~0.01)$} & 1 & \cellcolor{red!2}{$0.02~(\pm~0.00)$} & 1 \\
+f\_extent\_of\_books\_at\_home & \cellcolor{red!0}{$2e-12~(\pm~1e-12)$} & 2  & \cellcolor{red!16}{$0.06~(\pm~0.02)$} & 0.35  & \cellcolor{red!4}{$0.71~~~~~(\pm~0.03)$} & 20  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_parental\_education\_expectations & \cellcolor{red!0}{$7e-15~(\pm~2e-14)$} & 2  & \cellcolor{red!17}{$0.06~(\pm~0.00)$} & 0.33  & \cellcolor{red!3}{$0.61~~~~~(\pm~0.05)$} & 24  & \cellcolor{red!16}{$0.16~(\pm~0.01)$} & 1 & \cellcolor{red!4}{$0.04~(\pm~0.00)$} & 1 \\
+f\_mother\_occupation & \cellcolor{red!0}{$2e-12~(\pm~1e-12)$} & 2  & \cellcolor{red!14}{$0.05~(\pm~0.02)$} & 0.38  & \cellcolor{red!3}{$0.41~~~~~(\pm~0.02)$} & 16  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_father\_occupation & \cellcolor{red!0}{$1e-12~(\pm~1e-12)$} & 2  & \cellcolor{red!18}{$0.07~(\pm~0.04)$} & 0.38  & \cellcolor{red!3}{$0.49~~~~~(\pm~0.04)$} & 16  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+f\_monthly\_household\_income & \cellcolor{red!0}{$1e-14~(\pm~1e-14)$} & 2  & \cellcolor{red!12}{$0.03~(\pm~0.01)$} & 0.26  & \cellcolor{red!3}{$1.40~~~~~(\pm~0.41)$} & 40  & \cellcolor{red!21}{$0.21~(\pm~0.04)$} & 1 & \cellcolor{red!2}{$0.02~(\pm~0.00)$} & 1 \\
+f\_ESCS & \cellcolor{red!0}{$1e-12~(\pm~5e-13)$} & 2  & \cellcolor{red!17}{$0.06~(\pm~0.00)$} & 0.33  & \cellcolor{red!7}{$1.58~~~~~(\pm~0.07)$} & 24  & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 & \cellcolor{red!0}{$0.00~(\pm~0.00)$} & 1 \\
+
+\end{tabular}
+}
+\end{table}

@@ -2,7 +2,7 @@ import json
 import os
 import pandas as pd
 import numpy as np
-from src.pre_processing.macros import DATA_PATH, RES_PATH
+from src.pre_processing.macros import DATA_PATH, DATA_PREPROC_PATH
 
 
 def get_feature_list_indexes(df: pd.DataFrame, feature_lists: dict):
@@ -67,7 +67,7 @@ def normalize_in_new_range(num, old_min, old_max, new_min, new_max):
 
 def normalize_merged_dataset(merged_df):
     # Import meta data of merged
-    with open(os.path.join(RES_PATH, "meta_data_merged.json")) as file:
+    with open(os.path.join(DATA_PREPROC_PATH, "meta_data_merged.json")) as file:
         meta_data = json.load(file)
 
     categories = ["s", "p", "f", "t"]

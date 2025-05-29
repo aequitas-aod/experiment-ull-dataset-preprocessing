@@ -30,7 +30,7 @@ def main():
     student_df = preprocess_student_questionnaire(load=True)
     student_df = student_df.add_prefix("s_")
     print("\tPrincipal Questionnaire")
-    principal_df = preprocess_principal_questionnaire(load=True)
+    principal_df = preprocess_principal_questionnaire(load=False)
     principal_df = principal_df.add_prefix("p_")
     print("\tFamily Questionnaire")
     family_df = preprocess_family_questionnaire(load=True)
@@ -111,6 +111,20 @@ def main():
     final_df = final_df.reset_index()
     final_df = final_df.rename(columns={"id_student": "id_questionnaire"})
     final_df = final_df.set_index("id_questionnaire")
+
+    extra_cols = [
+        "p_group_criteria_alphabet",
+        "p_group_criteria_gender",
+        "p_group_criteria_language",
+        "p_group_criteria_performance",
+        "p_group_criteria_homogeneity",
+        "p_group_criteria_heterogeneity",
+        "s_weight",
+    ]
+    extra_cols_df = final_df[list(ids.columns) + extra_cols]
+    extra_cols_df.to_csv(os.path.join(BEN_PATH, "meta_cols.csv"))
+
+    final_df = final_df.drop(extra_cols, axis=1)
     final_df.to_csv(os.path.join(DATA_PREPROC_PATH, "final.csv"))
     final_df.to_csv(os.path.join(BEN_PATH, "dataset.csv"))
 
@@ -124,53 +138,56 @@ def main():
     print("Running quality checks...")
 
     # Import meta data of merged
-    with open(os.path.join(RES_PATH, "meta_data_final.json")) as file:
+    with open(os.path.join(DATA_PREPROC_PATH, "meta_data_final.json")) as file:
         meta_data = json.load(file)
 
     # Check each features is in range
     print("\tPrinting Errors:")
     error = False
     for col, details in meta_data.items():
-        # print(col)
-        value = details["values"][0][0]
-        # if value == ["1", "2", "3", "4"]:
-        #     value = {"min": 1, "max": 4}
-        if value not in [["Unknown"], ["Integer"], ["Float"]]:
-            if type(value) == dict:
-                try:
-                    col_min = final_df[col].min()
-                    col_max = final_df[col].max()
-                    if col_min < int(value["min"]) or col_max > int(value["max"]):
+        if col in final_df.columns:
+            # print(col)
+            value = details["values"][0][0]
+            # if value == ["1", "2", "3", "4"]:
+            #     value = {"min": 1, "max": 4}
+            if value not in [["Unknown"], ["Integer"], ["Float"]]:
+                if type(value) == dict:
+                    try:
+                        col_min = final_df[col].min()
+                        col_max = final_df[col].max()
+                        if col_min < int(value["min"]) or col_max > int(value["max"]):
+                            error = True
+                            print(
+                                f""""\t\tNO IN LIMIT\n\tcol:{col}, col_min:{col_min}, col_max:{col_max}, min_value:{value["min"]}, max_value:{value["max"]} """
+                            )
+                    except:
                         error = True
+                        print(col)
                         print(
-                            f""""\t\tNO IN LIMIT\n\tcol:{col}, col_min:{col_min}, col_max:{col_max}, min_value:{value["min"]}, max_value:{value["max"]} """
+                            [
+                                elem
+                                for elem in final_df[col].unique()
+                                if type(elem) == str or not math.isnan(elem)
+                            ]
                         )
-                except:
-                    error = True
-                    print(col)
-                    print(
-                        [
-                            elem
-                            for elem in final_df[col].unique()
-                            if type(elem) == str or not math.isnan(elem)
-                        ]
+                elif type(value) == list:
+                    distinct_in_col = [
+                        elem
+                        for elem in final_df[col].unique()
+                        if type(elem) == str or not math.isnan(elem)
+                    ]
+                    value = (
+                        value
+                        if not value[0].isdigit()
+                        else [int(elem) for elem in value]
                     )
-            elif type(value) == list:
-                distinct_in_col = [
-                    elem
-                    for elem in final_df[col].unique()
-                    if type(elem) == str or not math.isnan(elem)
-                ]
-                value = (
-                    value if not value[0].isdigit() else [int(elem) for elem in value]
-                )
-                if "True" not in value:
-                    # if distinct_in_col not in value:
-                    if not set(distinct_in_col).issubset(set(value)):
-                        error = True
-                        print(
-                            f""""NO IN LIST\n\tcol:{col}, distinct_in_col:{distinct_in_col}, value:{value}"""
-                        )
+                    if "True" not in value:
+                        # if distinct_in_col not in value:
+                        if not set(distinct_in_col).issubset(set(value)):
+                            error = True
+                            print(
+                                f""""NO IN LIST\n\tcol:{col}, distinct_in_col:{distinct_in_col}, value:{value}"""
+                            )
     if not (error):
         print("\tAll clear!")
     print()
