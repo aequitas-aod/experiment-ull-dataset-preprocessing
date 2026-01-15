@@ -15,6 +15,12 @@ contains:
 - the proposed dataset (```dataset.csv```), and
 - the mask for dealing with missing values (```missing_mask.csv```).
 
+
+```examples```
+contains:
+- a preliminary analysis performed on the proposed dataset (```preliminary_analysis.csv```), and
+- the school performance prediction task addresed with and without balancing the class distribution (```performance_prediction_balanced.csv``` and ```performance_prediction.csv```, respectively).
+
 ```raw_data``` includes:
 - the original dataset (```original.csv```), and
 - the intermediate stages of the pre-processing pipeline (```split``` and ```pre_processed```).
